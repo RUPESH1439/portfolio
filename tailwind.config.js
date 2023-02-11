@@ -10,13 +10,15 @@ module.exports = {
     ],
     theme: {
         colors: {
+            primary: 'red',
             background: '#020c1b',
             blue: '#1fb6ff',
             purple: '#7e5bef',
+            'purple-light': '#3a3253',
             pink: '#ff49db',
             'orange-light': '#FF7700',
             'orange-dark': '#E04D01',
-            white: '#EEEEE',
+            white: '#EEEEEE',
             'blue-light': '#2A2550',
             'blue-dark': '#251D3A',
             green: '#13ce66',
@@ -36,6 +38,9 @@ module.exports = {
             },
             borderRadius: {
                 '4xl': '2rem',
+            },
+            transitionProperty: {
+                height: 'height',
             },
         },
     },
