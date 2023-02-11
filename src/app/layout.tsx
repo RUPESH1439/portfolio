@@ -15,7 +15,7 @@ export default function RootLayout({
             <head />
             <body>
                 <div
-                    className="flex flex-1 flex-col bg-background w-full h-screen"
+                    className="flex flex-1 flex-col bg-background w-full h-screen overflow-hidden"
                     style={{ scrollBehavior: 'smooth' }}
                 >
                     <NavBar />
