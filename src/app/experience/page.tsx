@@ -1,8 +1,8 @@
-import { Inter } from '@next/font/google';
 import { NavBar } from '@/components/NavBar';
 import { HeroSection } from '@/components/HeroSection';
 import { AboutMe } from '@/components/AboutMe';
 import { Component } from 'react';
+import { Inter } from '@next/font/google';
 
 const inter = Inter({ subsets: ['latin'] });
 

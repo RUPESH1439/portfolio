@@ -17,7 +17,7 @@ export default function Home() {
     return (
         <div className="px-20 py-5">
             <div id="heroSection" className="mb-[25%]">
-                <HeroSection />
+                <AboutMe />
             </div>
         </div>
     );
