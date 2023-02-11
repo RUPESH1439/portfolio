@@ -46,7 +46,10 @@ const NavBar: FunctionComponent<NavBarProps> = () => {
                 </div>
             </div>
             {openMenu ? (
-                <NavMenu handleClose={() => setOpenMenu(false)} />
+                <NavMenu
+                    handleClose={() => setOpenMenu(false)}
+                    openMenu={openMenu}
+                />
             ) : null}
         </div>
     );
