@@ -8,7 +8,7 @@ import NavMenu from './NavMenu';
 interface NavBarProps {}
 
 const navBarSections = [
-    { key: 'projects', section: 'PROJECTS', routePath: '#projects' },
+    { key: 'projects', section: 'PROJECTS', routePath: 'projects' },
     { key: 'contact-me', section: 'EXPERIENCE', routePath: '#contact-me' },
 ];
 
