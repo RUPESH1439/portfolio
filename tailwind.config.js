@@ -16,6 +16,7 @@ module.exports = {
             purple: '#7e5bef',
             'purple-light': '#3a3253',
             'purple-medium': 'rgb(160,160,255)',
+            'primary-medium': 'rgba(160,160,255,0.08)',
             pink: '#ff49db',
             'orange-light': '#FF7700',
             'orange-dark': '#E04D01',
