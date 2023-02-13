@@ -10,9 +10,9 @@ export default function useOnWheel(
         clearTimeout(timeoutId);
         timeoutId = setTimeout(() => {
             if (event.deltaY < 0) {
-                onWheelUp();
-            } else if (event.deltaY > 0) {
                 onWheelDown();
+            } else if (event.deltaY > 0) {
+                onWheelUp();
             }
         }, 35);
     };

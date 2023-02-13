@@ -77,7 +77,7 @@ const Carousel: FunctionComponent<CarouselProps> = ({ sections }) => {
         });
     }, []);
 
-    useOnWheel(timeoutId, onWheelDown, onWheelUp);
+    useOnWheel(timeoutId, onWheelUp, onWheelDown);
 
     return (
         <div>
