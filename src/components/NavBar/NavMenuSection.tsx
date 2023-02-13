@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { FunctionComponent, useState, useEffect } from 'react';
 import { useSpring, animated } from '@react-spring/web';
+import { usePathname } from 'next/navigation';
 
 interface NavMenuSectionProps {
     section: string;
@@ -14,6 +15,8 @@ const NavMenuSection: FunctionComponent<NavMenuSectionProps> = ({
     link,
     handleClose,
 }) => {
+    const pathName = usePathname();
+
     const [styleDot, animateDot] = useSpring(
         () => ({ height: '6', width: '6' }),
         [],
@@ -43,7 +46,7 @@ const NavMenuSection: FunctionComponent<NavMenuSectionProps> = ({
             href={link}
             onMouseEnter={() => setShowLeftBar(true)}
             onMouseLeave={() => setShowLeftBar(false)}
-            className="flex flex-row"
+            className={`flex flex-row`}
             onClick={handleClose}
         >
             {showLeftBar ? (
@@ -53,9 +56,9 @@ const NavMenuSection: FunctionComponent<NavMenuSectionProps> = ({
                 ></animated.div>
             ) : null}
             <span
-                className={`text-4xl text-white font-light tracking-wide transition-all duration-300 ease-in-out ${
+                className={`text-4xl font-light tracking-wide transition-all duration-300 ease-in-out ${
                     showLeftBar ? 'ml-8' : ''
-                }`}
+                } ${pathName === link ? 'text-orange-dark' : 'text-white'}`}
             >
                 {section}
             </span>
