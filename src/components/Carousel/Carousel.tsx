@@ -56,22 +56,32 @@ const Carousel: FunctionComponent<CarouselProps> = ({ sections }) => {
     }, [animate, ref, activeSectionIndex, animateDot]);
 
     const onWheelUp = useCallback(() => {
+        window.scroll({
+            top: 1000,
+            left: 100,
+            behavior: 'smooth',
+        });
         setActiveSectionIndex((prev) => {
             return prev < sections.length - 1 ? prev + 1 : prev;
         });
-    }, []);
+    }, [sections.length]);
 
     const onWheelDown = useCallback(() => {
+        window.scroll({
+            top: 1000,
+            left: 100,
+            behavior: 'smooth',
+        });
         setActiveSectionIndex((prev) => {
             return prev > 0 ? prev - 1 : prev;
         });
     }, []);
 
-    useOnWheel(timeoutId, onWheelUp, onWheelDown);
+    useOnWheel(timeoutId, onWheelDown, onWheelUp);
 
     return (
         <div>
-            <div className="absolute bottom-[10%] flex flex-col gap-7">
+            <div className="absolute bottom-[8%] flex flex-col gap-7">
                 {sections.map(({ key }, index) => {
                     return (
                         <animated.button
