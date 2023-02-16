@@ -28,7 +28,7 @@ const SocialMediaLinks: FunctionComponent<SocialMediaLinksProps> = () => {
                             {
                                 <Icon
                                     size={18}
-                                    className={`${'hover:text-orange-dark'} ${hoverText}`}
+                                    className={`${'hover:text-primary'} ${hoverText}`}
                                 />
                             }
                         </a>

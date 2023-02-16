@@ -9,7 +9,7 @@ const PrimaryText: FunctionComponent<PrimaryTextProps> = ({
     text,
     styleClass,
 }) => {
-    return <div className={`text-orange-dark ${styleClass}`}>{text}</div>;
+    return <div className={`text-primary ${styleClass}`}>{text}</div>;
 };
 
 export default PrimaryText;

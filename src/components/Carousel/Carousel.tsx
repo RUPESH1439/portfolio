@@ -6,6 +6,7 @@ import {
     useEffect,
     useRef,
     useCallback,
+    useLayoutEffect,
 } from 'react';
 import { animated, useSpring } from '@react-spring/web';
 import useOnWheel from '@/hooks/useOnWheel';
@@ -17,8 +18,6 @@ interface CarouselProps {
 const Carousel: FunctionComponent<CarouselProps> = ({ sections }) => {
     const [activeSectionIndex, setActiveSectionIndex] = useState(0);
     const [style, animate] = useSpring(() => ({ height: '0px' }), []);
-
-    let timeoutId: string | number | NodeJS.Timeout | undefined;
 
     const [styleDot, animateDot] = useSpring(
         () => ({ height: '6', width: '6' }),
@@ -77,7 +76,7 @@ const Carousel: FunctionComponent<CarouselProps> = ({ sections }) => {
         });
     }, []);
 
-    useOnWheel(timeoutId, onWheelUp, onWheelDown);
+    useOnWheel(ref, onWheelUp, onWheelDown);
 
     return (
         <div>
@@ -88,7 +87,7 @@ const Carousel: FunctionComponent<CarouselProps> = ({ sections }) => {
                             key={key}
                             className={`h-2 w-2 rounded-full ${
                                 index === activeSectionIndex
-                                    ? 'bg-orange-dark'
+                                    ? 'bg-primary'
                                     : 'border border-[rgb(160,160,255,0.4)]'
                             }`}
                             style={
@@ -102,7 +101,7 @@ const Carousel: FunctionComponent<CarouselProps> = ({ sections }) => {
                         />
                     );
                 })}
-                <span className="text-orange-dark text-xs font-light mt-10 tracking-widest">
+                <span className="text-primary text-xs font-light mt-10 tracking-widest">
                     0{activeSectionIndex + 1}
                 </span>
             </div>

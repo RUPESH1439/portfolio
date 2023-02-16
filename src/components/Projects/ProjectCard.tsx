@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react';
-import { PrimaryText, SecondaryText } from '../UI';
+import { SecondaryText } from '../UI';
 import { CiFolderOn } from 'react-icons/ci';
 import { FiGithub } from 'react-icons/fi';
 import { hoverText, hoverTranslate } from '@/app/cssClasses';
@@ -26,12 +26,12 @@ const ProjectCard: FunctionComponent<ProjectCardProps> = ({
             className={`flex-col px-5 py-5 bg-primary-medium rounded-md w-[350px] xl:w-[352px]  ${hoverTranslate}`}
         >
             <div className="flex flex-row items-center self-center justify-between mb-8">
-                <CiFolderOn className="text-orange-dark" size={50} />
+                <CiFolderOn className="text-primary" size={50} />
                 <div className="flex flex-row gap-4 items-center">
                     {githubUrl ? (
                         <a href={githubUrl} target="_blank" rel="noreferrer">
                             <FiGithub
-                                className={`${hoverText} hover:text-orange-dark`}
+                                className={`${hoverText} hover:text-primary`}
                                 size={20}
                             />
                         </a>
@@ -39,7 +39,7 @@ const ProjectCard: FunctionComponent<ProjectCardProps> = ({
                     {demoUrl ? (
                         <a href={demoUrl} target="_blank" rel="noreferrer">
                             <IoOpenOutline
-                                className={`${hoverText} hover:text-orange-dark`}
+                                className={`${hoverText} hover:text-primary`}
                                 size={23}
                             />
                         </a>
