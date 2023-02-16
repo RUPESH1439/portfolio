@@ -58,7 +58,7 @@ const NavMenuSection: FunctionComponent<NavMenuSectionProps> = ({
             <span
                 className={`text-4xl font-light tracking-wide transition-all duration-300 ease-in-out ${
                     showLeftBar ? 'ml-8' : ''
-                } ${pathName === link ? 'text-orange-dark' : 'text-white'}`}
+                } ${pathName === link ? 'text-primary' : 'text-white'}`}
             >
                 {section}
             </span>

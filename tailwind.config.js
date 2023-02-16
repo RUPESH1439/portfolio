@@ -10,8 +10,9 @@ module.exports = {
     ],
     theme: {
         colors: {
-            primary: 'red',
-            background: '#020c1b',
+            primary: '#FF8427',
+            secondary: '#42485D',
+            background: '#1E212B',
             blue: '#1fb6ff',
             purple: '#7e5bef',
             'purple-light': '#3a3253',

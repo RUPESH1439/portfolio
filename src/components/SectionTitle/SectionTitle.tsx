@@ -11,9 +11,7 @@ const SectionTitle: FunctionComponent<SectionTitleProps> = ({
 }) => {
     return (
         <div className="flex flex-row gap-3 items-center">
-            <span className="text-xl font-bold text-orange-dark">
-                0{index}.
-            </span>
+            <span className="text-xl font-bold text-primary">0{index}.</span>
             <span className="text-xl font-bold text-gray font-light">
                 {title}
             </span>

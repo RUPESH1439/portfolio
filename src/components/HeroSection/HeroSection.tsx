@@ -10,7 +10,7 @@ const HeroSection: FunctionComponent<HeroSectionProps> = () => {
     } = text;
     return (
         <div className="flex flex-col">
-            <span className="text-orange-dark text-md tracking-wider">
+            <span className="text-primary text-md tracking-wider">
                 {greeting}
             </span>
             <span className="text-gray text-6xl font-bold mt-5">{name}</span>
