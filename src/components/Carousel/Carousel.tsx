@@ -80,7 +80,7 @@ const Carousel: FunctionComponent<CarouselProps> = ({ sections }) => {
 
     return (
         <div>
-            <div className="absolute bottom-[8%] flex flex-col gap-7">
+            <div className="fixed bottom-[8%] flex flex-col gap-7 left-[77px]">
                 {sections.map(({ key }, index) => {
                     return (
                         <animated.button
@@ -106,9 +106,9 @@ const Carousel: FunctionComponent<CarouselProps> = ({ sections }) => {
                 </span>
             </div>
 
-            <div className="text-gray ">
+            <div className="text-gray px-20">
                 <animated.div
-                    className="px-20 "
+                    className=""
                     style={{
                         overflow: 'hidden',
                         width: '100%',

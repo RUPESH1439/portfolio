@@ -19,14 +19,7 @@ export default function useOnWheel(
 
     const handleScroll = useCallback(() => {
         const position = window.pageYOffset;
-        console.log(
-            'pos',
-            position,
-            ref?.current?.clientHeight,
-            window?.innerHeight,
-            scrollable,
-        );
-        if (position >= window.innerHeight) {
+        if (position >= window.innerHeight + 5) {
             setScrollable(false);
         }
     }, [ref, ref?.current?.clientHeight]);
@@ -53,9 +46,9 @@ export default function useOnWheel(
         if (!ref.current) return;
 
         const position = window.pageYOffset;
+        window.scrollTo({ top: 2000, behavior: 'smooth' });
 
-        console.log('pos 2', position);
-        if (position >= window.innerHeight) {
+        if (position >= window.innerHeight + 5) {
             setScrollable(false);
             return;
         }

@@ -10,7 +10,7 @@ const Projects: FunctionComponent<ProjectsProps> = () => {
         <div className="flex flex-1 flex-col">
             <SectionTitle title="Projects" index={2} />
             <div className="flex flex-wrap gap-8 mt-5">
-                {Array.from({ length: 4 }).map((_, index) => (
+                {Array.from({ length: 10 }).map((_, index) => (
                     <ProjectCard
                         key={index}
                         title="Calorie tracker app"
