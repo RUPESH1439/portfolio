@@ -21,10 +21,6 @@ const carouseSections = [
         key: 'projects',
         Component: <Projects />,
     },
-    {
-        key: 'experience',
-        Component: <HeroSection />,
-    },
 ];
 
 export default function Home() {

@@ -75,4 +75,10 @@ export default function useOnWheel(
             window.removeEventListener('scroll', handleScroll);
         };
     }, [handleScroll]);
+
+    return {
+        reset: () => {
+            setScrollable(true);
+        },
+    };
 }

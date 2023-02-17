@@ -6,7 +6,6 @@ import {
     useEffect,
     useRef,
     useCallback,
-    useLayoutEffect,
 } from 'react';
 import { animated, useSpring } from '@react-spring/web';
 import useOnWheel from '@/hooks/useOnWheel';
@@ -76,7 +75,11 @@ const Carousel: FunctionComponent<CarouselProps> = ({ sections }) => {
         });
     }, []);
 
-    useOnWheel(ref, onWheelUp, onWheelDown);
+    const { reset } = useOnWheel(ref, onWheelUp, onWheelDown);
+
+    useEffect(() => {
+        reset();
+    }, [activeSectionIndex, reset]);
 
     return (
         <div>

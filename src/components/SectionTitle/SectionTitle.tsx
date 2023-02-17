@@ -3,14 +3,16 @@ import { FunctionComponent } from 'react';
 interface SectionTitleProps {
     index: number;
     title: string;
+    className?: string;
 }
 
 const SectionTitle: FunctionComponent<SectionTitleProps> = ({
     index,
     title,
+    className,
 }) => {
     return (
-        <div className="flex flex-row gap-3 items-center">
+        <div className={`flex flex-row gap-3 items-center ${className ?? ''}`}>
             <span className="text-xl font-bold text-primary">0{index}.</span>
             <span className="text-xl font-bold text-gray font-light">
                 {title}
