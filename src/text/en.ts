@@ -1,10 +1,8 @@
 const text = {
     hero: {
-        greeting: 'Hi, my name is',
-        name: 'Rupesh Shrestha',
-        title: 'I build things for the web',
-        description:
-            'I’m a software engineer specializing in building (and occasionally designing) exceptional digital experiences. Currently, I’m focused on building accessible, human-centered products at Toptal.',
+        greeting: 'Hey there!',
+        name: `I'm Rupesh Shrestha.`,
+        title: 'Crafting for the web and mobile is my forte.',
     },
     about: {
         intro: `Hello! My name is Brittany and I enjoy creating things that live on the internet. My interest in web development started back in 2012 when I decided to try editing custom Tumblr themes — turns out hacking together a custom reblog button taught me a lot about HTML & CSS!\n\n

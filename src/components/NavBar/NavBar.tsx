@@ -24,7 +24,7 @@ const NavBar: FunctionComponent<NavBarProps> = () => {
         return <RxHamburgerMenu size={20} />;
     };
     return (
-        <div className="flex flex-row justify-between h-24 w-full px-10 sticky top-0 z-10">
+        <div className="flex flex-row justify-between h-24 w-full px-10 fixed top-0 z-10">
             <div></div>
             <div className="flex flex-row flex-wrap gap-12 items-center absolute right-10 top-12">
                 {navBarSections.map(({ key, section, routePath }) => (

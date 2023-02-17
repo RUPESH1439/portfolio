@@ -1,6 +1,7 @@
 import { hoverText, hoverTranslate } from '@/app/cssClasses';
 import { FunctionComponent } from 'react';
 import { FiGithub, FiLinkedin, FiInstagram } from 'react-icons/fi';
+import Link from '../UI/Link';
 
 interface SocialMediaLinksProps {}
 
@@ -24,14 +25,12 @@ const SocialMediaLinks: FunctionComponent<SocialMediaLinksProps> = () => {
             <div className="flex flex-col my-8 gap-8">
                 {links.map(({ key, Icon, link }) => (
                     <div key={key} className={`text-gray ${hoverTranslate}`}>
-                        <a href={link} target="_blank" rel="noreferrer">
-                            {
-                                <Icon
-                                    size={18}
-                                    className={`${'hover:text-primary'} ${hoverText}`}
-                                />
-                            }
-                        </a>
+                        <Link link={link}>
+                            <Icon
+                                size={18}
+                                className={`${'text-gray hover:text-primary'} ${hoverText}`}
+                            />
+                        </Link>
                     </div>
                 ))}
             </div>

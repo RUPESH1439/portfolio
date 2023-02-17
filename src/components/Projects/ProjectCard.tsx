@@ -4,6 +4,7 @@ import { CiFolderOn } from 'react-icons/ci';
 import { FiGithub } from 'react-icons/fi';
 import { hoverText, hoverTranslate } from '@/app/cssClasses';
 import { IoOpenOutline } from 'react-icons/io5';
+import Link from '../UI/Link';
 
 interface ProjectCardProps {
     githubUrl?: string;
@@ -29,20 +30,20 @@ const ProjectCard: FunctionComponent<ProjectCardProps> = ({
                 <CiFolderOn className="text-primary" size={50} />
                 <div className="flex flex-row gap-4 items-center">
                     {githubUrl ? (
-                        <a href={githubUrl} target="_blank" rel="noreferrer">
+                        <Link link={githubUrl}>
                             <FiGithub
                                 className={`${hoverText} hover:text-primary`}
                                 size={20}
                             />
-                        </a>
+                        </Link>
                     ) : null}
                     {demoUrl ? (
-                        <a href={demoUrl} target="_blank" rel="noreferrer">
+                        <Link link={demoUrl}>
                             <IoOpenOutline
                                 className={`${hoverText} hover:text-primary`}
                                 size={23}
                             />
-                        </a>
+                        </Link>
                     ) : null}
                 </div>
             </div>

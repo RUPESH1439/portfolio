@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const plugin = require('tailwindcss/plugin');
+
 module.exports = {
     content: [
         './app/**/*.{js,ts,jsx,tsx}',
@@ -12,7 +14,7 @@ module.exports = {
         colors: {
             primary: '#FF8427',
             secondary: '#42485D',
-            background: '#1E212B',
+            background: '#0a192f',
             blue: '#1fb6ff',
             purple: '#7e5bef',
             'purple-light': '#3a3253',
@@ -47,5 +49,22 @@ module.exports = {
             },
         },
     },
-    plugins: [],
+    plugins: [
+        plugin(function ({ addUtilities }) {
+            addUtilities({
+                '.scrollbar-hide': {
+                    /* IE and Edge */
+                    '-ms-overflow-style': 'none',
+
+                    /* Firefox */
+                    'scrollbar-width': 'none',
+
+                    /* Safari and Chrome */
+                    '&::-webkit-scrollbar': {
+                        display: 'none',
+                    },
+                },
+            });
+        }),
+    ],
 };
