@@ -1,22 +1,23 @@
 import { FunctionComponent, RefObject } from 'react';
 import { SectionTitle } from '../SectionTitle';
-import { PrimaryText, SecondaryText } from '../UI';
-import ProjectCard from './ProjectCard';
+import HighlightedProjectCard from './HighlightedProjectCard';
 
-interface ProjectsProps {
+interface HighlightedProjectsProps {
     _ref?: RefObject<HTMLDivElement>;
 }
 
-const Projects: FunctionComponent<ProjectsProps> = ({ _ref }) => {
+const HighlightedProjects: FunctionComponent<HighlightedProjectsProps> = ({
+    _ref,
+}) => {
     return (
         <div className="flex flex-col">
             <SectionTitle title="Projects" />
             <div
                 ref={_ref}
-                className="flex flex-wrap gap-8 pt-5 h-[600px] overflow-y-auto scrollbar-hide"
+                className="flex flex-col overflow-y-auto scrollbar-hide mt-5 gap-8"
             >
-                {Array.from({ length: 10 }).map((_, index) => (
-                    <ProjectCard
+                {Array.from({ length: 2 }).map((_, index) => (
+                    <HighlightedProjectCard
                         key={index}
                         title="Calorie tracker app"
                         desc="Lorem Ipsum has been the industry's standard dummy text ever since ed. It was popularised in the 1960s with the release of"
@@ -31,4 +32,4 @@ const Projects: FunctionComponent<ProjectsProps> = ({ _ref }) => {
     );
 };
 
-export default Projects;
+export default HighlightedProjects;
