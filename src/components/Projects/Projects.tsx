@@ -1,15 +1,20 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, RefObject } from 'react';
 import { SectionTitle } from '../SectionTitle';
 import { PrimaryText, SecondaryText } from '../UI';
 import ProjectCard from './ProjectCard';
 
-interface ProjectsProps {}
+interface ProjectsProps {
+    _ref?: RefObject<HTMLDivElement>;
+}
 
-const Projects: FunctionComponent<ProjectsProps> = () => {
+const Projects: FunctionComponent<ProjectsProps> = ({ _ref }) => {
     return (
         <div className="flex flex-col">
             <SectionTitle title="Projects" />
-            <div className="flex flex-wrap gap-8 mt-5 h-[500px] overflow-y-auto scrollbar-hide">
+            <div
+                ref={_ref}
+                className="flex flex-wrap gap-8 pt-5 h-[600px] overflow-y-auto scrollbar-hide"
+            >
                 {Array.from({ length: 10 }).map((_, index) => (
                     <ProjectCard
                         key={index}

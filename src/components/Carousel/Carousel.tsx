@@ -11,7 +11,11 @@ import { animated, useSpring } from '@react-spring/web';
 import useOnWheel from '@/hooks/useOnWheel';
 
 interface CarouselProps {
-    sections: { key: string; Component: ReactNode }[];
+    sections: {
+        key: string;
+        Component: FunctionComponent<any>;
+        forwardRef?: boolean;
+    }[];
 }
 
 const Carousel: FunctionComponent<CarouselProps> = ({ sections }) => {
@@ -67,6 +71,7 @@ const Carousel: FunctionComponent<CarouselProps> = ({ sections }) => {
 
     useOnWheel(ref, onWheelUp, onWheelDown);
 
+    const Component = sections[activeSectionIndex].Component;
     return (
         <div>
             <div className="fixed bottom-[8%] flex flex-col gap-7 left-[77px] overflow-y-hidden">
@@ -95,7 +100,7 @@ const Carousel: FunctionComponent<CarouselProps> = ({ sections }) => {
                 </span>
             </div>
 
-            <div className="text-gray mx-20  ">
+            <div className="text-gray mx-20">
                 <animated.div
                     className=""
                     style={{
@@ -104,9 +109,13 @@ const Carousel: FunctionComponent<CarouselProps> = ({ sections }) => {
                         ...style,
                     }}
                 >
-                    <div ref={ref}>
-                        {sections[activeSectionIndex]?.Component}
-                    </div>
+                    {sections[activeSectionIndex]?.forwardRef ? (
+                        <Component _ref={ref} />
+                    ) : (
+                        <div ref={ref}>
+                            <Component />
+                        </div>
+                    )}
                 </animated.div>
             </div>
         </div>
