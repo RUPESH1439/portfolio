@@ -5,6 +5,7 @@ import {
     AboutMe,
     Projects,
     Carousel,
+    HighlightedProjects,
     SocialMediaLinks,
 } from '@/components';
 
@@ -16,6 +17,11 @@ const carouseSections = [
     {
         key: 'about',
         Component: AboutMe,
+    },
+    {
+        key: 'highlightedProjects',
+        Component: HighlightedProjects,
+        forwardRef: true,
     },
     {
         key: 'projects',
