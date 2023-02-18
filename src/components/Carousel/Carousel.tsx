@@ -54,36 +54,22 @@ const Carousel: FunctionComponent<CarouselProps> = ({ sections }) => {
     }, [animate, ref, activeSectionIndex, animateDot]);
 
     const onWheelUp = useCallback(() => {
-        window.scroll({
-            top: 1000,
-            left: 100,
-            behavior: 'smooth',
-        });
         setActiveSectionIndex((prev) => {
             return prev < sections.length - 1 ? prev + 1 : prev;
         });
     }, [sections.length]);
 
     const onWheelDown = useCallback(() => {
-        window.scroll({
-            top: 1000,
-            left: 100,
-            behavior: 'smooth',
-        });
         setActiveSectionIndex((prev) => {
             return prev > 0 ? prev - 1 : prev;
         });
     }, []);
 
-    const { reset } = useOnWheel(ref, onWheelUp, onWheelDown);
-
-    useEffect(() => {
-        reset();
-    }, [activeSectionIndex, reset]);
+    useOnWheel(ref, onWheelUp, onWheelDown);
 
     return (
         <div>
-            <div className="fixed bottom-[8%] flex flex-col gap-7 left-[77px]">
+            <div className="fixed bottom-[8%] flex flex-col gap-7 left-[77px] overflow-y-hidden">
                 {sections.map(({ key }, index) => {
                     return (
                         <animated.button
@@ -109,7 +95,7 @@ const Carousel: FunctionComponent<CarouselProps> = ({ sections }) => {
                 </span>
             </div>
 
-            <div className="text-gray px-20">
+            <div className="text-gray mx-20  ">
                 <animated.div
                     className=""
                     style={{

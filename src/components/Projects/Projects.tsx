@@ -7,9 +7,9 @@ interface ProjectsProps {}
 
 const Projects: FunctionComponent<ProjectsProps> = () => {
     return (
-        <div className="flex flex-1 flex-col">
-            <SectionTitle title="Projects" index={2} />
-            <div className="flex flex-wrap gap-8 mt-5">
+        <div className="flex flex-col">
+            <SectionTitle title="Projects" />
+            <div className="flex flex-wrap gap-8 mt-5 h-[500px] overflow-y-auto scrollbar-hide">
                 {Array.from({ length: 10 }).map((_, index) => (
                     <ProjectCard
                         key={index}
@@ -21,6 +21,7 @@ const Projects: FunctionComponent<ProjectsProps> = () => {
                     />
                 ))}
             </div>
+            {/* </div> */}
         </div>
     );
 };

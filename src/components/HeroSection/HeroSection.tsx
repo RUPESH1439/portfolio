@@ -21,10 +21,9 @@ const HeroSection: FunctionComponent<HeroSectionProps> = () => {
             </span>
             <span className="mt-12 w-1/2 ">
                 I’m a full stack software engineer specializing in building
-                robust and scalable web and mobile applicatiosn. And, currently,
-                I’m engaged in freelancing via{' '}
-                <Link link={TOPTAL_RESUME_LINK}>Toptal </Link>
-                to develop amazing products.
+                robust and scalable web and mobile applications. And, currently,
+                I’m engaged in freelancing primarily via{' '}
+                <Link link={TOPTAL_RESUME_LINK}>Toptal</Link>.
             </span>
         </div>
     );
