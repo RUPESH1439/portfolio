@@ -8,8 +8,8 @@ interface AboutMeProps {}
 const AboutMe: FunctionComponent<AboutMeProps> = () => {
     return (
         <div>
-            <SectionTitle index={1} title="About Me" />
-            <SecondaryText text={text.about.intro} />
+            <SectionTitle title="About Me" />
+            <SecondaryText text={text.about.intro} styleClass="mt-5" />
         </div>
     );
 };

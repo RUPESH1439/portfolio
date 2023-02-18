@@ -24,7 +24,7 @@ const ProjectCard: FunctionComponent<ProjectCardProps> = ({
     return (
         <a
             href={githubUrl ?? '#'}
-            className={`flex-col px-5 py-5 bg-primary-medium rounded-md w-[350px] xl:w-[352px]  ${hoverTranslate}`}
+            className={`flex-col px-5 py-5 bg-primary-medium rounded-md w-full lg:w-[330px] xl:w-[356px] 2xl:w-[380px] ${hoverTranslate}`}
         >
             <div className="flex flex-row items-center self-center justify-between mb-8">
                 <CiFolderOn className="text-primary" size={50} />
