@@ -1,21 +1,28 @@
 import { hoverText, hoverTranslate } from '@/app/cssClasses';
 import { FunctionComponent } from 'react';
 import { FiGithub, FiLinkedin, FiInstagram } from 'react-icons/fi';
+import { AiOutlineMail } from 'react-icons/ai';
+import { SiToptal } from 'react-icons/si';
 import Link from '../UI/Link';
 
 interface SocialMediaLinksProps {}
 
 const links = [
-    { key: 'github', link: 'https://github.com/RUPESH1439', Icon: FiGithub },
+    { key: 'gmail', link: 'test', Icon: AiOutlineMail },
+    {
+        key: 'github',
+        link: 'https://github.com/RUPESH1439',
+        Icon: FiGithub,
+    },
     {
         key: 'linkedin',
         link: 'https://www.linkedin.com/in/sthrupesh/',
         Icon: FiLinkedin,
     },
     {
-        key: 'instagram',
-        link: 'https://www.instagram.com/sthrupesh_/',
-        Icon: FiInstagram,
+        key: 'toptal',
+        link: 'https://www.toptal.com/resume/rupesh-shrestha',
+        Icon: SiToptal,
     },
 ];
 
