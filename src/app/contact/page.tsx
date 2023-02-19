@@ -1,3 +1,4 @@
+'use client';
 import { NavBar } from '@/components/NavBar';
 import { HeroSection } from '@/components/HeroSection';
 import { AboutMe } from '@/components/AboutMe';
@@ -16,7 +17,7 @@ const sections = [
 export default function Home() {
     return (
         <div className="px-20 py-5">
-            <div id="heroSection" className="mb-[25%]">
+            <div id="heroSection" className="">
                 <HeroSection />
             </div>
         </div>

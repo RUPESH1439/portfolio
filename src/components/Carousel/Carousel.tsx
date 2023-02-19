@@ -1,7 +1,6 @@
 'use client';
 import {
     FunctionComponent,
-    ReactNode,
     useState,
     useEffect,
     useRef,
@@ -31,7 +30,7 @@ const Carousel: FunctionComponent<CarouselProps> = ({ sections }) => {
 
     useEffect(() => {
         animate({
-            height: ref?.current?.offsetHeight + 'px',
+            height: ref?.current?.clientHeight + 'px',
             from: {
                 height: '0px',
             },
@@ -69,12 +68,12 @@ const Carousel: FunctionComponent<CarouselProps> = ({ sections }) => {
         });
     }, []);
 
-    useOnWheel(ref, onWheelUp, onWheelDown);
+    // useOnWheel(ref, onWheelUp, onWheelDown);
 
     const Component = sections[activeSectionIndex].Component;
     return (
         <div>
-            <div className="fixed bottom-[8%] flex flex-col gap-7 left-[77px] overflow-y-hidden">
+            <div className="fixed bottom-[8%] flex flex-col gap-7 left-[20px] md:left-[77px] overflow-y-hidden">
                 {sections.map(({ key }, index) => {
                     return (
                         <animated.button
@@ -100,9 +99,8 @@ const Carousel: FunctionComponent<CarouselProps> = ({ sections }) => {
                 </span>
             </div>
 
-            <div className="text-gray mx-20">
+            <div className="text-gray mx-10 md:mx-20">
                 <animated.div
-                    className=""
                     style={{
                         overflow: 'hidden',
                         width: '100%',
