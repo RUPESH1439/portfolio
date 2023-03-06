@@ -1,4 +1,4 @@
-import { hoverText, hoverTranslate } from '@/app/cssClasses';
+import { hoverText, hoverTranslate } from '@/cssClasses';
 import { FunctionComponent } from 'react';
 import { FiGithub, FiLinkedin, FiInstagram } from 'react-icons/fi';
 import { AiOutlineMail } from 'react-icons/ai';

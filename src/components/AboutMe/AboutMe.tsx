@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { FunctionComponent } from 'react';
 import { SecondaryText } from '../UI';
 import text from '@/text/en';

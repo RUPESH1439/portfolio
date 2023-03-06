@@ -3,7 +3,7 @@ import { MdOutlineNavigateNext } from 'react-icons/md';
 import Link from '../UI/Link';
 import { FiExternalLink, FiGithub } from 'react-icons/fi';
 import Image from 'next/image';
-import { hoverText } from '@/app/cssClasses';
+import { hoverText } from '@/cssClasses';
 
 interface HighlightedProjectCardProps {
     githubUrl?: string;
