@@ -68,7 +68,7 @@ const Carousel: FunctionComponent<CarouselProps> = ({ sections }) => {
         });
     }, []);
 
-    // useOnWheel(ref, onWheelUp, onWheelDown);
+    useOnWheel(ref, onWheelUp, onWheelDown);
 
     const Component = sections[activeSectionIndex].Component;
     return (

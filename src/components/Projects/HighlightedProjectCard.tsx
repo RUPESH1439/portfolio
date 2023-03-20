@@ -26,21 +26,6 @@ const HighlightedProjectCard: FunctionComponent<
                         <div className="text-2xl text-white font-bold">
                             {title}
                         </div>
-                        <div className="flex flex-row items-center gap-4 mt-4">
-                            {githubUrl ? (
-                                <a href={githubUrl}>
-                                    <FiGithub className={`${'text-primary'}`} />
-                                </a>
-                            ) : null}
-                            {demoUrl ? (
-                                <a href={demoUrl}>
-                                    <FiExternalLink
-                                        size={16}
-                                        className={`${'text-primary'}`}
-                                    />
-                                </a>
-                            ) : null}
-                        </div>
                     </div>
                     <div>
                         <div className="text-sm text-gray text-opacity-70 mb-10">
@@ -63,20 +48,35 @@ const HighlightedProjectCard: FunctionComponent<
                                     </div>
                                 );
                             })}
+                            <div className="flex flex-row items-center gap-2 mt-4">
+                                {githubUrl ? (
+                                    <a href={githubUrl}>
+                                        <FiGithub
+                                            className={`${'text-primary'}`}
+                                        />
+                                    </a>
+                                ) : null}
+                                {demoUrl ? (
+                                    <a href={demoUrl}>
+                                        <FiExternalLink
+                                            size={16}
+                                            className={`${'text-primary'}`}
+                                        />
+                                    </a>
+                                ) : null}
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div className="flex flex-[68%] flex-col ml-12">
                     <Image
-                        src={
-                            'https://images.unsplash.com/photo-1601972599720-36938d4ecd31?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8YXBwfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60'
-                        }
+                        src={'/CalorieTracker.png'}
                         width={650}
                         height={270}
                         alt="img"
                         className="rounded-lg rounded-l-none"
                         style={{
-                            objectFit: 'cover',
+                            objectFit: 'fill',
                             height: '100%',
                             width: '100%',
                         }}
