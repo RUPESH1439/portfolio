@@ -2,7 +2,7 @@ import { FunctionComponent } from 'react';
 import { SecondaryText } from '../UI';
 import { CiFolderOn } from 'react-icons/ci';
 import { FiGithub } from 'react-icons/fi';
-import { hoverText, hoverTranslate } from '@/app/cssClasses';
+import { hoverText, hoverTranslate } from '@/cssClasses';
 import { IoOpenOutline } from 'react-icons/io5';
 import Link from '../UI/Link';
 

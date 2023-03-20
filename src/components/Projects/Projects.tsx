@@ -9,11 +9,11 @@ interface ProjectsProps {
 
 const Projects: FunctionComponent<ProjectsProps> = ({ _ref }) => {
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col flex-1">
             <SectionTitle title="Projects" />
             <div
                 ref={_ref}
-                className="flex flex-wrap gap-8 pt-5 h-[600px] overflow-y-auto scrollbar-hide"
+                className="flex flex-wrap gap-8 pt-5 overflow-y-auto scrollbar-hide "
             >
                 {Array.from({ length: 10 }).map((_, index) => (
                     <ProjectCard
@@ -26,7 +26,6 @@ const Projects: FunctionComponent<ProjectsProps> = ({ _ref }) => {
                     />
                 ))}
             </div>
-            {/* </div> */}
         </div>
     );
 };

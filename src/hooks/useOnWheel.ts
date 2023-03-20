@@ -20,7 +20,14 @@ export default function useOnWheel(
     const onWheel = useCallback(
         (event: WheelEvent) => {
             clearTimeout(timeoutId.current);
-            if (scrollable && ref?.current && ref?.current?.scrollTop > 0) {
+
+            if (
+                scrollable &&
+                ref?.current &&
+                ref?.current?.scrollHeight > window.innerHeight &&
+                window.scrollY > 0 &&
+                window.scrollY < window.innerHeight + 20
+            ) {
                 return;
             }
             timeoutId.current = setTimeout(() => {
