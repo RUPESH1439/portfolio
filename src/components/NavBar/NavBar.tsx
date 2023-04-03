@@ -1,4 +1,3 @@
-'use client';
 import { FunctionComponent, useState } from 'react';
 import NavBarSection from './NavBarSection';
 import { RxHamburgerMenu, RxCross1 } from 'react-icons/rx';

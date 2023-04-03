@@ -1,4 +1,3 @@
-'use client';
 import { FunctionComponent, useState } from 'react';
 import { RxCross1 } from 'react-icons/rx';
 import { BackDrop } from '../UI';

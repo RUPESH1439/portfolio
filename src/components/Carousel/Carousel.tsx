@@ -1,4 +1,3 @@
-'use client';
 import {
     FunctionComponent,
     useState,
@@ -94,9 +93,9 @@ const Carousel: FunctionComponent<CarouselProps> = ({ sections }) => {
                         />
                     );
                 })}
-                <span className="text-primary text-xs font-light mt-10 tracking-widest">
+                <div className="text-primary text-xs font-light mt-10 tracking-widest">
                     0{activeSectionIndex + 1}
-                </span>
+                </div>
             </div>
 
             <div className="text-gray mx-5 md:mx-20 mt-28 md:mt-4">

@@ -1,4 +1,3 @@
-import './globals.css';
 import { NavBar } from '@/components/NavBar';
 
 export default function RootLayout({
@@ -12,7 +11,6 @@ export default function RootLayout({
         <head /> will contain the components returned by the nearest parent
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
-            <head />
             <body>
                 <div
                     className="flex flex-1 flex-col bg-background w-full h-[100%] min-h-screen"

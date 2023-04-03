@@ -13,7 +13,7 @@ const AboutMe: FunctionComponent<AboutMeProps> = () => {
 
             <div className="flex flex-row">
                 <div className="w-full pr-12 md:w-1/2 mt-4 md:mt-10">
-                    <span className="text-sm md:text-md text-gray opacity-60">
+                    <div className="text-sm md:text-md text-gray opacity-60">
                         Hi!
                         <br /> My name is Rupesh Shrestha. I'm a highly skilled
                         full-stack software engineer with over 3.5 years of
@@ -25,7 +25,7 @@ const AboutMe: FunctionComponent<AboutMeProps> = () => {
                         and tools, including TypeScript, Node.js, Ruby, React,
                         React Native, Next.js, and Redux. I'm able to take full
                         ownership of delivering a project from start to finish.
-                    </span>
+                    </div>
                     <div className="mt-5">
                         <Skills />
                     </div>

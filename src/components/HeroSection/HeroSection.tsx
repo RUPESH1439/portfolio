@@ -15,22 +15,22 @@ const HeroSection: FunctionComponent<HeroSectionProps> = () => {
     const router = useRouter();
     return (
         <div className="flex flex-col flex-1">
-            <span className="text-primary text-sm md:text-md tracking-wider">
+            <div className="text-primary text-sm md:text-md tracking-wider">
                 {greeting}
-            </span>
-            <span className="text-gray text-xl md:text-6xl font-bold my-4 md:my-5">
+            </div>
+            <div className="text-gray text-xl md:text-6xl font-bold my-4 md:my-5">
                 {name}
-            </span>
-            <span className="text-gray text-xl md:text-6xl font-bold opacity-50">
+            </div>
+            <div className="text-gray text-xl md:text-6xl font-bold opacity-50">
                 {title}
-            </span>
+            </div>
 
-            <span className="w-full md:w-1/2 my-4 md:my-12">
+            <div className="w-full md:w-1/2 my-4 md:my-12">
                 I’m a full stack software engineer specializing in building
                 robust and scalable web and mobile applications. And, currently,
                 I’m engaged in freelancing primarily via{' '}
                 <Link link={TOPTAL_RESUME_LINK}>Toptal</Link>.
-            </span>
+            </div>
             <div className="mt-8">
                 <Button
                     title="Learn more"

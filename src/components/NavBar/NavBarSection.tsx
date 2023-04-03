@@ -1,4 +1,3 @@
-'use client';
 import { FunctionComponent } from 'react';
 
 interface NavBarSectionProps {
@@ -12,9 +11,9 @@ const NavBarSection: FunctionComponent<NavBarSectionProps> = ({
 }) => {
     return (
         <a href={routePath} className="flex flex-row">
-            <span className="text-xs text-gray font-light hover:text-primary transition hover:ease-in-out delay-5">
+            <div className="text-xs text-gray font-light hover:text-primary transition hover:ease-in-out delay-5">
                 {section}
-            </span>
+            </div>
         </a>
     );
 };

@@ -1,4 +1,3 @@
-'use client';
 import { HighlightedProjects, Projects } from '@/components';
 
 export default function ProjectsPage() {

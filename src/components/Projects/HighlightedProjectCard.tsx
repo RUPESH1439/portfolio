@@ -47,25 +47,25 @@ const HighlightedProjectCard: FunctionComponent<
                         </div>
 
                         <div>
-                            <span className="text-md text-white">
+                            <div className="text-md text-white">
                                 Responsibilities
-                            </span>
+                            </div>
                             <div className="flex flex-col gap-2 mt-2">
                                 {responsibilities?.map((responsibility) => (
-                                    <span
+                                    <div
                                         key={responsibility}
                                         className="flex flex-row items-center gap-1 text-xs md:text-sm text-gray text-opacity-70"
                                     >
                                         <MdOutlineNavigateNext className="text-gray" />
                                         {responsibility}
-                                    </span>
+                                    </div>
                                 ))}
                             </div>
                         </div>
                         <div className="mt-3 md:mt-5">
-                            <span className="text-md text-white mb-3">
+                            <div className="text-md text-white mb-3">
                                 Technologies
-                            </span>
+                            </div>
                             <div className="flex flex-wrap gap-2 mt-2">
                                 {skills?.map((skill) => {
                                     return (
@@ -87,12 +87,12 @@ const HighlightedProjectCard: FunctionComponent<
                                             onClick={() => {}}
                                             className="flex flex-row items-center gap-2 "
                                         >
-                                            <span className="text-sm">
+                                            <div className="text-sm">
                                                 View code
-                                            </span>
+                                            </div>
                                             <FiGithub />
                                         </button>
-                                        <span className="border border-[0.5px] opacity-50 mt-1 "></span>
+                                        <div className="border border-[0.5px] opacity-50 mt-1 "></div>
                                         <a
                                             href={githubUrl}
                                             target="_blank"
@@ -107,12 +107,12 @@ const HighlightedProjectCard: FunctionComponent<
                                             onClick={() => {}}
                                             className="flex flex-row items-center gap-2 "
                                         >
-                                            <span className="text-sm">
+                                            <div className="text-sm">
                                                 View live
-                                            </span>
+                                            </div>
                                             <FiExternalLink />
                                         </button>
-                                        <span className="border border-[0.5px] opacity-50 mt-1 "></span>
+                                        <div className="border border-[0.5px] opacity-50 mt-1 "></div>
                                         <a
                                             href={githubUrl}
                                             target="_blank"
