@@ -73,7 +73,7 @@ const Carousel: FunctionComponent<CarouselProps> = ({ sections }) => {
     const Component = sections[activeSectionIndex].Component;
     return (
         <div>
-            <div className="fixed bottom-[8%] flex flex-col gap-7 left-[20px] md:left-[77px] overflow-y-hidden">
+            <div className="fixed bottom-[8%] flex flex-col gap-7 left-[20px] md:left-[77px] right-[20px] overflow-y-hidden">
                 {sections.map(({ key }, index) => {
                     return (
                         <animated.button

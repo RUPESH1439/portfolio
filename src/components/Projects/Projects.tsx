@@ -9,7 +9,7 @@ interface ProjectsProps {
 
 const Projects: FunctionComponent<ProjectsProps> = ({ _ref }) => {
     return (
-        <div className="flex flex-col flex-1">
+        <div className="flex flex-col flex-1 absolute">
             <SectionTitle title="Projects" />
             <div
                 ref={_ref}
