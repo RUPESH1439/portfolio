@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { MdOutlineNavigateNext } from 'react-icons/md';
-
+import crypto from 'crypto';
 export interface SkillProps {
     title: string;
     skills: string[];
