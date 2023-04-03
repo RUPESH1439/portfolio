@@ -9,7 +9,7 @@ interface NavBarProps {}
 
 const navBarSections = [
     { key: 'projects', section: 'PROJECTS', routePath: 'projects' },
-    { key: 'contact-me', section: 'EXPERIENCE', routePath: '#contact-me' },
+    // { key: 'contact-me', section: 'EXPERIENCE', routePath: '#contact-me' },
 ];
 
 const NavBar: FunctionComponent<NavBarProps> = () => {

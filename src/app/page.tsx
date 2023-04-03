@@ -23,11 +23,6 @@ const carouseSections = [
         Component: HighlightedProjects,
         forwardRef: true,
     },
-    {
-        key: 'projects',
-        Component: Projects,
-        forwardRef: true,
-    },
 ];
 
 export default function Home() {

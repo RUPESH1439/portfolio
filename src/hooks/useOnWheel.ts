@@ -36,7 +36,7 @@ export default function useOnWheel(
                 } else if (event.deltaY > 0) {
                     onWheelUp();
                 }
-                window.scrollTo({ top: 0 });
+                // window.scrollTo({ top: 0 });
             }, 200);
         },
         [onWheelDown, onWheelUp, scrollable, ref],

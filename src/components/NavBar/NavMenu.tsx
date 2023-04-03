@@ -13,9 +13,9 @@ interface NavMenuProps {
 const sections = [
     { key: 'home', section: 'Home', routePath: '/' },
     { key: 'about', section: 'About', routePath: '/about' },
-    { key: 'experience', section: 'Experience', routePath: '/experience' },
-    { key: 'work', section: 'Work', routePath: '/work' },
-    { key: 'contact', section: 'Contact', routePath: '/contact' },
+    // { key: 'experience', section: 'Experience', routePath: '/experience' },
+    // { key: 'work', section: 'Work', routePath: '/work' },
+    // { key: 'contact', section: 'Contact', routePath: '/contact' },
 ];
 
 const NavMenu: FunctionComponent<NavMenuProps> = ({
