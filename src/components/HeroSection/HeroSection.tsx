@@ -14,7 +14,7 @@ const HeroSection: FunctionComponent<HeroSectionProps> = () => {
     } = text;
     const router = useRouter();
     return (
-        <div className="flex flex-col flex-1 h-full md:h-[600px] mt-48 md:mt-14">
+        <div className="flex flex-col flex-1 mt-48 md:mt-14">
             <span className="text-primary text-sm md:text-md tracking-wider">
                 {greeting}
             </span>
