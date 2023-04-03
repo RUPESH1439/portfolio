@@ -1,9 +1,8 @@
-'use client';
 import { AboutMe } from '@/components/AboutMe';
 
-export default function Home() {
+export default function About() {
     return (
-        <div className="flex flex-1 px-20 py-5">
+        <div className="py-0 md:py-20 px-5 md:px-12">
             <div id="heroSection" className="mt-16">
                 <AboutMe />
             </div>

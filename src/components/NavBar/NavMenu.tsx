@@ -1,4 +1,3 @@
-'use client';
 import { FunctionComponent, useState } from 'react';
 import { RxCross1 } from 'react-icons/rx';
 import { BackDrop } from '../UI';
@@ -13,7 +12,8 @@ interface NavMenuProps {
 const sections = [
     { key: 'home', section: 'Home', routePath: '/' },
     { key: 'about', section: 'About', routePath: '/about' },
-    // { key: 'experience', section: 'Experience', routePath: '/experience' },
+    { key: 'projects', section: 'Projects', routePath: '/projects' },
+
     // { key: 'work', section: 'Work', routePath: '/work' },
     // { key: 'contact', section: 'Contact', routePath: '/contact' },
 ];
@@ -44,7 +44,7 @@ const NavMenu: FunctionComponent<NavMenuProps> = ({
         <>
             <BackDrop />
             <animated.div
-                className="px-20 pt-24 absolute right-0 w-[60%] md:w-[38%] h-screen bg-background z-50 rounded-l-3xl"
+                className="px-8 md:px-20 pt-[100%] md:pt-24 absolute right-0 w-[100%] md:w-[38%] h-screen bg-background z-50 rounded-l-3xl"
                 style={styles}
             >
                 <button
@@ -53,7 +53,7 @@ const NavMenu: FunctionComponent<NavMenuProps> = ({
                 >
                     <RxCross1 size={20} />
                 </button>
-                <div className="flex flex-col gap-8">
+                <div className="flex flex-col justify-center items-center md:items-start gap-4 md:gap-8">
                     {sections.map(({ key, section, routePath }) => (
                         <NavMenuSection
                             section={section}

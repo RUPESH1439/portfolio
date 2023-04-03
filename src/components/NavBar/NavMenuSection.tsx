@@ -1,4 +1,3 @@
-'use client';
 import Link from 'next/link';
 import { FunctionComponent, useState, useEffect } from 'react';
 import { useSpring, animated } from '@react-spring/web';
@@ -55,13 +54,13 @@ const NavMenuSection: FunctionComponent<NavMenuSectionProps> = ({
                     style={styleDot}
                 ></animated.div>
             ) : null}
-            <span
-                className={`text-4xl font-light tracking-wide transition-all duration-300 ease-in-out ${
-                    showLeftBar ? 'ml-8' : ''
+            <div
+                className={`text-lg md:text-4xl font-light tracking-wide transition-all duration-300 ease-in-out ${
+                    showLeftBar ? 'md-2 md:ml-8' : ''
                 } ${pathName === link ? 'text-primary' : 'text-white'}`}
             >
                 {section}
-            </span>
+            </div>
         </Link>
     );
 };

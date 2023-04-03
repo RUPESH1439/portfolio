@@ -1,9 +1,10 @@
-'use client';
 import { FunctionComponent, useState } from 'react';
 import NavBarSection from './NavBarSection';
 import { RxHamburgerMenu, RxCross1 } from 'react-icons/rx';
 import { HiOutlineMenuAlt1 } from 'react-icons/hi';
 import NavMenu from './NavMenu';
+import { Button } from '../UI';
+import { hoverText } from '@/cssClasses';
 
 interface NavBarProps {}
 
@@ -26,17 +27,27 @@ const NavBar: FunctionComponent<NavBarProps> = () => {
     return (
         <div className="flex flex-row justify-between h-24 w-full px-10 fixed top-0 z-10">
             <div></div>
-            <div className="flex flex-row flex-wrap gap-12 items-center absolute right-10 top-12">
-                {navBarSections.map(({ key, section, routePath }) => (
-                    <NavBarSection
-                        key={key}
-                        section={section}
-                        routePath={routePath}
-                    />
-                ))}
+            <div className="flex flex-row flex-wrap gap-0 md:gap-10 items-center absolute right-7 md:right-10 top-12">
+                <div className="invisible md:visible">
+                    {navBarSections.map(({ key, section, routePath }) => (
+                        <NavBarSection
+                            key={key}
+                            section={section}
+                            routePath={routePath}
+                        />
+                    ))}
+                </div>
+                <a
+                    className={`rounded-lg px-2 py-2 border-gray border text-gray hover:border-primary hover:text-primary ${hoverText} text-sm md:text-md`}
+                    href="/Resume.pdf"
+                    download
+                >
+                    Resume
+                </a>
+
                 <div className="w-16 flex items-center justify-center">
                     <button
-                        className="absolute right-4 h-10 w-10 rounded-full bg-white flex items-center justify-center transition-all duration-700 ease-in-out  hover:h-12 hover:w-12"
+                        className="absolute right-0 md:right-4 h-10 w-10 rounded-full bg-white flex items-center justify-center transition-all duration-700 ease-in-out hover:h-12 hover:w-12"
                         onClick={() => setOpenMenu(true)}
                         onMouseEnter={() => setHoverMenu(true)}
                         onMouseLeave={() => setHoverMenu(false)}

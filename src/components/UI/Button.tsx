@@ -77,9 +77,9 @@ const Button: FunctionComponent<ButtonProps> = ({
                     variant === 'underlined' ? 'underline' : ''
                 }`}
             >
-                <span className={`${colors.textColor} mr-2 text-md`}>
+                <div className={`${colors.textColor} mr-2 text-md`}>
                     {title}
-                </span>
+                </div>
                 {children ? children : null}
             </div>
 

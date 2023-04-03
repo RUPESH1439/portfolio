@@ -1,3 +1,4 @@
+import { hoverText } from '@/cssClasses';
 import React, { FunctionComponent } from 'react';
 import Skill, { SkillProps } from './Skill';
 
@@ -96,7 +97,7 @@ const skillSections: SkillProps[] = [
     {
         title: 'Others',
         skills: [
-            'Software Development Lifecycle (SDLC)',
+            '(SDLC)',
             'Web Programming',
             'Mapbox SDK',
             'CSS5',
@@ -113,7 +114,6 @@ const skillSections: SkillProps[] = [
             'JavaScript Libraries',
             'Algorithms',
             'Scalability',
-            'Application State Management',
             'Calendars',
             'UI Components',
             'Web Components',
@@ -147,19 +147,21 @@ const Skills: FunctionComponent<SkillsProps> = () => {
     const [selectedSkillSection, setSelectedSkillSection] =
         React.useState<SkillProps | null>(skillSections[0]);
     return (
-        <div className="flex flex-col flex-1">
-            <div className="mb-5 flex flex-1 flex-row border-b-0 pl-0">
+        <div className="flex flex-col">
+            <div className="mb-5 flex flex-row flex-wrap border-b-0 pl-0 scrollbar-hide">
                 {skillSections.map((section, index) => (
                     <button
                         onClick={() => {
                             setSelectedSkillSection(section);
                         }}
                         key={section.title}
-                        className={`my-2 ${
+                        className={`my-1 md:my-2 ${hoverText} text-gray text-opacity-70 ${
                             selectedSkillSection?.title === section.title
-                                ? 'border-b border-primary'
+                                ? 'border-b border-primary text-opacity-100 text-primary'
                                 : 'border-0'
-                        } pb-4 pr-5 ${index === 0 ? 'pl-0' : ''} text-md`}
+                        } pb-2 md:pb-4 pr-5 ${
+                            index === 0 ? 'pl-0' : ''
+                        } text-sm md:text-md`}
                     >
                         {section.title}
                     </button>
