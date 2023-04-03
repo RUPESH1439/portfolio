@@ -2,7 +2,7 @@ import { useSpring, animated } from '@react-spring/web';
 import { FunctionComponent, ReactNode, useMemo } from 'react';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-    variant: 'primary' | 'secondary' | 'outlined' | 'none';
+    variant: 'primary' | 'secondary' | 'outlined' | 'none' | 'underlined';
     title: string;
     styleClassName?: string;
     children?: ReactNode;
@@ -29,6 +29,8 @@ const Button: FunctionComponent<ButtonProps> = ({
                 bg = 'bg-secondary';
                 textColor = '';
                 break;
+            case 'underlined':
+                textColor = 'text-gray';
             default:
                 break;
         }
@@ -70,7 +72,11 @@ const Button: FunctionComponent<ButtonProps> = ({
             }}
             {...rest}
         >
-            <div className="flex flex-row items-center">
+            <div
+                className={`flex flex-row items-center ${
+                    variant === 'underlined' ? 'underline' : ''
+                }`}
+            >
                 <span className={`${colors.textColor} mr-2 text-md`}>
                     {title}
                 </span>

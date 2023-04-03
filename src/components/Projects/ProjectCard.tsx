@@ -6,7 +6,7 @@ import { hoverText, hoverTranslate } from '@/cssClasses';
 import { IoOpenOutline } from 'react-icons/io5';
 import Link from '../UI/Link';
 
-interface ProjectCardProps {
+export interface ProjectCardProps {
     githubUrl?: string;
     demoUrl?: string;
     skills?: string[];

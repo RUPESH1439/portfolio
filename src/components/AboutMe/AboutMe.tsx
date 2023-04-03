@@ -3,6 +3,7 @@ import { FunctionComponent } from 'react';
 import { SecondaryText } from '../UI';
 import text from '@/text/en';
 import { SectionTitle } from '../SectionTitle';
+import { Skills } from '../Skills';
 
 interface AboutMeProps {}
 
@@ -24,6 +25,9 @@ const AboutMe: FunctionComponent<AboutMeProps> = () => {
                 Redux. I'm able to take full ownership of delivering a project
                 from start to finish.
             </span>
+            <div className="mt-5">
+                <Skills />
+            </div>
         </div>
     );
 };
