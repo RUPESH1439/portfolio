@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { MdOutlineNavigateNext } from 'react-icons/md';
-import crypto from 'crypto';
+import { v4 as uuid } from 'uuid';
 export interface SkillProps {
     title: string;
     skills: string[];
@@ -16,10 +16,7 @@ const Skill: FunctionComponent<SkillProps> = ({ title, skills }) => {
     return (
         <div className="flex flex-1 flex-row flex-wrap gap-16">
             {slicedArrays.map((slicedArray) => (
-                <div
-                    className="flex flex-col items-start"
-                    key={crypto.randomUUID()}
-                >
+                <div className="flex flex-col items-start" key={uuid()}>
                     {slicedArray.map((skill) => (
                         <div
                             className="flex flex-row gap-1 justify-center items-center gap-2"
