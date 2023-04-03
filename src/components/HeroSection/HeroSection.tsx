@@ -14,24 +14,24 @@ const HeroSection: FunctionComponent<HeroSectionProps> = () => {
     } = text;
     const router = useRouter();
     return (
-        <div className="flex flex-col flex-1 mt-48 md:mt-14">
+        <div className="flex flex-col flex-1">
             <span className="text-primary text-sm md:text-md tracking-wider">
                 {greeting}
             </span>
-            <span className="text-gray text-2xl md:text-6xl font-bold my-5">
+            <span className="text-gray text-xl md:text-6xl font-bold my-4 md:my-5">
                 {name}
             </span>
-            <span className="text-gray text-2xl md:text-6xl font-bold opacity-50">
+            <span className="text-gray text-xl md:text-6xl font-bold opacity-50">
                 {title}
             </span>
 
-            <span className="w-1/2 my-12">
+            <span className="w-full md:w-1/2 my-4 md:my-12">
                 I’m a full stack software engineer specializing in building
                 robust and scalable web and mobile applications. And, currently,
                 I’m engaged in freelancing primarily via{' '}
                 <Link link={TOPTAL_RESUME_LINK}>Toptal</Link>.
             </span>
-            <div>
+            <div className="mt-8">
                 <Button
                     title="Learn more"
                     variant="none"

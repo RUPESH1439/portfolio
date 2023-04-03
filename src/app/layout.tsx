@@ -20,7 +20,7 @@ export default function RootLayout({
                 >
                     <div className="h-[200px] w-[200px] md:w-[700px] blur-[400px] bg-blue-gradient rounded-full absolute -top-[10px] left-[25vw]" />
                     <NavBar />
-                    {children}
+                    <div className="">{children}</div>
                 </div>
             </body>
         </html>

@@ -14,7 +14,7 @@ const chunkArray = <T,>(arr: T[], size: number): T[][] =>
 const Skill: FunctionComponent<SkillProps> = ({ title, skills }) => {
     const slicedArrays = chunkArray(skills, skills.length > 15 ? 12 : 5);
     return (
-        <div className="flex flex-1 flex-row flex-wrap gap-16">
+        <div className="flex flex-1 flex-row flex-wrap gap-4 md:gap-16">
             {slicedArrays.map((slicedArray) => (
                 <div className="flex flex-col items-start" key={uuid()}>
                     {slicedArray.map((skill) => (
@@ -23,7 +23,7 @@ const Skill: FunctionComponent<SkillProps> = ({ title, skills }) => {
                             key={skill}
                         >
                             <MdOutlineNavigateNext className="text-gray" />
-                            <span className="text-gray text-opacity-70">
+                            <span className="text-gray text-opacity-70 text-xs md:text-sm">
                                 {skill}
                             </span>
                         </div>
