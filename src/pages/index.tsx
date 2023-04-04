@@ -31,7 +31,7 @@ export default function Home() {
             />
             <div className="invisible md:visible z-[2] h-[50%] md:h-[45%] w-[20%] border-l-0 rounded-l-none fixed top-[16%] right-[30px] md:right-16 border-[rgba(160,160,255,0.40)] border-[1px] rounded-[100px] border-b-0 rounded-b-none " />
 
-            <div className="md:left-[80px] md:right-16">
+            <div className="relative z-[5]">
                 <Carousel sections={carouseSections} />
             </div>
             <div className="fixed bottom-0 right-[20px] md:right-16">

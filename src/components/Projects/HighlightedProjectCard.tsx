@@ -33,7 +33,7 @@ const HighlightedProjectCard: FunctionComponent<
     height,
 }) => {
     return (
-        <Link link={githubUrl ?? '#'}>
+        <Link link={demoUrl ?? githubUrl ?? '#'}>
             <div className="flex flex-1 flex-col md:flex-row justify-between border border-primary rounded-2xl border-opacity-40 bg-gradient-to-b from-[#1c1a1f] to-[#1a171f] px-4 md:pl-12">
                 <div className="flex flex-[100%] md:flex-[40%] flex-col py-2 md:py-8">
                     <div>
@@ -70,7 +70,7 @@ const HighlightedProjectCard: FunctionComponent<
                                 {skills?.map((skill) => {
                                     return (
                                         <div
-                                            className="text-xs md:text-sm text-gray text-opacity-70 border border-gray rounded-3xl px-3 py-1"
+                                            className="text-xs md:text-sm text-gray text-opacity-70 border border-gray rounded-3xl px-2 md:px-3 py-0.5 md:py-1"
                                             key={skill}
                                         >
                                             {skill}
@@ -124,19 +124,13 @@ const HighlightedProjectCard: FunctionComponent<
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-[100%] md:flex-[60%] flex-col ml-0 md:ml-12 justify-end">
+                <div className="flex flex-[100%] md:flex-[60%] flex-col ml-0 md:ml-12 self-end">
                     <Image
                         src={img ?? ''}
                         width={650}
                         height={270}
                         alt="img"
                         className="rounded-lg rounded-l-none"
-                        // style={{
-                        //     width: '100%',
-                        //     objectFit: height ? 'contain' : 'fill',
-                        //     height: height ?? '100%',
-                        // }}
-
                         style={{
                             objectFit: 'contain',
                             height: height ?? '100%',
