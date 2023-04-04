@@ -171,8 +171,10 @@ const HighlightedProjects: FunctionComponent<HighlightedProjectsProps> = ({
     _ref,
 }) => {
     return (
-        <div className="flex flex-col flex-1 relative z-[100]">
-            <SectionTitle title="Projects" />
+        <div className="flex flex-col flex-1">
+            <div className="mt-10">
+                <SectionTitle title="Projects" />
+            </div>
             <div
                 ref={_ref}
                 className="flex flex-1 flex-col overflow-y-auto scrollbar-hide mt-5 gap-8"
