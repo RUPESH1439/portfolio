@@ -12,14 +12,12 @@ const projects: HighlightedProjectCardProps[] = [
     {
         title: 'MEA Mobile App (Toptal)',
         desc: `A React Native based mobile app for android to provide a platform for maintenance worker and work provider to track the maintenance works (time, cost, etc)`,
-        githubUrl: '',
         responsibilities: [
             'Upgraded the library versions (react, react-native, etc)',
             'Implemented new screens',
             'Fixed file upload issues',
             'Fixed critical penetration testing issues',
         ],
-        demoUrl: '',
         skills: [
             'React',
             'React Native',
@@ -44,7 +42,6 @@ const projects: HighlightedProjectCardProps[] = [
             'Created backend APIs required',
             'Created front-end components and integrated them with the backend',
         ],
-        demoUrl: '',
         skills: [
             'React',
             'Typescript',
@@ -61,7 +58,6 @@ const projects: HighlightedProjectCardProps[] = [
     {
         title: 'MyHairCounts Mobile App',
         desc: 'MyHairCounts App is a React-Native App that measures and tracks the percentage of grey hairs and even your degree of dandruff.',
-        githubUrl: '',
         responsibilities: [
             'Implemented new v2 features and fixed critical bugs',
             'Refactored old codebase',
@@ -88,7 +84,6 @@ const projects: HighlightedProjectCardProps[] = [
     {
         title: 'Woollybuggers Mobile App',
         desc: 'Woolly Buggers is a React Native based mobile app that delivers easy-to-use map layers of all fishable rivers, over 3,000 lakes, all public access, private lands, fishing regulations, and access regulations. PLUS, save and share fishing spots.',
-        githubUrl: '',
         responsibilities: [
             'Created front-end and back-end architecture',
             'Collaborated with the client',
@@ -117,7 +112,6 @@ const projects: HighlightedProjectCardProps[] = [
     {
         title: 'Mobile App for ScoutX',
         desc: 'ScoutX is an innovative digital platform that revolutionizes the way athletes, coaches, and scouts interact and connect during the college recruiting process. The app aims to eliminate the need for manual paperwork and time-consuming processes, making it more efficient for all parties involved.',
-        githubUrl: '',
         responsibilities: [
             'Created front-end architecture',
             'Lead a team of 5',
@@ -146,7 +140,6 @@ const projects: HighlightedProjectCardProps[] = [
     {
         title: 'Mobile App for ReAlpha',
         desc: 'ReAlpha is a digital marketplace with more than 30 employees, and it simplifies, finances, and manages short-term rental investments. This app aims to provide a platform for accessing and managing a broad range of real estate properties and investments.',
-        githubUrl: '',
         responsibilities: [
             'Created front-end architecture',
             'Lead a team of 5',
@@ -178,7 +171,7 @@ const HighlightedProjects: FunctionComponent<HighlightedProjectsProps> = ({
     _ref,
 }) => {
     return (
-        <div className="flex flex-col flex-1 absolute mr-5 md:mr-36 z-[5]">
+        <div className="flex flex-col flex-1 relative z-[100]">
             <SectionTitle title="Projects" />
             <div
                 ref={_ref}
