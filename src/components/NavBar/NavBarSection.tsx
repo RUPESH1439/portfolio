@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { FunctionComponent } from 'react';
 
 interface NavBarSectionProps {
@@ -10,11 +11,12 @@ const NavBarSection: FunctionComponent<NavBarSectionProps> = ({
     routePath,
 }) => {
     return (
-        <a href={routePath} className="flex flex-row">
-            <div className="text-xs text-gray font-light hover:text-primary transition hover:ease-in-out delay-5">
-                {section}
-            </div>
-        </a>
+        <Link
+            href={routePath}
+            className="flex flex-row text-xs text-gray font-light hover:text-primary transition hover:ease-in-out delay-5"
+        >
+            {section}
+        </Link>
     );
 };
 

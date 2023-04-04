@@ -9,11 +9,13 @@ interface AboutMeProps {}
 const AboutMe: FunctionComponent<AboutMeProps> = () => {
     return (
         <div className="flex flex-1 flex-col">
-            <SectionTitle title="About Me" />
+            <div className="mt-10 lg:mt-0">
+                <SectionTitle title="About Me" />
+            </div>
 
             <div className="flex flex-row">
-                <div className="w-full pr-12 md:w-1/2 mt-4 md:mt-10">
-                    <div className="text-sm md:text-md text-gray opacity-60">
+                <div className="w-full pr-12 lg:w-3/4 mt-4 md:mt-10">
+                    <div className="text-sm md:text-base text-gray opacity-90">
                         Hi!
                         <br /> My name is Rupesh Shrestha. I'm a highly skilled
                         full-stack software engineer with over 3.5 years of
@@ -26,7 +28,7 @@ const AboutMe: FunctionComponent<AboutMeProps> = () => {
                         React Native, Next.js, and Redux. I'm able to take full
                         ownership of delivering a project from start to finish.
                     </div>
-                    <div className="mt-5">
+                    <div className="mt-12">
                         <Skills />
                     </div>
                 </div>

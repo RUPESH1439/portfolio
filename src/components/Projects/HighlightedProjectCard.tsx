@@ -42,7 +42,7 @@ const HighlightedProjectCard: FunctionComponent<
                         </div>
                     </div>
                     <div>
-                        <div className="text-xs md:text-sm text-gray text-opacity-70 mt-2 md:mt-5 mb-4 ">
+                        <div className="text-xs md:text-sm text-gray text-opacity-85 mt-2 md:mt-5 mb-4 ">
                             {desc}
                         </div>
 
@@ -54,7 +54,7 @@ const HighlightedProjectCard: FunctionComponent<
                                 {responsibilities?.map((responsibility) => (
                                     <div
                                         key={responsibility}
-                                        className="flex flex-row items-center gap-1 text-xs md:text-sm text-gray text-opacity-70"
+                                        className="flex flex-row items-center gap-1 text-xs md:text-sm text-gray text-opacity-85"
                                     >
                                         <MdOutlineNavigateNext className="text-gray" />
                                         {responsibility}
@@ -70,7 +70,7 @@ const HighlightedProjectCard: FunctionComponent<
                                 {skills?.map((skill) => {
                                     return (
                                         <div
-                                            className="text-xs md:text-sm text-gray text-opacity-70 border border-gray rounded-3xl px-2 md:px-3 py-0.5 md:py-1"
+                                            className="text-xs md:text-sm text-gray text-opacity-80 border border-gray rounded-3xl px-2 md:px-3 py-0.5 md:py-1"
                                             key={skill}
                                         >
                                             {skill}

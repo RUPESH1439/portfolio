@@ -155,7 +155,7 @@ const Skills: FunctionComponent<SkillsProps> = () => {
                             setSelectedSkillSection(section);
                         }}
                         key={section.title}
-                        className={`my-1 md:my-2 ${hoverText} text-gray text-opacity-70 ${
+                        className={`my-1 md:my-2 ${hoverText} text-gray text-opacity-85 ${
                             selectedSkillSection?.title === section.title
                                 ? 'border-b border-primary text-opacity-100 text-primary'
                                 : 'border-0'

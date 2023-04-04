@@ -23,7 +23,7 @@ const Skill: FunctionComponent<SkillProps> = ({ title, skills }) => {
                             key={skill}
                         >
                             <MdOutlineNavigateNext className="text-gray" />
-                            <div className="text-gray text-opacity-70 text-xs md:text-sm">
+                            <div className="text-gray text-opacity-85 text-xs md:text-sm">
                                 {skill}
                             </div>
                         </div>

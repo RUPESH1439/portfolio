@@ -6,7 +6,7 @@ interface SectionTitleProps {
 
 const SectionTitle: FunctionComponent<SectionTitleProps> = ({ title }) => {
     return (
-        <div className="text-lg md:text-2xl font-bold text-primary font-light">
+        <div className="text-2xl md:text-3xl font-bold text-primary font-light">
             {title}
         </div>
     );

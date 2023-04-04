@@ -44,7 +44,7 @@ const NavMenu: FunctionComponent<NavMenuProps> = ({
         <>
             <BackDrop />
             <animated.div
-                className="px-8 md:px-20 pt-[100%] md:pt-24 absolute right-0 w-[100%] md:w-[38%] h-screen bg-background z-50 rounded-l-3xl"
+                className="px-8 md:px-20 pt-[100%] md:pt-24 absolute right-0 w-[100%] md:w-[25%] h-screen bg-background z-50 rounded-l-3xl  bg-gradient-to-r from-blue-500"
                 style={styles}
             >
                 <button
