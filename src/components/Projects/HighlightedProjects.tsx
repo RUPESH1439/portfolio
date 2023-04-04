@@ -172,7 +172,7 @@ const HighlightedProjects: FunctionComponent<HighlightedProjectsProps> = ({
 }) => {
     return (
         <div className="flex flex-col flex-1">
-            <div className="mt-10">
+            <div className="">
                 <SectionTitle title="Projects" />
             </div>
             <div
