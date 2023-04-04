@@ -38,7 +38,7 @@ const NavBar: FunctionComponent<NavBarProps> = () => {
                     ))}
                 </div>
                 <a
-                    className={`rounded-lg px-2 py-2 border-gray border text-gray hover:border-primary hover:text-primary ${hoverText} text-sm md:text-md`}
+                    className={`rounded-md px-4 py-2 border-gray border hover:bg-secondary hover:bg-opacity-30 text-gray border-primary text-primary ${hoverText} text-sm md:text-md`}
                     href="/Resume.pdf"
                     download
                 >
