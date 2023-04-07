@@ -25,14 +25,14 @@ const ContactMe: FunctionComponent<ContactMeProps> = () => {
             const from_name = nameRef?.current?.value;
             const message = messageRef?.current?.value;
             await emailjs.send(
-                NEXT_PUBLIC_EMAIL_SERVICE_ID as string,
-                NEXT_PUBLIC_EMAIL_TEMPLATE_ID as string,
+                'service_y8arfp9',
+                'template_tkgx2mk',
                 {
                     from_email,
                     from_name,
                     message,
                 },
-                NEXT_PUBLIC_EMAIL_KEY as string,
+                'sBnNJI9IfkMv-7al6',
             );
         } catch (err) {
             console.log('err', err);
