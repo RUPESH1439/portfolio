@@ -21,11 +21,11 @@ const HeroSection: FunctionComponent<HeroSectionProps> = () => {
             <div className="text-gray text-xl md:text-6xl font-bold my-4 md:my-5">
                 {name}
             </div>
-            <div className="text-gray text-xl md:text-6xl font-bold opacity-50">
+            <div className="text-gray text-xl md:text-6xl font-bold opacity-[70%]">
                 {title}
             </div>
 
-            <div className="w-full md:w-1/2 my-4 md:my-12">
+            <div className="w-full md:w-1/2 my-4 md:my-12 text-gray text-opacity-[68%]">
                 I’m a full stack software engineer specializing in building
                 robust and scalable web and mobile applications. And, currently,
                 I’m engaged in freelancing primarily via{' '}

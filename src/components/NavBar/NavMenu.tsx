@@ -13,6 +13,7 @@ const sections = [
     { key: 'home', section: 'Home', routePath: '/' },
     { key: 'about', section: 'About', routePath: '/about' },
     { key: 'projects', section: 'Projects', routePath: '/projects' },
+    { key: 'contactMe', section: 'Contact Me', routePath: '/contactMe' },
 
     // { key: 'work', section: 'Work', routePath: '/work' },
     // { key: 'contact', section: 'Contact', routePath: '/contact' },

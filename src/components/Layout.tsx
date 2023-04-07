@@ -12,7 +12,7 @@ export default function RootLayout({
         >
             <div className="h-[300px] lg:h-[200px] w-[300px] md:w-[700px] blur-[250px] md:blur-[400px] bg-blue-gradient rounded-full absolute -top-[12px] left-[25vw]" />
             <NavBar />
-            <div className="">{children}</div>
+            <div className="2xl:px-[8%]">{children}</div>
         </div>
     );
 }

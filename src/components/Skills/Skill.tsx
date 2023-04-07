@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { MdOutlineNavigateNext } from 'react-icons/md';
+import { TbCaretRight } from 'react-icons/tb';
 import { v4 as uuid } from 'uuid';
 export interface SkillProps {
     title: string;
@@ -19,11 +19,11 @@ const Skill: FunctionComponent<SkillProps> = ({ title, skills }) => {
                 <div className="flex flex-col items-start" key={uuid()}>
                     {slicedArray.map((skill) => (
                         <div
-                            className="flex flex-row gap-1 justify-center items-center gap-2"
+                            className="flex flex-row gap-1 justify-center items-center"
                             key={skill}
                         >
-                            <MdOutlineNavigateNext className="text-gray" />
-                            <div className="text-gray text-opacity-85 text-xs md:text-sm">
+                            <TbCaretRight className="text-primary opacity-70" />
+                            <div className="text-gray text-opacity-80 text-xs md:text-sm">
                                 {skill}
                             </div>
                         </div>
