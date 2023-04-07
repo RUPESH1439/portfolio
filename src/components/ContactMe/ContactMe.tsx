@@ -3,30 +3,10 @@ import TextArea from '../UI/TextArea';
 import TextInput from '../UI/TextInput';
 import emailjs from '@emailjs/browser';
 
-interface ContactMeProps {
-    NEXT_PUBLIC_EMAIL_SERVICE_ID?: string;
-    NEXT_PUBLIC_EMAIL_TEMPLATE_ID?: string;
-    NEXT_PUBLIC_EMAIL_KEY?: string;
-}
-
-export async function getStaticProps() {
-    const {
-        NEXT_PUBLIC_EMAIL_SERVICE_ID,
-        NEXT_PUBLIC_EMAIL_TEMPLATE_ID,
-        NEXT_PUBLIC_EMAIL_KEY,
-    } = process.env;
-    return {
-        props: {
-            NEXT_PUBLIC_EMAIL_SERVICE_ID,
-            NEXT_PUBLIC_EMAIL_TEMPLATE_ID,
-            NEXT_PUBLIC_EMAIL_KEY,
-        },
-    };
-    // ...
-}
+interface ContactMeProps {}
 
 const isInvalidString = (str?: string) => (str ?? '')?.length < 1;
-const ContactMe: FunctionComponent<ContactMeProps> = (props) => {
+const ContactMe: FunctionComponent<ContactMeProps> = () => {
     const nameRef = useRef<HTMLInputElement | null>(null);
     const emailRef = useRef<HTMLInputElement | null>(null);
     const messageRef = useRef<HTMLTextAreaElement | null>(null);
@@ -37,7 +17,7 @@ const ContactMe: FunctionComponent<ContactMeProps> = (props) => {
             NEXT_PUBLIC_EMAIL_SERVICE_ID,
             NEXT_PUBLIC_EMAIL_TEMPLATE_ID,
             NEXT_PUBLIC_EMAIL_KEY,
-        } = props;
+        } = process.env;
 
         try {
             setLoading(true);
