@@ -4,15 +4,23 @@ import TextInput from '../UI/TextInput';
 import emailjs from '@emailjs/browser';
 
 interface ContactMeProps {
-    EMAIL_SERVICE_ID?: string;
-    EMAIL_TEMPLATE_ID?: string;
-    EMAIL_KEY?: string;
+    NEXT_PUBLIC_EMAIL_SERVICE_ID?: string;
+    NEXT_PUBLIC_EMAIL_TEMPLATE_ID?: string;
+    NEXT_PUBLIC_EMAIL_KEY?: string;
 }
 
 export async function getStaticProps() {
-    const { EMAIL_SERVICE_ID, EMAIL_TEMPLATE_ID, EMAIL_KEY } = process.env;
+    const {
+        NEXT_PUBLIC_EMAIL_SERVICE_ID,
+        NEXT_PUBLIC_EMAIL_TEMPLATE_ID,
+        NEXT_PUBLIC_EMAIL_KEY,
+    } = process.env;
     return {
-        props: { EMAIL_SERVICE_ID, EMAIL_TEMPLATE_ID, EMAIL_KEY },
+        props: {
+            NEXT_PUBLIC_EMAIL_SERVICE_ID,
+            NEXT_PUBLIC_EMAIL_TEMPLATE_ID,
+            NEXT_PUBLIC_EMAIL_KEY,
+        },
     };
     // ...
 }
@@ -25,7 +33,11 @@ const ContactMe: FunctionComponent<ContactMeProps> = (props) => {
     const [loading, setLoading] = useState(false);
 
     const sendMessage = async () => {
-        const { EMAIL_SERVICE_ID, EMAIL_TEMPLATE_ID, EMAIL_KEY } = props;
+        const {
+            NEXT_PUBLIC_EMAIL_SERVICE_ID,
+            NEXT_PUBLIC_EMAIL_TEMPLATE_ID,
+            NEXT_PUBLIC_EMAIL_KEY,
+        } = props;
 
         try {
             setLoading(true);
@@ -33,14 +45,14 @@ const ContactMe: FunctionComponent<ContactMeProps> = (props) => {
             const from_name = nameRef?.current?.value;
             const message = messageRef?.current?.value;
             await emailjs.send(
-                EMAIL_SERVICE_ID as string,
-                EMAIL_TEMPLATE_ID as string,
+                NEXT_PUBLIC_EMAIL_SERVICE_ID as string,
+                NEXT_PUBLIC_EMAIL_TEMPLATE_ID as string,
                 {
                     from_email,
                     from_name,
                     message,
                 },
-                EMAIL_KEY as string,
+                NEXT_PUBLIC_EMAIL_KEY as string,
             );
         } catch (err) {
             console.log('err', err);
