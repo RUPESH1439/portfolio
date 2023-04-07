@@ -34,7 +34,7 @@ const HighlightedProjectCard: FunctionComponent<
 }) => {
     return (
         <Link link={demoUrl ?? githubUrl ?? '#'}>
-            <div className="flex flex-1 flex-col md:flex-row justify-between border border-primary rounded-2xl border-opacity-40 bg-gradient-to-b from-[#1c1a1f] to-[#1a171f] px-4 md:pl-12">
+            <div className="flex flex-1 flex-col md:flex-row justify-between border border-primary rounded-2xl border-opacity-40 bg-gradient-to-b from-[#1c1a1f] to-[#28263B] px-4 md:pl-12">
                 <div className="flex flex-[100%] md:flex-[40%] flex-col py-2 md:py-8">
                     <div>
                         <div className="text-lg md:text-2xl text-white">
@@ -124,13 +124,13 @@ const HighlightedProjectCard: FunctionComponent<
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-[100%] md:flex-[60%] flex-col ml-0 md:ml-12 self-end">
+                <div className="flex flex-[100%] md:flex-[60%] flex-col ml-0 md:ml-12 self-end bg-blend-hue">
                     <Image
                         src={img ?? ''}
                         width={650}
                         height={270}
                         alt="img"
-                        className="rounded-lg rounded-l-none"
+                        className="rounded-lg rounded-l-none "
                         style={{
                             objectFit: 'contain',
                             height: height ?? '100%',

@@ -26,11 +26,8 @@ const NavBar: FunctionComponent<NavBarProps> = () => {
     };
     return (
         <div
-            className={`flex flex-row justify-between h-24 w-full px-10 fixed top-0 ${
-                openMenu ? 'z-[10]' : ''
-            }`}
+            className={`flex flex-row justify-between h-24 w-full px-10 fixed top-0 z-50`}
         >
-            <div></div>
             <div className="flex flex-row flex-wrap gap-0 md:gap-10 items-center absolute right-7 md:right-10 top-12">
                 <div className="invisible md:visible">
                     {navBarSections.map(({ key, section, routePath }) => (
