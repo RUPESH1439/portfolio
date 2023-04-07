@@ -10,9 +10,17 @@ interface ContactMeProps {
 }
 
 export async function getStaticProps() {
-    const { EMAIL_SERVICE_ID, EMAIL_TEMPLATE_ID, EMAIL_KEY } = process.env;
+    const {
+        NEXT_PUBLIC_EMAIL_SERVICE_ID,
+        NEXT_PUBLIC_EMAIL_TEMPLATE_ID,
+        NEXT_PUBLIC_EMAIL_KEY,
+    } = process.env;
     return {
-        props: { EMAIL_SERVICE_ID, EMAIL_TEMPLATE_ID, EMAIL_KEY },
+        props: {
+            NEXT_PUBLIC_EMAIL_SERVICE_ID,
+            NEXT_PUBLIC_EMAIL_TEMPLATE_ID,
+            NEXT_PUBLIC_EMAIL_KEY,
+        },
     };
     // ...
 }
