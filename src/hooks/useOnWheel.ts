@@ -19,7 +19,9 @@ export default function useOnWheel(
     const onWheel = useCallback(
         (event: WheelEvent) => {
             clearTimeout(timeoutId.current);
-
+            if (scrollable && event.pageY > 600) {
+                return;
+            }
             if (
                 scrollable &&
                 ref?.current &&
