@@ -3,10 +3,13 @@ import Image from 'next/image';
 import { FunctionComponent } from 'react';
 import { SectionTitle } from '../SectionTitle';
 import { Skills } from '../Skills';
+import { calculateExperienceYears } from '@/utils';
 
 interface AboutMeProps {}
 
 const AboutMe: FunctionComponent<AboutMeProps> = () => {
+    const workStartDate = '2019-09-01';
+    const yearsOfExperience = calculateExperienceYears(workStartDate);
     return (
         <div className="flex flex-1 flex-col">
             <div className="mt-10 lg:mt-0">
@@ -18,9 +21,10 @@ const AboutMe: FunctionComponent<AboutMeProps> = () => {
                     <div className="text-sm md:text-base text-gray opacity-90">
                         Hi!
                         <br /> My name is Rupesh Shrestha. I'm a highly skilled
-                        full-stack software engineer with over 3.5 years of
-                        experience architecting and developing robust and
-                        scalable web and mobile applications.
+                        full-stack software engineer with over{' '}
+                        {yearsOfExperience} years of experience architecting and
+                        developing robust and scalable web and mobile
+                        applications.
                         <br /> <br /> I have a track record of success in a wide
                         range of projects, including Gocchii and ReAlpha. And,
                         I'm well-versed in a variety of programming languages

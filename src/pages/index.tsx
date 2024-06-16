@@ -1,7 +1,6 @@
 import {
     HeroSection,
     AboutMe,
-    Projects,
     Carousel,
     HighlightedProjects,
     SocialMediaLinks,
