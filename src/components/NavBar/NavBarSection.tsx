@@ -18,7 +18,7 @@ const NavBarSection: FunctionComponent<NavBarSectionProps> = ({
             href={routePath}
             aria-current={isActive ? 'page' : undefined}
             className={`type-nav transition-colors hover:text-primary ${
-                isActive ? 'text-primary' : 'text-gray/80'
+                isActive ? 'text-primary' : 'text-slate/80'
             }`}
         >
             {section}

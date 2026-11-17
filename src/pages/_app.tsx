@@ -28,7 +28,7 @@ export default function MyApp(props: AppProps) {
                     name="description"
                     content="Rupesh Shrestha is an AI-enabled full-stack engineer who builds web and mobile apps end to end with TypeScript, React, React Native and Node.js, working with coding agents like Claude Code and Cursor."
                 />
-                <meta name="theme-color" content="#080010" />
+                <meta name="theme-color" content="#edf2fc" />
             </Head>
 
             <div className={`${courier.variable} type-body`}>

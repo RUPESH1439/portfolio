@@ -91,7 +91,7 @@ const NavMenu: FunctionComponent<NavMenuProps> = ({ open, handleClose }) => {
                 aria-label="Site menu"
                 inert={!open}
                 onKeyDown={trapFocus}
-                className={`fixed top-0 right-0 z-50 flex h-svh w-full flex-col border-l border-purple-medium/15 bg-surface px-5 pt-24 pb-10 transition-[transform,visibility] duration-500 ease-out-soft md:w-[400px] md:px-8 ${
+                className={`fixed top-0 right-0 z-50 flex h-svh w-full flex-col border-l border-haze/15 bg-surface px-5 pt-24 pb-10 transition-[transform,visibility] duration-500 ease-out-soft md:w-[400px] md:px-8 ${
                     open
                         ? 'visible translate-x-0'
                         : 'invisible translate-x-full'
@@ -101,7 +101,7 @@ const NavMenu: FunctionComponent<NavMenuProps> = ({ open, handleClose }) => {
                     ref={closeRef}
                     type="button"
                     aria-label="Close menu"
-                    className="absolute top-[18px] right-5 flex h-11 w-11 items-center justify-center rounded-full bg-white text-background transition-transform duration-300 hover:scale-110 md:right-10 2xl:right-16"
+                    className="absolute top-[18px] right-5 flex h-11 w-11 items-center justify-center rounded-full bg-ink text-background transition-transform duration-300 hover:scale-110 md:right-10 2xl:right-16"
                     onClick={handleClose}
                 >
                     <RxCross1 aria-hidden size={16} />
@@ -114,7 +114,7 @@ const NavMenu: FunctionComponent<NavMenuProps> = ({ open, handleClose }) => {
                     >
                         <li
                             aria-hidden
-                            className={`pointer-events-none absolute inset-x-0 top-0 rounded-xl bg-primary-medium transition-[transform,opacity] duration-300 ease-out-soft ${
+                            className={`pointer-events-none absolute inset-x-0 top-0 rounded-xl bg-tint transition-[transform,opacity] duration-300 ease-out-soft ${
                                 showIndicator ? 'opacity-100' : 'opacity-0'
                             }`}
                             style={{
@@ -139,7 +139,7 @@ const NavMenu: FunctionComponent<NavMenuProps> = ({ open, handleClose }) => {
                     </ul>
                 </nav>
 
-                <div className="mt-auto border-t border-purple-medium/15 px-4 pt-8">
+                <div className="mt-auto border-t border-haze/15 px-4 pt-8">
                     <SocialMediaLinks variant="list" />
                 </div>
             </div>

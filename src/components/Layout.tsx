@@ -7,10 +7,10 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <div className="relative flex min-h-svh w-full flex-col overflow-x-clip bg-background text-gray">
+        <div className="relative flex min-h-svh w-full flex-col overflow-x-clip bg-background text-slate">
             <div
                 aria-hidden
-                className="pointer-events-none absolute top-[-120px] left-1/2 h-[260px] w-[320px] -translate-x-1/2 rounded-full bg-blue-gradient opacity-60 blur-[140px] md:h-[240px] md:w-[760px] md:blur-[220px]"
+                className="pointer-events-none absolute top-[-120px] left-1/2 h-[260px] w-[320px] -translate-x-1/2 rounded-full bg-ambient-glow opacity-40 blur-[140px] md:h-[240px] md:w-[760px] md:blur-[220px]"
             />
             <NavBar />
             <main className="relative z-5 flex flex-1 flex-col overflow-clip">

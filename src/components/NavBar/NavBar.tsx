@@ -24,7 +24,7 @@ const NavBar: FunctionComponent = () => {
             <div className="flex h-20 items-center justify-between px-5 md:px-10 2xl:px-16">
                 <NextLink
                     href="/"
-                    className="site-wordmark type-wordmark whitespace-nowrap text-white transition-colors hover:text-primary"
+                    className="site-wordmark type-wordmark whitespace-nowrap text-ink transition-colors hover:text-primary"
                 >
                     Rupesh Shrestha
                 </NextLink>
@@ -56,7 +56,7 @@ const NavBar: FunctionComponent = () => {
                         aria-label="Open menu"
                         aria-expanded={openMenu}
                         aria-controls="site-menu"
-                        className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-background transition-transform duration-300 hover:scale-110"
+                        className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-ink text-background transition-transform duration-300 hover:scale-110"
                         onClick={() => setOpenMenu(true)}
                     >
                         <RxHamburgerMenu aria-hidden size={18} />

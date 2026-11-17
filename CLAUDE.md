@@ -108,10 +108,16 @@ public/                   # Static assets: project screenshots, Resume.pdf, favi
 ### Styling (Tailwind v4)
 
 - Define design tokens only in the `@theme` block of `globals.css`. The default palette is
-  **replaced** (`--color-*: initial`), so only the project colors exist: `primary`, `secondary`,
-  `background`, `gray`, `white`, `purple-*`, `blue-*`, `orange-*`, etc. Don't use stock
-  Tailwind colors like `blue-500`. Add a token first.
-- Set color opacity with the slash modifier: `text-gray/70`, `border-primary/40`,
+  **replaced** (`--color-*: initial`), so only the project colors exist. The theme is light:
+  cobalt ink on ice. Tokens are named by role, not hue: `primary` (cobalt accent) with
+  `primary-hover`/`primary-active`/`on-primary`, `background` (ice), `surface` (raised panels,
+  form fields), `tint` (quiet cobalt wash), text from darkest to lightest `ink` (headings),
+  `slate` (running text) and `muted` (secondary text), `haze` (hairlines), `lilac`/`periwinkle`
+  (ambient glow), and `red`/`green` for status. Don't use stock Tailwind colors like
+  `blue-500`. Add a token first. To change the palette, edit only these values.
+- For quiet text use `text-muted`, not a low opacity: on the light background `text-slate`
+  below about /70 fails WCAG AA contrast.
+- Set color opacity with the slash modifier: `text-slate/80`, `border-primary/40`,
   `hover:bg-primary/80`. The v3 utilities `text-opacity-*`, `bg-opacity-*` and
   `border-opacity-*` **no longer exist** and fail silently.
 - Use the v4 names: `bg-linear-to-*` (not `bg-gradient-to-*`), `shadow-xs`/`rounded-xs`/`blur-xs`

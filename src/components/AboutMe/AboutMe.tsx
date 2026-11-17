@@ -18,12 +18,12 @@ const AboutMe: FunctionComponent = () => {
         >
             <div className="lg:col-span-5">
                 <SectionTitle id="about-title" title="About me" />
-                <p className="mt-6 type-lede text-gray">
+                <p className="mt-6 type-lede text-slate">
                     I’m an AI-enabled full-stack engineer with over{' '}
                     {yearsOfExperience} years of experience building web and
                     mobile apps.
                 </p>
-                <div className="mt-5 flex max-w-[60ch] flex-col gap-4 type-body text-gray/75">
+                <div className="mt-5 flex max-w-[60ch] flex-col gap-4 type-body text-slate/80">
                     <p>
                         AI is part of how I work every day. I use coding agents
                         like Claude Code and Cursor to plan, build, review and
@@ -41,7 +41,7 @@ const AboutMe: FunctionComponent = () => {
             </div>
 
             <div className="lg:col-span-7 lg:pt-2">
-                <h3 className="type-heading text-white">Skills and tools</h3>
+                <h3 className="type-heading text-ink">Skills and tools</h3>
                 <div className="mt-5">
                     <Skills />
                 </div>

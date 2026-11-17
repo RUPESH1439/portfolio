@@ -7,7 +7,7 @@ interface SectionTitleProps {
 
 const SectionTitle: FunctionComponent<SectionTitleProps> = ({ title, id }) => {
     return (
-        <h2 id={id} className="type-title text-white">
+        <h2 id={id} className="type-title text-ink">
             {title}
         </h2>
     );

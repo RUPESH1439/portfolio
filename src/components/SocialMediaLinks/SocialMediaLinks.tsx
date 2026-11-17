@@ -48,7 +48,7 @@ const SocialMediaLinks: FunctionComponent<SocialMediaLinksProps> = ({
                     <li key={key}>
                         <Link
                             link={link}
-                            styleClass="inline-flex items-center gap-2 type-ui text-gray transition-colors hover:text-primary"
+                            styleClass="inline-flex items-center gap-2 type-ui text-slate transition-colors hover:text-primary"
                         >
                             <Icon aria-hidden size={18} />
                             {label}
@@ -67,14 +67,14 @@ const SocialMediaLinks: FunctionComponent<SocialMediaLinksProps> = ({
                         <Link
                             link={link}
                             ariaLabel={label}
-                            styleClass="block p-1 text-gray/70 transition duration-200 hover:-translate-y-0.5 hover:text-primary"
+                            styleClass="block p-1 text-slate/75 transition duration-200 hover:-translate-y-0.5 hover:text-primary"
                         >
                             <Icon aria-hidden size={18} />
                         </Link>
                     </li>
                 ))}
             </ul>
-            <div aria-hidden className="h-24 w-px bg-purple-medium/40" />
+            <div aria-hidden className="h-24 w-px bg-haze/40" />
         </div>
     );
 };

@@ -16,7 +16,7 @@ const TextArea: FunctionComponent<TextAreaProps> = ({
     const errorId = `${id}-error`;
     return (
         <div className="flex flex-col gap-2">
-            <label htmlFor={id} className="type-label text-gray">
+            <label htmlFor={id} className="type-label text-slate">
                 {label}
             </label>
             <textarea

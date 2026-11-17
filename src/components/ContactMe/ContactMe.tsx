@@ -101,12 +101,12 @@ const ContactMe: FunctionComponent = () => {
         >
             <div className="lg:col-span-5">
                 <SectionTitle id="contact-title" title="Let’s work together" />
-                <p className="mt-6 max-w-[44ch] type-lede text-gray">
+                <p className="mt-6 max-w-[44ch] type-lede text-slate">
                     Have a project in mind, or want to talk about a role? Send
                     me a message and I’ll get back to you soon.
                 </p>
                 <div className="mt-10">
-                    <p className="mb-4 type-small text-gray/60">
+                    <p className="mb-4 type-small text-muted">
                         You can also find me on
                     </p>
                     <SocialMediaLinks variant="list" />

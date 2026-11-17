@@ -54,7 +54,6 @@ const skillSections: SkillProps[] = [
             'React Navigation',
             'REST APIs',
             'Ruby on Rails API',
-            'AWS Amplify',
             'Stripe API',
             'Google Maps SDK',
             'Mapbox SDK',
@@ -72,9 +71,7 @@ const skillSections: SkillProps[] = [
             'Xcode',
             'OneSignal',
             'Apple Push Notifications',
-            'Amazon Cognito',
             'Azure AD B2C',
-            'AWS CLI',
             'Postman',
             'Figma',
             'WebStorm',
@@ -88,8 +85,26 @@ const skillSections: SkillProps[] = [
             'MySQL',
             'MongoDB',
             'Snowflake',
-            'Amazon S3',
             'Database modeling',
+        ],
+    },
+    {
+        title: 'AWS',
+        skills: [
+            'AWS Lambda',
+            'Amazon API Gateway',
+            'Amazon DynamoDB',
+            'Amazon S3',
+            'Amazon CloudFront',
+            'Amazon EC2',
+            'Amazon Cognito',
+            'AWS Amplify',
+            'AWS CLI',
+            'Amazon ECS',
+            'Amazon RDS',
+            'Amazon SQS',
+            'Amazon SNS',
+            'Amazon SES',
         ],
     },
     {
@@ -147,7 +162,7 @@ const Skills: FunctionComponent = () => {
                 role="tablist"
                 aria-label="Skill groups"
                 onKeyDown={onKeyDown}
-                className="flex flex-wrap gap-x-1 gap-y-2 border-b border-purple-medium/15"
+                className="flex flex-wrap gap-x-1 gap-y-2 border-b border-haze/15"
             >
                 {skillSections.map((section, index) => {
                     const isSelected = index === selectedIndex;
@@ -167,7 +182,7 @@ const Skills: FunctionComponent = () => {
                             className={`-mb-px border-b-2 px-3 pt-1 pb-3 type-ui transition-colors first:pl-0 ${
                                 isSelected
                                     ? 'border-primary text-primary'
-                                    : 'border-transparent text-gray/65 hover:text-white'
+                                    : 'border-transparent text-muted hover:text-ink'
                             }`}
                         >
                             {section.title}

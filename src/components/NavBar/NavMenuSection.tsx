@@ -26,8 +26,8 @@ const NavMenuSection: FunctionComponent<NavMenuSectionProps> = ({
     const color = isActive
         ? 'text-primary'
         : isHighlighted
-          ? 'text-white'
-          : 'text-gray/65';
+          ? 'text-ink'
+          : 'text-muted';
 
     return (
         <li style={{ height: MENU_ITEM_HEIGHT }}>

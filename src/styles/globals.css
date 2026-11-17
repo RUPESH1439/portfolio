@@ -4,34 +4,32 @@
 @theme {
     --color-*: initial;
 
-    /* Brand */
-    --color-primary: #ff8427;
-    --color-secondary: #42485d;
-    --color-background: #080010;
-    --color-surface: #100a1e;
-    --color-surface-raised: #181029;
+    /*
+     * Brand: deep cobalt ink on ice. A light theme; names are roles, not
+     * hues, so the palette can change here without touching components.
+     */
+    --color-primary: #1d3fbf; /* cobalt ink: accent, links, cursor */
+    --color-primary-hover: #17339e;
+    --color-primary-active: #112780;
+    --color-on-primary: #ffffff; /* text and icons on a primary fill */
 
-    /* Brand glow (from the original blue gradient) */
-    --color-indigo: #5533cf;
-    --color-periwinkle: #7d84eb;
+    --color-background: #edf2fc; /* ice */
+    --color-surface: #f7f9fe; /* raised panels: menu, pill, image frames */
+    --color-tint: rgb(29 63 191 / 0.06); /* quiet cobalt wash for fills */
 
-    --color-blue: #1fb6ff;
-    --color-purple: #7e5bef;
-    --color-purple-light: #3a3253;
-    --color-purple-medium: rgb(160, 160, 255);
-    --color-primary-medium: rgba(160, 160, 255, 0.08);
-    --color-pink: #ff49db;
-    --color-orange-light: #ff7700;
-    --color-orange-dark: #e04d01;
-    --color-white: #eeeeee;
-    --color-blue-light: #2a2550;
-    --color-blue-dark: #251d3a;
-    --color-green: #13ce66;
-    --color-red: #ff6b7d;
-    --color-yellow: #ffc82c;
-    --color-gray-dark: #273444;
-    --color-gray: #ccd6f6;
-    --color-gray-light: #d3dce6;
+    /* Text, darkest to lightest. Use muted, not low opacity, for quiet text. */
+    --color-ink: #0c1633; /* headings, strong text */
+    --color-slate: #16203d; /* running text */
+    --color-muted: #4c5b7f; /* secondary text, captions */
+    --color-haze: #3a4f8f; /* hairlines and inactive marks, used with /15–/70 */
+
+    /* Ambient glow */
+    --color-lilac: #e3dcff;
+    --color-periwinkle: #a7a6ff;
+
+    /* Status */
+    --color-green: #137a4a;
+    --color-red: #c0263d;
 
     --ease-out-soft: cubic-bezier(0.2, 0.7, 0.2, 1);
 }
@@ -196,7 +194,7 @@
 
     html {
         font-family: --theme(--font-mono);
-        color-scheme: dark;
+        color-scheme: light;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         scrollbar-width: none;
@@ -204,7 +202,7 @@
 
     body {
         background-color: var(--color-background);
-        color: var(--color-gray);
+        color: var(--color-slate);
     }
 
     body::-webkit-scrollbar {
@@ -218,27 +216,30 @@
     }
 
     ::selection {
-        background: rgb(255 132 39 / 0.35);
-        color: var(--color-white);
+        background: rgb(29 63 191 / 0.18);
+        color: var(--color-ink);
     }
 }
 
-/* The original brand glow, kept as an ambient light behind the page. */
-.bg-blue-gradient {
+/*
+ * Ambient light behind the top of the page: lilac fading into cobalt. Heavily
+ * blurred and kept faint (see Layout.tsx) so it reads as light, not a shape.
+ */
+.bg-ambient-glow {
     background: linear-gradient(
         157.81deg,
-        #def5fa -43.27%,
-        #bebff5 -21.24%,
-        #9da4f0 12.19%,
-        #7d84eb 29.82%,
-        #5c63e6 51.94%,
-        #5533cf 90.29%
+        #f3f0ff -43.27%,
+        var(--color-lilac) -21.24%,
+        #c4c3ff 12.19%,
+        var(--color-periwinkle) 29.82%,
+        #5f6fe0 51.94%,
+        var(--color-primary) 90.29%
     );
 }
 
 /*
  * The one orchestrated moment: the name types itself out once, like a
- * typewriter, with the brand-orange cursor. Monospace makes this exact:
+ * typewriter, with a cobalt-ink cursor. Monospace makes this exact:
  * every character is 1ch wide, so each step reveals one letter.
  * Set --chars to the name's length.
  */

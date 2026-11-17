@@ -16,14 +16,14 @@ const HeroSection: FunctionComponent = () => {
         >
             <h1
                 id="hero-title"
-                className="hero-name type-display self-start text-white"
+                className="hero-name type-display self-start text-ink"
                 style={{ '--chars': name.length } as CSSProperties}
             >
                 {name}
             </h1>
 
             <p className="mt-3 type-subtitle text-primary md:mt-4">{role}</p>
-            <p className="mt-6 max-w-[48ch] type-lede text-gray/75 md:mt-8">
+            <p className="mt-6 max-w-[48ch] type-lede text-slate/80 md:mt-8">
                 {summary} I currently take on freelance work through{' '}
                 <Link link={TOPTAL_RESUME_LINK}>Toptal</Link>.
             </p>

@@ -5,7 +5,7 @@ import benableImg from '../../../public/benable.jpg';
 import fanvoyageImg from '../../../public/fanvoyage.webp';
 import hohmImg from '../../../public/hohm.jpg';
 import realphaImg from '../../../public/realpha.png';
-import scoutxImg from '../../../public/scoutx.png';
+import scoutxImg from '../../../public/scoutx.webp';
 import myHairCountsImg from '../../../public/my-hair-counts.png';
 import woollybuggersImg from '../../../public/woollybuggers.png';
 import meaAppImg from '../../../public/mea-app.png';
@@ -281,7 +281,7 @@ const HighlightedProjects: FunctionComponent = () => {
         >
             <div className="lg:col-span-4 xl:col-span-3">
                 <SectionTitle id="work-title" title="Selected work" />
-                <p className="mt-4 type-body text-gray/75">
+                <p className="mt-4 type-body text-slate/80">
                     Web and mobile apps I’ve built and shipped.
                 </p>
 
@@ -310,7 +310,7 @@ const HighlightedProjects: FunctionComponent = () => {
                                 className={`group shrink-0 rounded-full border px-4 py-2 text-left transition-colors lg:flex lg:items-stretch lg:gap-4 lg:rounded-none lg:border-0 lg:px-0 lg:py-1.5 ${
                                     isSelected
                                         ? 'border-primary/60 bg-primary/10 lg:bg-transparent'
-                                        : 'border-purple-medium/20 hover:border-purple-medium/40'
+                                        : 'border-haze/20 hover:border-haze/40'
                                 }`}
                             >
                                 <span
@@ -318,20 +318,20 @@ const HighlightedProjects: FunctionComponent = () => {
                                     className={`hidden w-1 shrink-0 rounded-full transition-colors lg:block ${
                                         isSelected
                                             ? 'bg-primary'
-                                            : 'bg-purple-medium/15 group-hover:bg-purple-medium/40'
+                                            : 'bg-haze/15 group-hover:bg-haze/40'
                                     }`}
                                 />
                                 <span className="flex flex-col">
                                     <span
                                         className={`type-ui whitespace-nowrap transition-colors ${
                                             isSelected
-                                                ? 'text-white'
-                                                : 'text-gray/70 group-hover:text-white'
+                                                ? 'text-ink'
+                                                : 'text-slate/75 group-hover:text-ink'
                                         }`}
                                     >
                                         {project.title}
                                     </span>
-                                    <span className="hidden type-caption text-gray/55 lg:block">
+                                    <span className="hidden type-caption text-muted lg:block">
                                         {project.platform}
                                     </span>
                                 </span>

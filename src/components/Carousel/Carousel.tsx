@@ -114,14 +114,14 @@ const Carousel: FunctionComponent<CarouselProps> = ({ sections }) => {
                                         className={`w-1 rounded-full transition-all duration-500 ease-out-soft ${
                                             isActive
                                                 ? 'h-10 bg-primary'
-                                                : 'h-1.5 bg-purple-medium/40 group-hover:h-3 group-hover:bg-purple-medium/70'
+                                                : 'h-1.5 bg-haze/40 group-hover:h-3 group-hover:bg-haze/70'
                                         }`}
                                     />
                                     <span
                                         className={`type-ui transition-colors ${
                                             isActive
                                                 ? 'text-primary'
-                                                : 'text-gray/50 group-hover:text-gray'
+                                                : 'text-muted group-hover:text-slate'
                                         }`}
                                     >
                                         {section.label}
@@ -131,7 +131,7 @@ const Carousel: FunctionComponent<CarouselProps> = ({ sections }) => {
                         );
                     })}
                 </ol>
-                <p className="mt-6 type-caption text-gray/50 tabular-nums">
+                <p className="mt-6 type-caption text-muted tabular-nums">
                     {index + 1} of {sections.length}
                 </p>
             </nav>
@@ -141,9 +141,9 @@ const Carousel: FunctionComponent<CarouselProps> = ({ sections }) => {
                 aria-label="Sections"
                 className="fixed inset-x-0 bottom-0 z-20 px-4 pb-[max(1rem,env(safe-area-inset-bottom))] lg:hidden"
             >
-                <div className="mx-auto flex max-w-sm items-center justify-between rounded-full border border-purple-medium/20 bg-surface/90 py-1.5 pr-1.5 pl-5 backdrop-blur-md">
+                <div className="mx-auto flex max-w-sm items-center justify-between rounded-full border border-haze/20 bg-surface/90 py-1.5 pr-1.5 pl-5 backdrop-blur-md">
                     <div className="flex items-center gap-3">
-                        <span className="type-ui text-white">{label}</span>
+                        <span className="type-ui text-ink">{label}</span>
                         <span className="flex gap-1.5" aria-hidden>
                             {sections.map((section, i) => (
                                 <span
@@ -151,7 +151,7 @@ const Carousel: FunctionComponent<CarouselProps> = ({ sections }) => {
                                     className={`h-1.5 rounded-full transition-all duration-300 ${
                                         i === index
                                             ? 'w-4 bg-primary'
-                                            : 'w-1.5 bg-purple-medium/40'
+                                            : 'w-1.5 bg-haze/40'
                                     }`}
                                 />
                             ))}
@@ -163,7 +163,7 @@ const Carousel: FunctionComponent<CarouselProps> = ({ sections }) => {
                             aria-label="Previous section"
                             disabled={isFirst}
                             onClick={() => goTo(index - 1)}
-                            className="flex h-10 w-10 items-center justify-center rounded-full text-gray transition-colors hover:bg-primary-medium disabled:opacity-30"
+                            className="flex h-10 w-10 items-center justify-center rounded-full text-slate transition-colors hover:bg-tint disabled:opacity-30"
                         >
                             <FiChevronUp aria-hidden size={18} />
                         </button>
@@ -172,7 +172,7 @@ const Carousel: FunctionComponent<CarouselProps> = ({ sections }) => {
                             aria-label="Next section"
                             disabled={isLast}
                             onClick={() => goTo(index + 1)}
-                            className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-background transition-colors hover:bg-orange-light disabled:bg-primary/30"
+                            className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-on-primary transition-colors hover:bg-primary-hover disabled:bg-primary/30"
                         >
                             <FiChevronDown aria-hidden size={18} />
                         </button>

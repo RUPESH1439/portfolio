@@ -64,7 +64,7 @@ const ProjectDetail: FunctionComponent<ProjectDetailProps> = ({
 
     const builtWith = (
         <>
-            <h4 className="mt-5 type-label text-white">Built with</h4>
+            <h4 className="mt-5 type-label text-ink">Built with</h4>
             <ul className="mt-3 flex flex-wrap gap-2">
                 {aiTools?.map((tool) => (
                     <li key={tool} className={aiTagClasses}>
@@ -90,7 +90,7 @@ const ProjectDetail: FunctionComponent<ProjectDetailProps> = ({
             }`}
         >
             <div
-                className={`relative overflow-hidden rounded-2xl border border-purple-medium/15 bg-surface ${
+                className={`relative overflow-hidden rounded-2xl border border-haze/15 bg-surface ${
                     wideImage
                         ? 'h-56 md:h-[min(32svh,290px)]'
                         : 'h-72 md:h-[min(62svh,540px)]'
@@ -98,7 +98,7 @@ const ProjectDetail: FunctionComponent<ProjectDetailProps> = ({
             >
                 <div
                     aria-hidden
-                    className="absolute inset-x-8 bottom-0 h-1/2 rounded-full bg-indigo/40 blur-3xl"
+                    className="absolute inset-x-8 bottom-0 h-1/2 rounded-full bg-periwinkle/50 blur-3xl"
                 />
                 {img ? (
                     <div className="relative flex h-full items-center justify-center p-5 md:p-7">
@@ -111,7 +111,7 @@ const ProjectDetail: FunctionComponent<ProjectDetailProps> = ({
                                     ? '(min-width: 768px) 70vw, 90vw'
                                     : '(min-width: 768px) 40vw, 90vw'
                             }
-                            className="h-auto max-h-full w-auto max-w-full rounded-xl object-contain ring-1 ring-purple-medium/15"
+                            className="h-auto max-h-full w-auto max-w-full rounded-xl object-contain ring-1 ring-haze/15"
                         />
                     </div>
                 ) : (
@@ -119,10 +119,8 @@ const ProjectDetail: FunctionComponent<ProjectDetailProps> = ({
                         aria-hidden
                         className="absolute inset-0 flex flex-col items-center justify-center gap-2 p-8 text-center"
                     >
-                        <span className="type-title text-white/90">
-                            {title}
-                        </span>
-                        <span className="type-small text-gray/60">
+                        <span className="type-title text-ink/90">{title}</span>
+                        <span className="type-small text-muted">
                             {platform}
                         </span>
                     </div>
@@ -138,9 +136,9 @@ const ProjectDetail: FunctionComponent<ProjectDetailProps> = ({
             >
                 <div>
                     <p className="type-label text-primary">{platform}</p>
-                    <h3 className="mt-1 type-heading text-white">{title}</h3>
-                    <p className="mt-1 type-small text-gray/60">{role}</p>
-                    <p className="mt-4 max-w-[62ch] type-body text-gray/75">
+                    <h3 className="mt-1 type-heading text-ink">{title}</h3>
+                    <p className="mt-1 type-small text-muted">{role}</p>
+                    <p className="mt-4 max-w-[62ch] type-body text-slate/80">
                         {desc}
                     </p>
                     {/* Wide layouts have room under the description. */}
@@ -148,8 +146,8 @@ const ProjectDetail: FunctionComponent<ProjectDetailProps> = ({
                 </div>
 
                 <div className={wideImage ? 'md:-mt-6' : ''}>
-                    <h4 className="mt-5 type-label text-white">What I did</h4>
-                    <ul className="mt-2 flex flex-col gap-1 type-small text-gray/75">
+                    <h4 className="mt-5 type-label text-ink">What I did</h4>
+                    <ul className="mt-2 flex flex-col gap-1 type-small text-slate/80">
                         {responsibilities.map((item) => (
                             <li key={item} className="flex gap-3">
                                 <span
