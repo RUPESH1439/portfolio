@@ -7,8 +7,6 @@ interface Skill {
     values: string[];
 }
 
-interface SkillsProps {}
-
 const skillSections: SkillProps[] = [
     {
         title: 'Langugages',
@@ -143,7 +141,7 @@ const skillSections: SkillProps[] = [
     },
 ];
 
-const Skills: FunctionComponent<SkillsProps> = () => {
+const Skills: FunctionComponent = () => {
     const [selectedSkillSection, setSelectedSkillSection] =
         React.useState<SkillProps | null>(skillSections[0]);
     return (
@@ -155,10 +153,10 @@ const Skills: FunctionComponent<SkillsProps> = () => {
                             setSelectedSkillSection(section);
                         }}
                         key={section.title}
-                        className={`my-1 md:my-2 ${hoverText} text-gray text-opacity-85 ${
+                        className={`my-1 md:my-2 ${hoverText} ${
                             selectedSkillSection?.title === section.title
-                                ? 'border-b border-primary text-opacity-100 text-primary'
-                                : 'border-0'
+                                ? 'border-b border-primary text-primary'
+                                : 'border-0 text-gray/85'
                         } pb-2 md:pb-4 pr-5 ${
                             index === 0 ? 'pl-0' : ''
                         } text-sm md:text-md`}

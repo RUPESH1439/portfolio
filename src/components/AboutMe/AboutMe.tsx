@@ -1,13 +1,10 @@
 /* eslint-disable react/no-unescaped-entities */
-import Image from 'next/image';
 import { FunctionComponent } from 'react';
 import { SectionTitle } from '../SectionTitle';
 import { Skills } from '../Skills';
 import { calculateExperienceYears } from '@/utils';
 
-interface AboutMeProps {}
-
-const AboutMe: FunctionComponent<AboutMeProps> = () => {
+const AboutMe: FunctionComponent = () => {
     const workStartDate = '2019-09-01';
     const yearsOfExperience = calculateExperienceYears(workStartDate);
     return (

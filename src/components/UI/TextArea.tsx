@@ -1,8 +1,8 @@
-import { FunctionComponent, MutableRefObject } from 'react';
+import { FunctionComponent, RefObject } from 'react';
 
 interface TextAreaProps {
     label?: string;
-    _ref?: MutableRefObject<HTMLTextAreaElement | null>;
+    _ref?: RefObject<HTMLTextAreaElement | null>;
 }
 
 const TextArea: FunctionComponent<TextAreaProps> = ({ label, _ref }) => {
@@ -11,7 +11,7 @@ const TextArea: FunctionComponent<TextAreaProps> = ({ label, _ref }) => {
             {label ? <label>{label}</label> : null}
             <textarea
                 ref={_ref}
-                className="outline-0 bg-primary-medium max-w-sm text-gray py-2 h-32 max-h-32 rounded-lg px-2 hover:border-opacity-50 hover:border-[1px] focus:border-opacity-50 focus:border-primary hover:border-primary"
+                className="outline-0 bg-primary-medium max-w-sm text-gray py-2 h-32 max-h-32 rounded-lg px-2 hover:border hover:border-primary/50 focus:border-primary/50"
             ></textarea>
         </div>
     );

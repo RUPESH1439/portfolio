@@ -1,12 +1,61 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+/* Design tokens. The default palette and font stacks are replaced, not extended. */
+@theme {
+    --color-*: initial;
+    --color-primary: #ff8427;
+    --color-secondary: #42485d;
+    --color-background: #080010;
+    --color-blue: #1fb6ff;
+    --color-purple: #7e5bef;
+    --color-purple-light: #3a3253;
+    --color-purple-medium: rgb(160, 160, 255);
+    --color-primary-medium: rgba(160, 160, 255, 0.08);
+    --color-pink: #ff49db;
+    --color-orange-light: #ff7700;
+    --color-orange-dark: #e04d01;
+    --color-white: #eeeeee;
+    --color-blue-light: #2a2550;
+    --color-blue-dark: #251d3a;
+    --color-green: #13ce66;
+    --color-yellow: #ffc82c;
+    --color-gray-dark: #273444;
+    --color-gray: #ccd6f6;
+    --color-gray-light: #d3dce6;
+
+    --font-*: initial;
+    --font-sans: Graphik, sans-serif;
+    --font-serif: Merriweather, serif;
+}
+
+@utility scrollbar-hide {
+    /* IE and Edge */
+    -ms-overflow-style: none;
+    /* Firefox */
+    scrollbar-width: none;
+    /* Safari and Chrome */
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+/* Tailwind v4 defaults borders to currentcolor; keep that explicit. */
+@layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: currentcolor;
+    }
+}
 
 body::-webkit-scrollbar {
     display: none;
 }
+
 body {
-    background-color: #080010;
+    background-color: var(--color-background);
 }
 
 .bg-blue-gradient {

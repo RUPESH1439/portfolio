@@ -23,7 +23,7 @@ const NavMenu: FunctionComponent<NavMenuProps> = ({
     handleClose,
     openMenu,
 }) => {
-    const [localOpenMenu, setLocalOpenMenu] = useState(openMenu);
+    const [localOpenMenu] = useState(openMenu);
     const styles = useSpring({
         from: {
             x: localOpenMenu ? 100 : 1,
@@ -45,7 +45,7 @@ const NavMenu: FunctionComponent<NavMenuProps> = ({
         <>
             <BackDrop />
             <animated.div
-                className="px-8 md:px-20 pt-[100%] md:pt-24 absolute right-0 w-[100%] md:w-[25%] h-screen bg-background z-50 rounded-l-3xl  bg-gradient-to-r from-blue-500"
+                className="px-8 md:px-20 pt-[100%] md:pt-24 absolute right-0 w-full md:w-[25%] h-screen bg-background z-50 rounded-l-3xl  bg-linear-to-r from-blue-500"
                 style={styles}
             >
                 <button

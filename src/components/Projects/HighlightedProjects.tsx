@@ -5,7 +5,7 @@ import HighlightedProjectCard, {
 } from './HighlightedProjectCard';
 
 interface HighlightedProjectsProps {
-    _ref?: RefObject<HTMLDivElement>;
+    _ref?: RefObject<HTMLDivElement | null>;
 }
 
 const projects: HighlightedProjectCardProps[] = [
@@ -179,36 +179,11 @@ const HighlightedProjects: FunctionComponent<HighlightedProjectsProps> = ({
                 ref={_ref}
                 className="flex flex-1 flex-col overflow-y-auto scrollbar-hide mt-5 gap-8"
             >
-                {projects.map(
-                    (
-                        {
-                            title,
-                            desc,
-                            demoUrl,
-                            githubUrl,
-                            skills,
-                            functionalites,
-                            responsibilities,
-                            img,
-                            height,
-                        },
-                        index,
-                    ) => (
-                        <div className="" key={title}>
-                            <HighlightedProjectCard
-                                title={title}
-                                img={img}
-                                desc={desc}
-                                githubUrl={githubUrl}
-                                demoUrl={demoUrl}
-                                skills={skills}
-                                functionalites={functionalites}
-                                responsibilities={responsibilities}
-                                height={height}
-                            />
-                        </div>
-                    ),
-                )}
+                {projects.map((project) => (
+                    <div key={project.title}>
+                        <HighlightedProjectCard {...project} />
+                    </div>
+                ))}
             </div>
             {/* </div> */}
         </div>

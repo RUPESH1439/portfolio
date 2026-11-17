@@ -3,22 +3,13 @@ import TextArea from '../UI/TextArea';
 import TextInput from '../UI/TextInput';
 import emailjs from '@emailjs/browser';
 
-interface ContactMeProps {}
-
-const isInvalidString = (str?: string) => (str ?? '')?.length < 1;
-const ContactMe: FunctionComponent<ContactMeProps> = () => {
+const ContactMe: FunctionComponent = () => {
     const nameRef = useRef<HTMLInputElement | null>(null);
     const emailRef = useRef<HTMLInputElement | null>(null);
     const messageRef = useRef<HTMLTextAreaElement | null>(null);
     const [loading, setLoading] = useState(false);
 
     const sendMessage = async () => {
-        const {
-            NEXT_PUBLIC_EMAIL_SERVICE_ID,
-            NEXT_PUBLIC_EMAIL_TEMPLATE_ID,
-            NEXT_PUBLIC_EMAIL_KEY,
-        } = process.env;
-
         try {
             setLoading(true);
             const from_email = emailRef?.current?.value;
@@ -47,8 +38,8 @@ const ContactMe: FunctionComponent<ContactMeProps> = () => {
                 {"Let's "}
                 <span className="text-primary">talk</span>
             </div>
-            <div className="w-[100%] md:w-[40%] mb-10">
-                <span className="text-gray text-opacity-70 text-sm">
+            <div className="w-full md:w-[40%] mb-10">
+                <span className="text-gray/70 text-sm">
                     To request a quote or want to meet up for coffee, contact me
                     directly or fill out the form and I will get back to you
                     soon.
@@ -60,7 +51,7 @@ const ContactMe: FunctionComponent<ContactMeProps> = () => {
                 <TextArea label="Your Message" _ref={messageRef} />
             </div>
             <button
-                className={`bg-primary max-w-[140px] mt-6 py-1.5 rounded-lg text-background hover:bg-opacity-80 text-xs font-medium `}
+                className={`bg-primary max-w-[140px] mt-6 py-1.5 rounded-lg text-background hover:bg-primary/80 text-xs font-medium `}
                 onClick={sendMessage}
                 disabled={loading}
             >

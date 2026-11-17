@@ -1,5 +1,7 @@
 import {
+    ComponentType,
     FunctionComponent,
+    RefObject,
     useState,
     useEffect,
     useRef,
@@ -11,7 +13,7 @@ import useOnWheel from '@/hooks/useOnWheel';
 interface CarouselProps {
     sections: {
         key: string;
-        Component: FunctionComponent<any>;
+        Component: ComponentType<{ _ref?: RefObject<HTMLDivElement | null> }>;
         forwardRef?: boolean;
     }[];
 }

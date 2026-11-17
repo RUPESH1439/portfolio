@@ -50,7 +50,7 @@ const NavMenuSection: FunctionComponent<NavMenuSectionProps> = ({
         >
             {showLeftBar ? (
                 <animated.div
-                    className="border border-2 rounded border-orange-light"
+                    className="border border-2 rounded-sm border-orange-light"
                     style={styleDot}
                 ></animated.div>
             ) : null}

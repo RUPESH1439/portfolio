@@ -1,19 +1,16 @@
 import { FunctionComponent, useState } from 'react';
 import NavBarSection from './NavBarSection';
-import { RxHamburgerMenu, RxCross1 } from 'react-icons/rx';
+import { RxHamburgerMenu } from 'react-icons/rx';
 import { HiOutlineMenuAlt1 } from 'react-icons/hi';
 import NavMenu from './NavMenu';
-import { Button } from '../UI';
 import { hoverText } from '@/cssClasses';
-
-interface NavBarProps {}
 
 const navBarSections = [
     { key: 'projects', section: 'PROJECTS', routePath: 'projects' },
     // { key: 'contact-me', section: 'EXPERIENCE', routePath: '#contact-me' },
 ];
 
-const NavBar: FunctionComponent<NavBarProps> = () => {
+const NavBar: FunctionComponent = () => {
     const [hoverMenu, setHoverMenu] = useState(false);
 
     const [openMenu, setOpenMenu] = useState(false);
@@ -39,7 +36,7 @@ const NavBar: FunctionComponent<NavBarProps> = () => {
                     ))}
                 </div>
                 <a
-                    className={`rounded-md px-4 py-2 border-gray border hover:bg-secondary hover:bg-opacity-30 text-gray border-primary text-primary ${hoverText} text-sm md:text-md`}
+                    className={`rounded-md px-4 py-2 border-gray border hover:bg-secondary/30 text-gray border-primary text-primary ${hoverText} text-sm md:text-md`}
                     href="/Resume.pdf"
                     download
                 >

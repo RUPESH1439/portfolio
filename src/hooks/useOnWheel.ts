@@ -1,36 +1,37 @@
-import {
-    MutableRefObject,
-    useCallback,
-    useEffect,
-    useLayoutEffect,
-    useState,
-    useRef,
-} from 'react';
+import { RefObject, useCallback, useEffect, useRef } from 'react';
 
+/**
+ * Calls `onWheelUp` / `onWheelDown` (debounced by 200ms) when the user scrolls
+ * the mouse wheel, unless the content inside `ref` is tall enough to scroll on
+ * its own and the pointer is still within it.
+ */
 export default function useOnWheel(
-    ref: MutableRefObject<HTMLDivElement | null>,
+    ref: RefObject<HTMLDivElement | null>,
     onWheelUp: () => void,
     onWheelDown: () => void,
 ) {
-    let timeoutId = useRef<string | number | NodeJS.Timeout | undefined>();
-
-    const [scrollable, setScrollable] = useState(false);
+    const timeoutId = useRef<ReturnType<typeof setTimeout> | undefined>(
+        undefined,
+    );
 
     const onWheel = useCallback(
         (event: WheelEvent) => {
             clearTimeout(timeoutId.current);
+
+            const element = ref.current;
+            const scrollable =
+                !!element && element.scrollHeight >= window.innerHeight;
+
             if (
                 scrollable &&
                 event.pageY > 600 &&
-                event.pageY <
-                    (ref?.current?.scrollHeight ?? Number.MAX_VALUE) - 150
+                event.pageY < element.scrollHeight - 150
             ) {
                 return;
             }
             if (
                 scrollable &&
-                ref?.current &&
-                ref?.current?.scrollHeight > window.innerHeight &&
+                element.scrollHeight > window.innerHeight &&
                 window.scrollY > 0 &&
                 window.scrollY < window.innerHeight + 20
             ) {
@@ -42,28 +43,16 @@ export default function useOnWheel(
                 } else if (event.deltaY > 0) {
                     onWheelUp();
                 }
-                // window.scrollTo({ top: 0 });
             }, 200);
         },
-        [onWheelDown, onWheelUp, scrollable, ref],
+        [onWheelDown, onWheelUp, ref],
     );
-
-    useLayoutEffect(() => {
-        if (!ref.current) return;
-
-        if (ref.current.scrollHeight >= window.innerHeight) {
-            setScrollable(true);
-        } else {
-            if (scrollable) {
-                setScrollable(false);
-            }
-        }
-    }, [ref, ref?.current?.scrollHeight, scrollable]);
 
     useEffect(() => {
         window.addEventListener('wheel', onWheel);
         return () => {
             window.removeEventListener('wheel', onWheel);
+            clearTimeout(timeoutId.current);
         };
-    }, [onWheel, scrollable]);
+    }, [onWheel]);
 }

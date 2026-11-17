@@ -86,7 +86,7 @@ const Button: FunctionComponent<ButtonProps> = ({
             {variant === 'none' ? (
                 <animated.div
                     style={styleBorder}
-                    className="h-[1px] opacity-40 bg-primary mt-2"
+                    className="h-px opacity-40 bg-primary mt-2"
                 ></animated.div>
             ) : null}
         </button>

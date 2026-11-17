@@ -2,10 +2,7 @@ import { FunctionComponent } from 'react';
 import { MdOutlineNavigateNext } from 'react-icons/md';
 import Link from '../UI/Link';
 import { FiExternalLink, FiGithub } from 'react-icons/fi';
-import Image, { StaticImageData } from 'next/image';
-import { hoverText } from '@/cssClasses';
-import { Button } from '../UI';
-import { HiArrowLongRight } from 'react-icons/hi2';
+import Image from 'next/image';
 
 export interface HighlightedProjectCardProps {
     githubUrl?: string;
@@ -28,13 +25,12 @@ const HighlightedProjectCard: FunctionComponent<
     desc,
     skills,
     img,
-    functionalites,
     responsibilities,
     height,
 }) => {
     return (
         <Link link={demoUrl ?? githubUrl ?? '#'}>
-            <div className="flex flex-1 flex-col md:flex-row justify-between border border-primary rounded-2xl border-opacity-40 bg-gradient-to-b from-[#1c1a1f] to-[#28263B] px-4 md:pl-12">
+            <div className="flex flex-1 flex-col md:flex-row justify-between border border-primary/40 rounded-2xl bg-linear-to-b from-[#1c1a1f] to-[#28263B] px-4 md:pl-12">
                 <div className="flex flex-[100%] md:flex-[40%] flex-col py-2 md:py-8">
                     <div>
                         <div className="text-lg md:text-2xl text-white">
@@ -42,7 +38,7 @@ const HighlightedProjectCard: FunctionComponent<
                         </div>
                     </div>
                     <div>
-                        <div className="text-xs md:text-sm text-gray text-opacity-70 mt-2 md:mt-5 mb-4 ">
+                        <div className="text-xs md:text-sm text-gray/70 mt-2 md:mt-5 mb-4 ">
                             {desc}
                         </div>
 
@@ -54,7 +50,7 @@ const HighlightedProjectCard: FunctionComponent<
                                 {responsibilities?.map((responsibility) => (
                                     <div
                                         key={responsibility}
-                                        className="flex flex-row items-center gap-1 text-xs md:text-sm text-gray text-opacity-70"
+                                        className="flex flex-row items-center gap-1 text-xs md:text-sm text-gray/70"
                                     >
                                         <MdOutlineNavigateNext className="text-gray" />
                                         {responsibility}
@@ -70,7 +66,7 @@ const HighlightedProjectCard: FunctionComponent<
                                 {skills?.map((skill) => {
                                     return (
                                         <div
-                                            className="text-xs md:text-sm text-gray text-opacity-60 border border-gray rounded-3xl px-2 md:px-3 py-0.5 md:py-1"
+                                            className="text-xs md:text-sm text-gray/60 border border-gray rounded-3xl px-2 md:px-3 py-0.5 md:py-1"
                                             key={skill}
                                         >
                                             {skill}
@@ -93,11 +89,6 @@ const HighlightedProjectCard: FunctionComponent<
                                             <FiGithub />
                                         </button>
                                         <div className="border border-[0.5px] opacity-50 mt-1 "></div>
-                                        <a
-                                            href={githubUrl}
-                                            target="_blank"
-                                            rel="noreferrer"
-                                        ></a>
                                     </div>
                                 ) : null}
                                 {demoUrl ? (
@@ -113,11 +104,6 @@ const HighlightedProjectCard: FunctionComponent<
                                             <FiExternalLink />
                                         </button>
                                         <div className="border border-[0.5px] opacity-50 mt-1 "></div>
-                                        <a
-                                            href={githubUrl}
-                                            target="_blank"
-                                            rel="noreferrer"
-                                        ></a>
                                     </div>
                                 ) : null}
                             </div>

@@ -1,4 +1,4 @@
-import { HighlightedProjects, Projects } from '@/components';
+import { HighlightedProjects } from '@/components';
 
 export default function ProjectsPage() {
     return (

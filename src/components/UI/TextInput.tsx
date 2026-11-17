@@ -1,9 +1,9 @@
-import { FunctionComponent, MutableRefObject } from 'react';
+import { FunctionComponent, RefObject } from 'react';
 
 interface TextInputProps {
     label?: string;
     type?: string;
-    _ref?: MutableRefObject<HTMLInputElement | null>;
+    _ref?: RefObject<HTMLInputElement | null>;
 }
 
 const TextInput: FunctionComponent<TextInputProps> = ({
@@ -17,7 +17,7 @@ const TextInput: FunctionComponent<TextInputProps> = ({
             <input
                 type={type ?? 'text'}
                 ref={_ref}
-                className="outline-0 text-sm bg-primary-medium font-normal max-w-sm h-10 rounded-lg px-2 text-gray hover:border-opacity-50 hover:border-[1px] focus:border-opacity-50 focus:border-primary hover:border-primary"
+                className="outline-0 text-sm bg-primary-medium font-normal max-w-sm h-10 rounded-lg px-2 text-gray hover:border hover:border-primary/50 focus:border-primary/50"
             ></input>
         </div>
     );

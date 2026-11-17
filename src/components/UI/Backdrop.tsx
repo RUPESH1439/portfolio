@@ -1,10 +1,8 @@
 import { FunctionComponent } from 'react';
 
-interface BackDropProps {}
-
-const BackDrop: FunctionComponent<BackDropProps> = () => {
+const BackDrop: FunctionComponent = () => {
     return (
-        <div className="absolute left-0 w-screen h-screen backdrop-blur-sm z-20" />
+        <div className="absolute left-0 w-screen h-screen backdrop-blur-xs z-20" />
     );
 };
 

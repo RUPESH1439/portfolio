@@ -1,10 +1,9 @@
 import { FunctionComponent, RefObject } from 'react';
 import { SectionTitle } from '../SectionTitle';
-import { PrimaryText, SecondaryText } from '../UI';
 import ProjectCard, { ProjectCardProps } from './ProjectCard';
 
 interface ProjectsProps {
-    _ref?: RefObject<HTMLDivElement>;
+    _ref?: RefObject<HTMLDivElement | null>;
 }
 
 const projects: ProjectCardProps[] = [

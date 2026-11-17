@@ -1,11 +1,9 @@
 import { hoverText, hoverTranslate } from '@/cssClasses';
 import { FunctionComponent } from 'react';
-import { FiGithub, FiLinkedin, FiInstagram } from 'react-icons/fi';
+import { FiGithub, FiLinkedin } from 'react-icons/fi';
 import { AiOutlineMail } from 'react-icons/ai';
 import { SiToptal } from 'react-icons/si';
 import Link from '../UI/Link';
-
-interface SocialMediaLinksProps {}
 
 const links = [
     { key: 'gmail', link: 'test', Icon: AiOutlineMail },
@@ -26,7 +24,7 @@ const links = [
     },
 ];
 
-const SocialMediaLinks: FunctionComponent<SocialMediaLinksProps> = () => {
+const SocialMediaLinks: FunctionComponent = () => {
     return (
         <div className="flex flex-col items-center justify-center">
             <div className="flex flex-col my-8 gap-8">
