@@ -2,13 +2,14 @@ import { FunctionComponent } from 'react';
 
 interface SectionTitleProps {
     title: string;
+    id?: string;
 }
 
-const SectionTitle: FunctionComponent<SectionTitleProps> = ({ title }) => {
+const SectionTitle: FunctionComponent<SectionTitleProps> = ({ title, id }) => {
     return (
-        <div className="text-2xl md:text-3xl font-bold text-primary font-light">
+        <h2 id={id} className="type-title text-white">
             {title}
-        </div>
+        </h2>
     );
 };
 

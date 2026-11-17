@@ -1,24 +1,38 @@
-import { FunctionComponent, RefObject } from 'react';
+import { FunctionComponent, InputHTMLAttributes } from 'react';
+import { fieldClasses } from './fieldClasses';
 
-interface TextInputProps {
-    label?: string;
-    type?: string;
-    _ref?: RefObject<HTMLInputElement | null>;
+interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {
+    id: string;
+    label: string;
+    error?: string;
 }
 
 const TextInput: FunctionComponent<TextInputProps> = ({
+    id,
     label,
-    type,
-    _ref,
+    error,
+    type = 'text',
+    ...rest
 }) => {
+    const errorId = `${id}-error`;
     return (
-        <div className="flex flex-1 flex-col gap-2 text-sm font-medium text-gray">
-            {label ? <label>{label}</label> : null}
+        <div className="flex flex-col gap-2">
+            <label htmlFor={id} className="type-label text-gray">
+                {label}
+            </label>
             <input
-                type={type ?? 'text'}
-                ref={_ref}
-                className="outline-0 text-sm bg-primary-medium font-normal max-w-sm h-10 rounded-lg px-2 text-gray hover:border hover:border-primary/50 focus:border-primary/50"
-            ></input>
+                id={id}
+                type={type}
+                aria-invalid={error ? true : undefined}
+                aria-describedby={error ? errorId : undefined}
+                className={`h-12 ${fieldClasses}`}
+                {...rest}
+            />
+            {error ? (
+                <p id={errorId} className="type-caption text-red">
+                    {error}
+                </p>
+            ) : null}
         </div>
     );
 };

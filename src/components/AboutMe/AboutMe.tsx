@@ -1,40 +1,52 @@
-/* eslint-disable react/no-unescaped-entities */
 import { FunctionComponent } from 'react';
 import { SectionTitle } from '../SectionTitle';
 import { Skills } from '../Skills';
 import { calculateExperienceYears } from '@/utils';
 
-const AboutMe: FunctionComponent = () => {
-    const workStartDate = '2019-09-01';
-    const yearsOfExperience = calculateExperienceYears(workStartDate);
-    return (
-        <div className="flex flex-1 flex-col">
-            <div className="mt-10 lg:mt-0">
-                <SectionTitle title="About Me" />
-            </div>
+const workStartDate = '2019-09-01';
 
-            <div className="flex flex-row">
-                <div className="w-full pr-12 lg:w-3/4 mt-4 md:mt-10">
-                    <div className="text-sm md:text-base text-gray opacity-90">
-                        Hi!
-                        <br /> My name is Rupesh Shrestha. I'm a highly skilled
-                        full-stack software engineer with over{' '}
-                        {yearsOfExperience} years of experience architecting and
-                        developing robust and scalable web and mobile
-                        applications.
-                        <br /> <br /> I have a track record of success in a wide
-                        range of projects, including Gocchii and ReAlpha. And,
-                        I'm well-versed in a variety of programming languages
-                        and tools, including TypeScript, Node.js, Ruby, React,
-                        React Native, Next.js, and Redux. I'm able to take full
-                        ownership of delivering a project from start to finish.
-                    </div>
-                    <div className="mt-12">
-                        <Skills />
-                    </div>
+const AboutMe: FunctionComponent = () => {
+    // Whole years only, so the prerendered text rarely differs from the client's.
+    const yearsOfExperience = Math.floor(
+        calculateExperienceYears(workStartDate),
+    );
+
+    return (
+        <section
+            aria-labelledby="about-title"
+            className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16"
+        >
+            <div className="lg:col-span-5">
+                <SectionTitle id="about-title" title="About me" />
+                <p className="mt-6 type-lede text-gray">
+                    I’m an AI-enabled full-stack engineer with over{' '}
+                    {yearsOfExperience} years of experience building web and
+                    mobile apps.
+                </p>
+                <div className="mt-5 flex max-w-[60ch] flex-col gap-4 type-body text-gray/75">
+                    <p>
+                        AI is part of how I work every day. I use coding agents
+                        like Claude Code and Cursor to plan, build, review and
+                        ship faster, while I stay accountable for the
+                        architecture and code quality. I also build AI into
+                        products with the Claude and OpenAI APIs.
+                    </p>
+                    <p>
+                        I own delivery from first requirements to store
+                        releases, and I’ve led teams on products like Hohm
+                        Energy, ReAlpha and ScoutX. My core stack is TypeScript,
+                        React, React Native, Next.js and Node.js.
+                    </p>
                 </div>
             </div>
-        </div>
+
+            <div className="lg:col-span-7 lg:pt-2">
+                <h3 className="type-heading text-white">Skills and tools</h3>
+                <div className="mt-5">
+                    <Skills />
+                </div>
+            </div>
+        </section>
     );
 };
 

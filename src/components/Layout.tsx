@@ -1,4 +1,5 @@
 import { NavBar } from '@/components/NavBar';
+import { SocialMediaLinks } from '@/components/SocialMediaLinks';
 
 export default function RootLayout({
     children,
@@ -6,13 +7,18 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <div
-            className="flex flex-1 flex-col bg-background w-full h-full min-h-screen"
-            style={{ scrollBehavior: 'smooth' }}
-        >
-            <div className="h-[300px] lg:h-[200px] w-[300px] md:w-[700px] blur-[250px] md:blur-[400px] bg-blue-gradient rounded-full absolute top-[-12px] left-[25vw]" />
+        <div className="relative flex min-h-svh w-full flex-col overflow-x-clip bg-background text-gray">
+            <div
+                aria-hidden
+                className="pointer-events-none absolute top-[-120px] left-1/2 h-[260px] w-[320px] -translate-x-1/2 rounded-full bg-blue-gradient opacity-60 blur-[140px] md:h-[240px] md:w-[760px] md:blur-[220px]"
+            />
             <NavBar />
-            <div className="2xl:px-[8%]">{children}</div>
+            <main className="relative z-5 flex flex-1 flex-col overflow-clip">
+                {children}
+            </main>
+            <div className="fixed right-6 bottom-0 z-10 hidden lg:block 2xl:right-12">
+                <SocialMediaLinks variant="rail" />
+            </div>
         </div>
     );
 }

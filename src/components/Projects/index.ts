@@ -1,6 +1,6 @@
 import Projects from './Projects';
 import ProjectCard from './ProjectCard';
-import HighlightedProjectCard from './HighlightedProjectCard';
+import ProjectDetail from './ProjectDetail';
 import HighlightedProjects from './HighlightedProjects';
 
-export { Projects, ProjectCard, HighlightedProjectCard, HighlightedProjects };
+export { Projects, ProjectCard, ProjectDetail, HighlightedProjects };

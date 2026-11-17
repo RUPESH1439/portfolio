@@ -1,180 +1,192 @@
-import { hoverText } from '@/cssClasses';
-import React, { FunctionComponent } from 'react';
+import { FunctionComponent, KeyboardEvent, useRef, useState } from 'react';
 import Skill, { SkillProps } from './Skill';
-
-interface Skill {
-    title: string;
-    values: string[];
-}
 
 const skillSections: SkillProps[] = [
     {
-        title: 'Langugages',
+        title: 'AI',
+        skills: [
+            'Claude Code',
+            'Cursor',
+            'Agentic coding',
+            'AI-assisted development',
+            'Claude API',
+            'OpenAI',
+            'LLM integration',
+            'AI agents',
+            'Prompt engineering',
+        ],
+    },
+    {
+        title: 'Languages',
         skills: [
             'TypeScript',
+            'JavaScript (ES6+)',
             'HTML5',
-            'JavaScript',
-            'Python 3',
             'CSS3',
             'Sass',
-            'CSS',
-            'HTML',
             'Python',
-            'SQL',
-            'ECMAScript (ES6)',
             'Ruby',
+            'SQL',
             'GraphQL',
-            'Snowflake',
         ],
     },
     {
         title: 'Frameworks',
         skills: [
             'React Native',
-            'Tailwind CSS',
-            'Redux',
-            'MUI (Material UI)',
             'Next.js',
-            'Bootstrap',
-            'Ruby on Rails (RoR)',
-            'Ruby on Rails 5',
-            'Jest',
+            'Ruby on Rails',
             'NestJS',
+            'Redux',
+            'Tailwind CSS',
+            'MUI (Material UI)',
+            'Bootstrap',
+            'Jest',
         ],
     },
     {
-        title: 'Libraries/API',
+        title: 'Libraries & APIs',
         skills: [
             'React',
-            'MobX',
             'Node.js',
-            'React Redux',
+            'MobX',
+            'Redux-Saga',
+            'React Navigation',
             'REST APIs',
-            'Chart.js',
             'Ruby on Rails API',
             'AWS Amplify',
-            'Redux-Saga',
-            'WordPress REST API',
-            'Stripe',
             'Stripe API',
             'Google Maps SDK',
-            'WordPress API',
-            'React Navigation',
-            'Google Maps',
+            'Mapbox SDK',
+            'WordPress REST API',
+            'Chart.js',
+            'Axios',
             'SQLAlchemy',
         ],
     },
     {
         title: 'Tools',
         skills: [
-            'OneSignal',
             'Expo',
-            'Postman',
-            'WebStorm',
-            'Amazon Cognito',
-            'Figma',
-            'Slack',
             'Fastlane',
-            'Apple Push Notifications',
-            'Azure Active Directory B2C (ADB2C)',
             'Xcode',
+            'OneSignal',
+            'Apple Push Notifications',
+            'Amazon Cognito',
+            'Azure AD B2C',
             'AWS CLI',
+            'Postman',
+            'Figma',
+            'WebStorm',
+            'Slack',
         ],
     },
     {
         title: 'Storage',
         skills: [
-            'Databases',
             'PostgreSQL',
             'MySQL',
-            'Database Modeling',
-            'Amazon S3 (AWS S3)',
             'MongoDB',
+            'Snowflake',
+            'Amazon S3',
+            'Database modeling',
         ],
     },
     {
-        title: 'Others',
+        title: 'Other',
         skills: [
-            '(SDLC)',
-            'Web Programming',
-            'Mapbox SDK',
-            'CSS5',
-            'Axios',
-            'APIs',
-            'Full-stack',
-            'XSS Protection',
-            'DOM',
-            'API Integration',
-            'Design Systems',
-            'User Interface (UI)',
-            'User Experience (UX)',
-            'Front-end',
-            'JavaScript Libraries',
-            'Algorithms',
-            'Scalability',
-            'Calendars',
-            'UI Components',
-            'Web Components',
-            'Charts',
-            'Front-end Development',
-            'UI Testing',
-            'Software Engineering',
-            'Data Visualization',
-            'Mobile Apps',
-            'Marketplaces',
-            'Full-stack Development',
-            'Web Development',
-            'Task Automation',
-            'Automation Scripting',
+            'Full-stack development',
+            'Mobile apps',
+            'Front-end development',
+            'Back-end development',
+            'API integration',
+            'Design systems',
+            'UI components',
+            'Web components',
+            'UI testing',
+            'Data visualization',
             'Payment APIs',
-            'Back-end',
-            'SaaS',
-            'Cloud',
-            'Chakra UI',
-            'Styled-components',
-            'Discord',
-            'Amplitude',
-            'Leadership',
             'Apple Pay',
             'Google Pay',
+            'Marketplaces',
+            'SaaS',
+            'Cloud',
+            'Scalability',
+            'XSS protection',
+            'Task automation',
+            'Styled-components',
+            'Chakra UI',
+            'Amplitude',
+            'Algorithms',
+            'SDLC',
+            'Leadership',
         ],
     },
 ];
 
 const Skills: FunctionComponent = () => {
-    const [selectedSkillSection, setSelectedSkillSection] =
-        React.useState<SkillProps | null>(skillSections[0]);
+    const [selectedIndex, setSelectedIndex] = useState(0);
+    const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+    const selected = skillSections[selectedIndex];
+
+    const onKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+        const step =
+            event.key === 'ArrowRight' ? 1 : event.key === 'ArrowLeft' ? -1 : 0;
+        if (!step) return;
+        event.preventDefault();
+        const next =
+            (selectedIndex + step + skillSections.length) %
+            skillSections.length;
+        setSelectedIndex(next);
+        tabRefs.current[next]?.focus();
+    };
+
     return (
         <div className="flex flex-col">
-            <div className="mb-5 flex flex-row flex-wrap border-b-0 pl-0 scrollbar-hide">
-                {skillSections.map((section, index) => (
-                    <button
-                        onClick={() => {
-                            setSelectedSkillSection(section);
-                        }}
-                        key={section.title}
-                        className={`my-1 md:my-2 ${hoverText} ${
-                            selectedSkillSection?.title === section.title
-                                ? 'border-b border-primary text-primary'
-                                : 'border-0 text-gray/85'
-                        } pb-2 md:pb-4 pr-5 ${
-                            index === 0 ? 'pl-0' : ''
-                        } text-sm md:text-md`}
-                    >
-                        {section.title}
-                    </button>
-                ))}
+            <div
+                role="tablist"
+                aria-label="Skill groups"
+                onKeyDown={onKeyDown}
+                className="flex flex-wrap gap-x-1 gap-y-2 border-b border-purple-medium/15"
+            >
+                {skillSections.map((section, index) => {
+                    const isSelected = index === selectedIndex;
+                    return (
+                        <button
+                            key={section.title}
+                            ref={(el) => {
+                                tabRefs.current[index] = el;
+                            }}
+                            type="button"
+                            role="tab"
+                            id={`skills-tab-${index}`}
+                            aria-selected={isSelected}
+                            aria-controls="skills-panel"
+                            tabIndex={isSelected ? 0 : -1}
+                            onClick={() => setSelectedIndex(index)}
+                            className={`-mb-px border-b-2 px-3 pt-1 pb-3 type-ui transition-colors first:pl-0 ${
+                                isSelected
+                                    ? 'border-primary text-primary'
+                                    : 'border-transparent text-gray/65 hover:text-white'
+                            }`}
+                        >
+                            {section.title}
+                        </button>
+                    );
+                })}
             </div>
-            <div>
-                {selectedSkillSection ? (
-                    <Skill
-                        title={selectedSkillSection.title}
-                        skills={selectedSkillSection.skills}
-                    />
-                ) : null}
+            <div
+                id="skills-panel"
+                role="tabpanel"
+                aria-labelledby={`skills-tab-${selectedIndex}`}
+                className="pt-6"
+            >
+                <Skill
+                    key={selected.title}
+                    title={selected.title}
+                    skills={selected.skills}
+                />
             </div>
-
-            <div className="mb-6"></div>
         </div>
     );
 };

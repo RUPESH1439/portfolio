@@ -1,63 +1,182 @@
-import { FunctionComponent, useRef, useState } from 'react';
+import { ChangeEvent, FormEvent, FunctionComponent, useState } from 'react';
+import emailjs from '@emailjs/browser';
+import { FiCheckCircle, FiAlertCircle } from 'react-icons/fi';
 import TextArea from '../UI/TextArea';
 import TextInput from '../UI/TextInput';
-import emailjs from '@emailjs/browser';
+import { Button } from '../UI';
+import { SectionTitle } from '../SectionTitle';
+import SocialMediaLinks from '../SocialMediaLinks/SocialMediaLinks';
+
+type Field = 'name' | 'email' | 'message';
+type Values = Record<Field, string>;
+type Errors = Partial<Record<Field, string>>;
+type Status =
+    | { kind: 'idle' }
+    | { kind: 'sending' }
+    | { kind: 'sent'; email: string }
+    | { kind: 'failed' };
+
+const emptyValues: Values = { name: '', email: '', message: '' };
+const fieldOrder: Field[] = ['name', 'email', 'message'];
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const validateField = (field: Field, value: string): string | undefined => {
+    const trimmed = value.trim();
+    switch (field) {
+        case 'name':
+            return trimmed ? undefined : 'Enter your name.';
+        case 'email':
+            if (!trimmed) return 'Enter your email address.';
+            return emailPattern.test(trimmed)
+                ? undefined
+                : 'Enter an email address like name@example.com.';
+        case 'message':
+            return trimmed ? undefined : 'Write a message.';
+    }
+};
+
+const validate = (values: Values): Errors => {
+    const errors: Errors = {};
+    for (const field of fieldOrder) {
+        const error = validateField(field, values[field]);
+        if (error) errors[field] = error;
+    }
+    return errors;
+};
 
 const ContactMe: FunctionComponent = () => {
-    const nameRef = useRef<HTMLInputElement | null>(null);
-    const emailRef = useRef<HTMLInputElement | null>(null);
-    const messageRef = useRef<HTMLTextAreaElement | null>(null);
-    const [loading, setLoading] = useState(false);
+    const [values, setValues] = useState<Values>(emptyValues);
+    const [errors, setErrors] = useState<Errors>({});
+    const [status, setStatus] = useState<Status>({ kind: 'idle' });
+    const sending = status.kind === 'sending';
 
-    const sendMessage = async () => {
+    const onChange =
+        (field: Field) =>
+        (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+            const { value } = event.target;
+            setValues((prev) => ({ ...prev, [field]: value }));
+            // Once a field has an error, clear it as soon as it's fixed.
+            if (errors[field]) {
+                setErrors((prev) => ({
+                    ...prev,
+                    [field]: validateField(field, value),
+                }));
+            }
+        };
+
+    const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        const nextErrors = validate(values);
+        setErrors(nextErrors);
+        const firstInvalid = fieldOrder.find((field) => nextErrors[field]);
+        if (firstInvalid) {
+            document.getElementById(`contact-${firstInvalid}`)?.focus();
+            return;
+        }
+
+        setStatus({ kind: 'sending' });
         try {
-            setLoading(true);
-            const from_email = emailRef?.current?.value;
-            const from_name = nameRef?.current?.value;
-            const message = messageRef?.current?.value;
             await emailjs.send(
                 'service_y8arfp9',
                 'template_tkgx2mk',
                 {
-                    from_email,
-                    from_name,
-                    message,
+                    from_email: values.email.trim(),
+                    from_name: values.name.trim(),
+                    message: values.message.trim(),
                 },
                 'sBnNJI9IfkMv-7al6',
             );
+            setStatus({ kind: 'sent', email: values.email.trim() });
+            setValues(emptyValues);
         } catch (err) {
-            console.log('err', err);
-        } finally {
-            setLoading(false);
+            console.error('Contact form failed to send', err);
+            setStatus({ kind: 'failed' });
         }
     };
 
     return (
-        <div className="flex flex-1 flex-col px-8 overflow-y-hidden">
-            <div className="mb-5 font-semibold text-2xl text-gray">
-                {"Let's "}
-                <span className="text-primary">talk</span>
+        <section
+            aria-labelledby="contact-title"
+            className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16"
+        >
+            <div className="lg:col-span-5">
+                <SectionTitle id="contact-title" title="Let’s work together" />
+                <p className="mt-6 max-w-[44ch] type-lede text-gray">
+                    Have a project in mind, or want to talk about a role? Send
+                    me a message and I’ll get back to you soon.
+                </p>
+                <div className="mt-10">
+                    <p className="mb-4 type-small text-gray/60">
+                        You can also find me on
+                    </p>
+                    <SocialMediaLinks variant="list" />
+                </div>
             </div>
-            <div className="w-full md:w-[40%] mb-10">
-                <span className="text-gray/70 text-sm">
-                    To request a quote or want to meet up for coffee, contact me
-                    directly or fill out the form and I will get back to you
-                    soon.
-                </span>
-            </div>
-            <div className="flex flex-col gap-3">
-                <TextInput label="Your Name" _ref={nameRef} />
-                <TextInput label="Your Email" type="email" _ref={emailRef} />
-                <TextArea label="Your Message" _ref={messageRef} />
-            </div>
-            <button
-                className={`bg-primary max-w-[140px] mt-6 py-1.5 rounded-lg text-background hover:bg-primary/80 text-xs font-medium `}
-                onClick={sendMessage}
-                disabled={loading}
+
+            <form
+                noValidate
+                onSubmit={onSubmit}
+                className="flex flex-col gap-5 lg:col-span-7 lg:max-w-xl"
             >
-                SEND MESSAGE
-            </button>
-        </div>
+                <div className="grid gap-5 md:grid-cols-2">
+                    <TextInput
+                        id="contact-name"
+                        name="name"
+                        label="Name"
+                        placeholder="Jane Cooper"
+                        autoComplete="name"
+                        value={values.name}
+                        onChange={onChange('name')}
+                        error={errors.name}
+                    />
+                    <TextInput
+                        id="contact-email"
+                        name="email"
+                        type="email"
+                        label="Email"
+                        placeholder="jane@company.com"
+                        autoComplete="email"
+                        value={values.email}
+                        onChange={onChange('email')}
+                        error={errors.email}
+                    />
+                </div>
+                <TextArea
+                    id="contact-message"
+                    name="message"
+                    label="Message"
+                    placeholder="Tell me about your project, or the role you’re hiring for."
+                    value={values.message}
+                    onChange={onChange('message')}
+                    error={errors.message}
+                />
+
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+                    <Button type="submit" disabled={sending}>
+                        {sending ? 'Sending…' : 'Send message'}
+                    </Button>
+                    <div
+                        role="status"
+                        aria-live="polite"
+                        className="type-small"
+                    >
+                        {status.kind === 'sent' ? (
+                            <p className="flex items-center gap-2 text-green">
+                                <FiCheckCircle aria-hidden />
+                                Message sent. I’ll reply to {status.email}.
+                            </p>
+                        ) : null}
+                        {status.kind === 'failed' ? (
+                            <p className="flex items-center gap-2 text-red">
+                                <FiAlertCircle aria-hidden />
+                                Your message didn’t send. Check your connection
+                                and try again.
+                            </p>
+                        ) : null}
+                    </div>
+                </div>
+            </form>
+        </section>
     );
 };
 

@@ -33,7 +33,7 @@ Node: `>=20.9.0` (Next 16 requirement). Local development uses Node 22.
 | UI        | React 19                                                         | React Compiler lint rules are on (`react-hooks/*`).                                                                   |
 | Language  | TypeScript 6 (`strict`)                                          | Pinned below 6.1 because `typescript-eslint` doesn't support newer versions yet.                                      |
 | Styling   | Tailwind CSS v4 (CSS-first, `@tailwindcss/postcss`)              | There is no `tailwind.config.js`. Design tokens live in `src/styles/globals.css`.                                     |
-| Animation | `@react-spring/web` v10                                          | Imperative `useSpring(() => …, [])` + `api.start` pattern.                                                            |
+| Animation | CSS transitions and keyframes (`globals.css`)                    | `@react-spring/web` is still installed but no longer imported anywhere.                                               |
 | Icons     | `react-icons` v5                                                 | Import from the specific pack, e.g. `react-icons/fi`.                                                                 |
 | Email     | `@emailjs/browser` v5                                            | The public key and service/template IDs are hardcoded in `ContactMe.tsx`. EmailJS public keys are meant to be public. |
 | Lint      | ESLint 9 + `eslint-config-next` (flat config)                    | Pinned to ESLint 9 because `eslint-plugin-react`, `-import` and `-jsx-a11y` don't support ESLint 10 yet.              |
@@ -67,7 +67,10 @@ public/                   # Static assets: project screenshots, Resume.pdf, favi
 
 **Where the content lives** (edit these to update the portfolio):
 
-- Projects: the `projects` array in `src/components/Projects/HighlightedProjects.tsx`. Put screenshots in `public/`.
+- Projects: the `projects` array in `src/components/Projects/HighlightedProjects.tsx`. Put screenshots in
+  `public/` and import them at the top of that file (`img: myImg`), so Next.js knows their size and
+  can round their corners and blur them in. Set `wideImage: true` for landscape screenshots.
+- Home slides: the `sections` array in `src/pages/index.tsx` (the `key` is the URL hash, e.g. `/#work`).
 - Skills: the `skillSections` array in `src/components/Skills/Skills.tsx`.
 - About text and career start date: `src/components/AboutMe/AboutMe.tsx`. Years of experience is computed from `workStartDate`.
 - Hero copy: `src/text/en.ts` and `src/components/HeroSection/HeroSection.tsx`.
@@ -98,9 +101,9 @@ public/                   # Static assets: project screenshots, Resume.pdf, favi
   React 19 turns invalid nesting into a hydration failure.
 - Keep render output deterministic between server and client: no `Date.now()`, `Math.random()`
   or `window` checks in render.
-- `reactStrictMode` stays off in `next.config.ts`. The imperative react-spring animations
-  in `Carousel`, `Button` and `NavMenuSection` stall under StrictMode's double effects, so
-  enable it only after reworking them.
+- `reactStrictMode` stays off in `next.config.ts`. It was disabled because imperative
+  react-spring animations stalled under StrictMode's double effects. No component uses
+  react-spring any more (motion is CSS), so it can be re-enabled after a quick check.
 
 ### Styling (Tailwind v4)
 
@@ -114,6 +117,19 @@ public/                   # Static assets: project screenshots, Resume.pdf, favi
 - Use the v4 names: `bg-linear-to-*` (not `bg-gradient-to-*`), `shadow-xs`/`rounded-xs`/`blur-xs`
   (the old unsuffixed sizes moved down one step), `grow`/`shrink`, `z-5` (not `z-[5]`).
 - Declare custom utilities with `@utility` in `globals.css` (see `scrollbar-hide`). Don't use JS plugins.
+- The whole site uses one family, Courier Prime (400 and 700), loaded through `next/font` in
+  `_app.tsx`. Hierarchy comes from size and weight only. In monospace `1ch` is exactly one
+  character, so `max-w-[NNch]` is a true line length (keep reading text under ~65ch).
+- **Typography uses the type scale only.** Every piece of text gets exactly one `type-*` role from
+  `globals.css`: `type-display` (hero name, sized to its `@container`), `type-subtitle` (hero
+  role line), `type-title` (h2), `type-heading` (h3), `type-wordmark`, `type-nav` (header links), `type-menu` (menu drawer links),
+  `type-button`, `type-lede`, `type-body`, `type-small`, `type-ui` (tabs, rail, list items),
+  `type-label` (h4, form labels) and `type-caption` (tags, counters, errors). Set color
+  separately with `text-*`. Don't add `text-sm`/`font-bold`/`leading-*`/`font-mono` etc. for
+  text. If a new role is needed, add it to the scale. Utilities reference fonts with
+  `--theme(--font-…)`, because `@theme inline` doesn't emit the font variables at runtime.
+- Motion: the hero name typing itself out on load (pure CSS, `--chars` = name length) is the
+  page's one orchestrated moment. Other motion only answers user actions (slide paging, tab swaps). `prefers-reduced-motion` is honored globally.
 - Put reusable class combinations in `src/cssClasses/`. Use template-literal `className` for
   conditional classes.
 - Mobile first: base classes target mobile, and `md:`/`lg:`/`2xl:` handle larger screens.
@@ -137,16 +153,8 @@ public/                   # Static assets: project screenshots, Resume.pdf, favi
 
 These were found in the audit and left unfixed on purpose. Fix them deliberately, not as drive-bys:
 
-- `HighlightedProjectCard`: the whole card is one external link, and the "View Code" / "View Live"
-  `<button>`s inside it do nothing. "View Live" should point to `demoUrl`.
-- `SocialMediaLinks`: the email entry links to the placeholder `'test'`.
-- `ContactMe`: no validation, success or error feedback, and the form isn't cleared after a
-  send. Errors only go to `console.log`.
-- `NavBarSection` uses the relative `href="projects"` (it should be `/projects`).
 - `Projects.tsx` / `ProjectCard.tsx` are unused legacy components. `pages/api/hello.ts` and
   the `images.unsplash.com` remote pattern are unused boilerplate.
-- `next/navigation` hooks are used inside Pages Router components. This works, but
-  `next/router` is the idiomatic choice for the Pages Router.
-- The fonts `Graphik` / `Merriweather` are declared but never loaded, so the system sans-serif renders.
-  Use `next/font` if you want them.
+- There is no public email link. The old placeholder was removed from `SocialMediaLinks`. Add a
+  `mailto:` entry there if you want one.
 - The README is stale `create-next-app` boilerplate.

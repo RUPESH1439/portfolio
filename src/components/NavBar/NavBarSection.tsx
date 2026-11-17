@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { FunctionComponent } from 'react';
 
 interface NavBarSectionProps {
@@ -10,10 +11,15 @@ const NavBarSection: FunctionComponent<NavBarSectionProps> = ({
     section,
     routePath,
 }) => {
+    const { pathname } = useRouter();
+    const isActive = pathname === routePath;
     return (
         <Link
             href={routePath}
-            className="flex flex-row text-xs text-gray font-light hover:text-primary transition hover:ease-in-out delay-5"
+            aria-current={isActive ? 'page' : undefined}
+            className={`type-nav transition-colors hover:text-primary ${
+                isActive ? 'text-primary' : 'text-gray/80'
+            }`}
         >
             {section}
         </Link>

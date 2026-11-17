@@ -1,103 +1,201 @@
-import { FunctionComponent, RefObject } from 'react';
+import { FunctionComponent, KeyboardEvent, useRef, useState } from 'react';
 import { SectionTitle } from '../SectionTitle';
-import HighlightedProjectCard, {
-    HighlightedProjectCardProps,
-} from './HighlightedProjectCard';
+import ProjectDetail, { Project } from './ProjectDetail';
+import benableImg from '../../../public/benable.jpg';
+import fanvoyageImg from '../../../public/fanvoyage.webp';
+import hohmImg from '../../../public/hohm.jpg';
+import realphaImg from '../../../public/realpha.png';
+import scoutxImg from '../../../public/scoutx.png';
+import myHairCountsImg from '../../../public/my-hair-counts.png';
+import woollybuggersImg from '../../../public/woollybuggers.png';
+import meaAppImg from '../../../public/mea-app.png';
+import calorieTrackerImg from '../../../public/CalorieTracker.png';
 
-interface HighlightedProjectsProps {
-    _ref?: RefObject<HTMLDivElement | null>;
-}
-
-const projects: HighlightedProjectCardProps[] = [
+const projects: Project[] = [
     {
-        title: 'MEA Mobile App (Toptal)',
-        desc: `A React Native based mobile app for android to provide a platform for maintenance worker and work provider to track the maintenance works (time, cost, etc)`,
+        title: 'Benable',
+        platform: 'iOS and Android app',
+        role: 'Senior mobile developer',
+        desc: 'A React Native app for sharing and monetizing recommendations. People build curated lists of things they love and earn commission through affiliate partnerships.',
         responsibilities: [
-            'Upgraded the library versions (react, react-native, etc)',
-            'Implemented new screens',
-            'Fixed file upload issues',
-            'Fixed critical penetration testing issues',
+            'Led list creation, affiliate linking, content discovery and sharing, and optimized app performance',
+            'Shipped critical features and fixes so the app launched on the App Store on schedule',
+            'Integrated Meta APIs, driving 300% weekly growth in user activity',
+            'Released the Android app on Google Play after fixing the roughly 60% of functionality that wasn’t working',
+            'Worked AI-first with Claude Code and Cursor, and built LLM features with the Claude API',
         ],
+        demoUrl:
+            'https://apps.apple.com/us/app/benable-for-influencers-all/id6495064828',
+        img: benableImg,
+        aiTools: ['Claude Code', 'Cursor', 'Claude API'],
         skills: [
-            'React',
             'React Native',
-            'Typescript',
-            'Android',
-            'Semantic Release',
-            'Penetration Testing',
-            'Git',
-            'JIRA',
+            'TypeScript',
+            'Expo',
+            'React Query',
+            'Tamagui',
+            'Supabase',
+            'Instagram API',
+            'Mixpanel',
         ],
-        functionalites: [],
-        img: '/mea-app.png',
     },
     {
-        title: 'Calorie Tracker Web App',
-        desc: `A React based web app or tracking the daily calorie intake of food items. The app is designed to help users monitor and manage their calorie intake in an easy and convenient way`,
-        githubUrl: 'https://github.com/RUPESH1439/Calorie-Tracker',
+        title: 'FanVoyage',
+        platform: 'iOS and Android app',
+        role: 'React Native full-stack mobile developer',
+        desc: 'A React Native app for traveling soccer fans. Supporters follow their team’s away games, check in at stadiums with GPS, see live fan counts, earn badges and compete on leaderboards.',
         responsibilities: [
-            'Assessed the requirements',
-            'Created ER models for database',
-            'Created front-end and back-end architecture',
-            'Created backend APIs required',
-            'Created front-end components and integrated them with the backend',
+            'Diagnosed the app store rejections and audited the codebase, finding about 60% of the app out of sync with the live builds',
+            'Rebuilt the iOS and Android apps from scratch on a tight deadline, with Claude Code and Cursor as coding agents',
+            'Added the missing core features, including background jobs, push notifications and store compliance requirements',
+            'Shipped both apps on time through App Store and Play Store review',
         ],
+        demoUrl:
+            'https://apps.apple.com/us/app/fanvoyage-away-days/id6760428779',
+        img: fanvoyageImg,
+        aiTools: ['Claude Code', 'Cursor'],
+        skills: [
+            'React Native',
+            'TypeScript',
+            'Expo',
+            'Node.js',
+            'Fastify',
+            'Supabase',
+            'PostgreSQL',
+            'Redis',
+            'Firebase Cloud Messaging',
+            'Twilio',
+        ],
+    },
+    {
+        title: 'Hohm Energy',
+        platform: 'Web and mobile apps',
+        role: 'Full-stack React and React Native developer',
+        desc: 'Hohm Energy helps homeowners and businesses go solar. I worked full-stack across its React and Next.js web app and its React Native mobile app, and led the build of a new version of the mobile app.',
+        img: hohmImg,
+        wideImage: true,
+        responsibilities: [
+            'Led a team of four building a new version of the React Native mobile app',
+            'Worked with the product owners to scope estimates, timelines and effort',
+            'Improved codebase workflows through code reviews and code analysis',
+            'Used AI tools and prompt engineering day to day, and worked on OpenAI integrations',
+        ],
+        aiTools: ['OpenAI', 'Prompt engineering'],
+        skills: [
+            'React Native',
+            'React',
+            'Next.js',
+            'TypeScript',
+            'Node.js',
+            'Expo',
+            'React Query',
+            'Zustand',
+            'PostgreSQL',
+            'DocuSign',
+            'Monorepos',
+        ],
+    },
+    {
+        title: 'ReAlpha',
+        platform: 'Mobile app',
+        role: 'Lead front-end engineer',
+        desc: 'A digital marketplace with more than 30 employees that simplifies, finances and manages short-term rental investments. The app lets investors browse and manage a wide range of properties.',
+        responsibilities: [
+            'Designed the front-end architecture',
+            'Led a team of five',
+            'Worked closely with the client and the CTO',
+            'Integrated third-party APIs',
+            'Fixed critical issues and streamlined workflows',
+        ],
+        demoUrl: 'https://www.realpha.com',
         skills: [
             'React',
-            'Typescript',
-            'Next.js',
-            'Material UI',
-            'Axios',
-            'Ruby on Rails',
-            'Postgresql',
-            'Git',
+            'TypeScript',
+            'React Native',
+            'GraphQL',
+            'AWS Amplify',
+            'Node.js',
+            'Tailwind CSS',
+            'APNs',
+            'Expo',
+            'EAS',
+            'WordPress',
         ],
-        functionalites: [],
-        img: '/CalorieTracker.png',
+        img: realphaImg,
     },
     {
-        title: 'MyHairCounts Mobile App',
-        desc: 'MyHairCounts App is a React-Native App that measures and tracks the percentage of grey hairs and even your degree of dandruff.',
+        title: 'ScoutX',
+        platform: 'Mobile app',
+        role: 'Lead front-end engineer',
+        desc: 'A platform that connects athletes, coaches and scouts during college recruiting, replacing manual paperwork and slow back-and-forth.',
         responsibilities: [
-            'Implemented new v2 features and fixed critical bugs',
-            'Refactored old codebase',
-            'Released new versions to play store and app store using Fastlane',
-            'Collaborated with the client and the team',
+            'Designed the front-end architecture',
+            'Led a team of five',
+            'Worked closely with the client and the CTO',
+            'Integrated third-party APIs',
+            'Fixed critical issues and streamlined workflows',
+        ],
+        demoUrl:
+            'https://play.google.com/store/apps/details?id=com.scoutx.scoutx&hl=en&gl=US',
+        skills: [
+            'React',
+            'TypeScript',
+            'React Native',
+            'GraphQL',
+            'AWS Amplify',
+            'Node.js',
+            'Tailwind CSS',
+            'APNs',
+            'Expo',
+            'EAS',
+        ],
+        img: scoutxImg,
+    },
+    {
+        title: 'MyHairCounts',
+        platform: 'iOS and Android app',
+        role: 'Front-end developer',
+        desc: 'A React Native app that measures and tracks the percentage of grey hair and the degree of dandruff.',
+        responsibilities: [
+            'Shipped the v2 features and fixed critical bugs',
+            'Refactored the legacy codebase',
+            'Released new versions to the App Store and Play Store with Fastlane',
+            'Worked closely with the client and the team',
         ],
         demoUrl: 'https://www.myhaircounts.com/',
         skills: [
             'React',
-            'Typescript',
+            'TypeScript',
             'React Native',
             'MobX',
             'Styled-components',
             'Fastlane',
             'iOS',
             'Android',
-            'XCode',
-            'Clickup',
+            'Xcode',
+            'ClickUp',
         ],
-        functionalites: [],
-        img: '/my-hair-counts.png',
-        height: 500,
+        img: myHairCountsImg,
     },
     {
-        title: 'Woollybuggers Mobile App',
-        desc: 'Woolly Buggers is a React Native based mobile app that delivers easy-to-use map layers of all fishable rivers, over 3,000 lakes, all public access, private lands, fishing regulations, and access regulations. PLUS, save and share fishing spots.',
+        title: 'Woolly Buggers',
+        platform: 'iOS and Android app',
+        role: 'Full-stack developer',
+        desc: 'A React Native app with easy-to-read map layers of fishable rivers, over 3,000 lakes, public access points, private land and fishing regulations. Anglers can also save and share their spots.',
         responsibilities: [
-            'Created front-end and back-end architecture',
-            'Collaborated with the client',
-            'Worked on implementing new features and refactoring the codebase',
-            'Integrated 3rd party APIs (Mapbox, Twilio)',
-            'Fixed critical issues and worked on the optimization of workflows',
+            'Designed the front-end and back-end architecture',
+            'Worked closely with the client',
+            'Built new features and refactored the codebase',
+            'Integrated third-party APIs, including Mapbox and Twilio',
+            'Fixed critical issues and streamlined workflows',
         ],
         demoUrl: 'https://www.woollybuggermaps.com/',
         skills: [
             'React',
-            'Typescript',
+            'TypeScript',
             'React Native',
             'Ruby on Rails',
-            'Postgresql',
+            'PostgreSQL',
             'AWS',
             'Styled-components',
             'OneSignal',
@@ -105,88 +203,153 @@ const projects: HighlightedProjectCardProps[] = [
             'Google Pay',
             'Mapbox',
         ],
-        functionalites: [],
-        img: '/woollybuggers.png',
-        height: 550,
+        img: woollybuggersImg,
     },
     {
-        title: 'Mobile App for ScoutX',
-        desc: 'ScoutX is an innovative digital platform that revolutionizes the way athletes, coaches, and scouts interact and connect during the college recruiting process. The app aims to eliminate the need for manual paperwork and time-consuming processes, making it more efficient for all parties involved.',
+        title: 'MEA',
+        platform: 'Android app',
+        role: 'Front-end developer',
+        desc: 'A React Native app that gives maintenance workers and the people who hire them one place to track maintenance work, including time and cost.',
         responsibilities: [
-            'Created front-end architecture',
-            'Lead a team of 5',
-            'Collaborated with the client & CTO of the company closely',
-            'Integrated 3rd party APIs',
-            'Fixed critical issues and worked on optimization of workflows',
+            'Upgraded core libraries, including React and React Native',
+            'Built new screens',
+            'Fixed file upload issues',
+            'Fixed critical findings from penetration testing',
         ],
-        demoUrl:
-            'https://play.google.com/store/apps/details?id=com.scoutx.scoutx&hl=en&gl=US',
         skills: [
             'React',
-            'Typescript',
             'React Native',
-            'GraphQL',
-            'AWS Amplify',
-            'NodeJS',
-            'TailwindCSS',
-            'APN',
-            'Expo',
-            'EAS',
+            'TypeScript',
+            'Android',
+            'Semantic Release',
+            'Penetration testing',
+            'Git',
+            'Jira',
         ],
-        functionalites: [],
-        img: '/scoutx.png',
-        height: 550,
+        img: meaAppImg,
+        wideImage: true,
     },
     {
-        title: 'Mobile App for ReAlpha',
-        desc: 'ReAlpha is a digital marketplace with more than 30 employees, and it simplifies, finances, and manages short-term rental investments. This app aims to provide a platform for accessing and managing a broad range of real estate properties and investments.',
+        title: 'Calorie Tracker',
+        platform: 'Web app',
+        role: 'Full-stack developer',
+        desc: 'A React web app for tracking the calories in the food you eat each day, designed to make monitoring your intake quick and easy.',
+        githubUrl: 'https://github.com/RUPESH1439/Calorie-Tracker',
         responsibilities: [
-            'Created front-end architecture',
-            'Lead a team of 5',
-            'Collaborated with the client & CTO of the company closely',
-            'Integrated 3rd party APIs',
-            'Fixed critical issues and worked on optimization of workflows',
+            'Assessed the requirements',
+            'Designed the database ER model',
+            'Designed the front-end and back-end architecture',
+            'Built the back-end APIs',
+            'Built the front-end components and connected them to the API',
         ],
-        demoUrl: 'https://www.realpha.com',
         skills: [
             'React',
-            'Typescript',
-            'React Native',
-            'GraphQL',
-            'AWS Amplify',
-            'NodeJS',
-            'TailwindCSS',
-            'APN',
-            'Expo',
-            'EAS',
-            'Wordpress',
+            'TypeScript',
+            'Next.js',
+            'Material UI',
+            'Axios',
+            'Ruby on Rails',
+            'PostgreSQL',
+            'Git',
         ],
-        functionalites: [],
-        img: '/realpha.png',
-        height: 550,
+        img: calorieTrackerImg,
+        wideImage: true,
     },
 ];
 
-const HighlightedProjects: FunctionComponent<HighlightedProjectsProps> = ({
-    _ref,
-}) => {
+const HighlightedProjects: FunctionComponent = () => {
+    const [selectedIndex, setSelectedIndex] = useState(0);
+    const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+    const selected = projects[selectedIndex];
+
+    const onKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+        const forward = event.key === 'ArrowRight' || event.key === 'ArrowDown';
+        const back = event.key === 'ArrowLeft' || event.key === 'ArrowUp';
+        if (!forward && !back) return;
+        event.preventDefault();
+        const next =
+            (selectedIndex + (forward ? 1 : -1) + projects.length) %
+            projects.length;
+        setSelectedIndex(next);
+        tabRefs.current[next]?.focus();
+    };
+
     return (
-        <div className="flex flex-col flex-1">
-            <div className="">
-                <SectionTitle title="Projects" />
+        <section
+            aria-labelledby="work-title"
+            className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-12"
+        >
+            <div className="lg:col-span-4 xl:col-span-3">
+                <SectionTitle id="work-title" title="Selected work" />
+                <p className="mt-4 type-body text-gray/75">
+                    Web and mobile apps I’ve built and shipped.
+                </p>
+
+                <div
+                    role="tablist"
+                    aria-label="Projects"
+                    aria-orientation="vertical"
+                    onKeyDown={onKeyDown}
+                    className="scrollbar-hide -mx-5 mt-6 flex gap-2 overflow-x-auto px-5 lg:mx-0 lg:mt-8 lg:flex-col lg:gap-0 lg:overflow-visible lg:px-0"
+                >
+                    {projects.map((project, index) => {
+                        const isSelected = index === selectedIndex;
+                        return (
+                            <button
+                                key={project.title}
+                                ref={(el) => {
+                                    tabRefs.current[index] = el;
+                                }}
+                                type="button"
+                                role="tab"
+                                id={`project-tab-${index}`}
+                                aria-selected={isSelected}
+                                aria-controls="project-panel"
+                                tabIndex={isSelected ? 0 : -1}
+                                onClick={() => setSelectedIndex(index)}
+                                className={`group shrink-0 rounded-full border px-4 py-2 text-left transition-colors lg:flex lg:items-stretch lg:gap-4 lg:rounded-none lg:border-0 lg:px-0 lg:py-1.5 ${
+                                    isSelected
+                                        ? 'border-primary/60 bg-primary/10 lg:bg-transparent'
+                                        : 'border-purple-medium/20 hover:border-purple-medium/40'
+                                }`}
+                            >
+                                <span
+                                    aria-hidden
+                                    className={`hidden w-1 shrink-0 rounded-full transition-colors lg:block ${
+                                        isSelected
+                                            ? 'bg-primary'
+                                            : 'bg-purple-medium/15 group-hover:bg-purple-medium/40'
+                                    }`}
+                                />
+                                <span className="flex flex-col">
+                                    <span
+                                        className={`type-ui whitespace-nowrap transition-colors ${
+                                            isSelected
+                                                ? 'text-white'
+                                                : 'text-gray/70 group-hover:text-white'
+                                        }`}
+                                    >
+                                        {project.title}
+                                    </span>
+                                    <span className="hidden type-caption text-gray/55 lg:block">
+                                        {project.platform}
+                                    </span>
+                                </span>
+                            </button>
+                        );
+                    })}
+                </div>
             </div>
-            <div
-                ref={_ref}
-                className="flex flex-1 flex-col overflow-y-auto scrollbar-hide mt-5 gap-8"
-            >
-                {projects.map((project) => (
-                    <div key={project.title}>
-                        <HighlightedProjectCard {...project} />
-                    </div>
-                ))}
+
+            <div className="lg:col-span-8 xl:col-span-9">
+                <ProjectDetail
+                    key={selected.title}
+                    id="project-panel"
+                    labelledBy={`project-tab-${selectedIndex}`}
+                    project={selected}
+                />
             </div>
-            {/* </div> */}
-        </div>
+        </section>
     );
 };
 

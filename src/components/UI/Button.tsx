@@ -1,94 +1,24 @@
-import { useSpring, animated } from '@react-spring/web';
-import { FunctionComponent, ReactNode, useMemo } from 'react';
+import { FunctionComponent, ButtonHTMLAttributes } from 'react';
+import { buttonClasses, ButtonVariant } from '@/cssClasses';
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-    variant: 'primary' | 'secondary' | 'outlined' | 'none' | 'underlined';
-    title: string;
-    styleClassName?: string;
-    children?: ReactNode;
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+    variant?: ButtonVariant;
 }
 
 const Button: FunctionComponent<ButtonProps> = ({
-    variant,
-    title,
-    styleClassName,
+    variant = 'solid',
+    className = '',
+    type = 'button',
     children,
     ...rest
 }) => {
-    const [styleBorder, animateBorder] = useSpring(() => ({ width: '6' }), []);
-
-    const colors = useMemo(() => {
-        let bg = '';
-        let textColor = '';
-        switch (variant) {
-            case 'primary':
-                bg = 'bg-purple-light';
-                textColor = 'text-primary';
-                break;
-            case 'secondary':
-                bg = 'bg-secondary';
-                textColor = '';
-                break;
-            case 'underlined':
-                textColor = 'text-gray';
-            default:
-                break;
-        }
-        return { bg, textColor };
-    }, [variant]);
     return (
         <button
-            className={`flex flex-col items-start ${colors.bg} ${styleClassName}`}
-            onMouseEnter={() => {
-                if (variant !== 'none') return;
-                animateBorder({
-                    width: '140px',
-                    from: {
-                        width: '0px',
-                    },
-                    config: {
-                        duration: 300,
-                        mass: 5,
-                        friction: 120,
-                        tension: 120,
-                    },
-                });
-            }}
-            onMouseLeave={() => {
-                if (variant !== 'none') return;
-
-                animateBorder({
-                    width: '0px',
-                    from: {
-                        width: '140px',
-                    },
-                    config: {
-                        duration: 300,
-                        mass: 5,
-                        friction: 120,
-                        tension: 120,
-                    },
-                });
-            }}
+            type={type}
+            className={buttonClasses(variant, className)}
             {...rest}
         >
-            <div
-                className={`flex flex-row items-center ${
-                    variant === 'underlined' ? 'underline' : ''
-                }`}
-            >
-                <div className={`${colors.textColor} mr-2 text-md`}>
-                    {title}
-                </div>
-                {children ? children : null}
-            </div>
-
-            {variant === 'none' ? (
-                <animated.div
-                    style={styleBorder}
-                    className="h-px opacity-40 bg-primary mt-2"
-                ></animated.div>
-            ) : null}
+            {children}
         </button>
     );
 };

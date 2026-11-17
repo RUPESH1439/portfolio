@@ -1,9 +1,10 @@
 import { HighlightedProjects } from '@/components';
+import { PageShell } from '@/components/PageShell';
 
 export default function ProjectsPage() {
     return (
-        <div className="py-20 md:my-10 px-5 md:px-12">
+        <PageShell>
             <HighlightedProjects />
-        </div>
+        </PageShell>
     );
 }

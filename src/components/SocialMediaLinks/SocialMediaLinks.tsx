@@ -1,46 +1,80 @@
-import { hoverText, hoverTranslate } from '@/cssClasses';
 import { FunctionComponent } from 'react';
+import { IconType } from 'react-icons';
 import { FiGithub, FiLinkedin } from 'react-icons/fi';
-import { AiOutlineMail } from 'react-icons/ai';
 import { SiToptal } from 'react-icons/si';
+import { TOPTAL_RESUME_LINK } from '@/constants';
 import Link from '../UI/Link';
 
-const links = [
-    { key: 'gmail', link: 'test', Icon: AiOutlineMail },
+interface SocialLink {
+    key: string;
+    label: string;
+    link: string;
+    Icon: IconType;
+}
+
+export const socialLinks: SocialLink[] = [
     {
         key: 'github',
+        label: 'GitHub',
         link: 'https://github.com/RUPESH1439',
         Icon: FiGithub,
     },
     {
         key: 'linkedin',
+        label: 'LinkedIn',
         link: 'https://www.linkedin.com/in/sthrupesh/',
         Icon: FiLinkedin,
     },
     {
         key: 'toptal',
-        link: 'https://www.toptal.com/resume/rupesh-shrestha',
+        label: 'Toptal',
+        link: TOPTAL_RESUME_LINK,
         Icon: SiToptal,
     },
 ];
 
-const SocialMediaLinks: FunctionComponent = () => {
-    return (
-        <div className="flex flex-col items-center justify-center">
-            <div className="flex flex-col my-8 gap-8">
-                {links.map(({ key, Icon, link }) => (
-                    <div key={key} className={`text-gray ${hoverTranslate}`}>
-                        <Link link={link}>
-                            <Icon
-                                size={18}
-                                className={`${'text-gray hover:text-primary'} ${hoverText}`}
-                            />
-                        </Link>
-                    </div>
-                ))}
-            </div>
+interface SocialMediaLinksProps {
+    /** `rail`: icon column pinned to the page edge. `list`: labelled links. */
+    variant?: 'rail' | 'list';
+}
 
-            <div className="h-20 w-0 border-[rgba(160,160,255,0.40)] border-[0.5px]"></div>
+const SocialMediaLinks: FunctionComponent<SocialMediaLinksProps> = ({
+    variant = 'rail',
+}) => {
+    if (variant === 'list') {
+        return (
+            <ul className="flex flex-wrap gap-x-6 gap-y-3">
+                {socialLinks.map(({ key, label, link, Icon }) => (
+                    <li key={key}>
+                        <Link
+                            link={link}
+                            styleClass="inline-flex items-center gap-2 type-ui text-gray transition-colors hover:text-primary"
+                        >
+                            <Icon aria-hidden size={18} />
+                            {label}
+                        </Link>
+                    </li>
+                ))}
+            </ul>
+        );
+    }
+
+    return (
+        <div className="flex flex-col items-center">
+            <ul className="my-6 flex flex-col gap-6">
+                {socialLinks.map(({ key, label, link, Icon }) => (
+                    <li key={key}>
+                        <Link
+                            link={link}
+                            ariaLabel={label}
+                            styleClass="block p-1 text-gray/70 transition duration-200 hover:-translate-y-0.5 hover:text-primary"
+                        >
+                            <Icon aria-hidden size={18} />
+                        </Link>
+                    </li>
+                ))}
+            </ul>
+            <div aria-hidden className="h-24 w-px bg-purple-medium/40" />
         </div>
     );
 };

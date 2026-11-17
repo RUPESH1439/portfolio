@@ -5,7 +5,7 @@ import { NavBar } from '@/components/NavBar';
 import {
     Projects,
     ProjectCard,
-    HighlightedProjectCard,
+    ProjectDetail,
     HighlightedProjects,
 } from '@/components/Projects';
 import SectionTitle from './SectionTitle/SectionTitle';
@@ -19,6 +19,6 @@ export {
     ProjectCard,
     SectionTitle,
     SocialMediaLinks,
-    HighlightedProjectCard,
+    ProjectDetail,
     HighlightedProjects,
 };

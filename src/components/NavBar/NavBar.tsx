@@ -1,66 +1,70 @@
-import { FunctionComponent, useState } from 'react';
-import NavBarSection from './NavBarSection';
+import { FunctionComponent, useCallback, useRef, useState } from 'react';
+import NextLink from 'next/link';
 import { RxHamburgerMenu } from 'react-icons/rx';
-import { HiOutlineMenuAlt1 } from 'react-icons/hi';
+import { FiDownload } from 'react-icons/fi';
+import NavBarSection from './NavBarSection';
 import NavMenu from './NavMenu';
-import { hoverText } from '@/cssClasses';
+import { buttonClasses } from '@/cssClasses';
 
 const navBarSections = [
-    { key: 'projects', section: 'PROJECTS', routePath: 'projects' },
-    // { key: 'contact-me', section: 'EXPERIENCE', routePath: '#contact-me' },
+    { key: 'projects', section: 'Projects', routePath: '/projects' },
 ];
 
 const NavBar: FunctionComponent = () => {
-    const [hoverMenu, setHoverMenu] = useState(false);
-
     const [openMenu, setOpenMenu] = useState(false);
+    const menuButtonRef = useRef<HTMLButtonElement>(null);
 
-    const renderMenuIcon = () => {
-        if (hoverMenu) {
-            return <HiOutlineMenuAlt1 size={20} />;
-        }
-        return <RxHamburgerMenu size={20} />;
-    };
+    const closeMenu = useCallback(() => {
+        setOpenMenu(false);
+        menuButtonRef.current?.focus();
+    }, []);
+
     return (
-        <div
-            className={`flex flex-row justify-between h-24 w-full px-10 fixed top-0 z-50`}
-        >
-            <div className="flex flex-row flex-wrap gap-0 md:gap-10 items-center absolute right-7 md:right-10 top-12">
-                <div className="invisible md:visible">
-                    {navBarSections.map(({ key, section, routePath }) => (
-                        <NavBarSection
-                            key={key}
-                            section={section}
-                            routePath={routePath}
-                        />
-                    ))}
-                </div>
-                <a
-                    className={`rounded-md px-4 py-2 border-gray border hover:bg-secondary/30 text-gray border-primary text-primary ${hoverText} text-sm md:text-md`}
-                    href="/Resume.pdf"
-                    download
+        <header className="fixed inset-x-0 top-0 z-30 bg-linear-to-b from-background via-background/85 to-transparent">
+            <div className="flex h-20 items-center justify-between px-5 md:px-10 2xl:px-16">
+                <NextLink
+                    href="/"
+                    className="site-wordmark type-wordmark whitespace-nowrap text-white transition-colors hover:text-primary"
                 >
-                    Resume
-                </a>
+                    Rupesh Shrestha
+                </NextLink>
 
-                <div className="w-16 flex items-center justify-center">
-                    <button
-                        className="absolute right-0 md:right-4 h-10 w-10 rounded-full bg-white flex items-center justify-center transition-all duration-700 ease-in-out hover:h-12 hover:w-12"
-                        onClick={() => setOpenMenu(true)}
-                        onMouseEnter={() => setHoverMenu(true)}
-                        onMouseLeave={() => setHoverMenu(false)}
+                <nav
+                    aria-label="Main"
+                    className="flex items-center gap-2 md:gap-6"
+                >
+                    <div className="hidden md:block">
+                        {navBarSections.map(({ key, section, routePath }) => (
+                            <NavBarSection
+                                key={key}
+                                section={section}
+                                routePath={routePath}
+                            />
+                        ))}
+                    </div>
+                    <a
+                        className={buttonClasses('outline')}
+                        href="/Resume.pdf"
+                        download
                     >
-                        {renderMenuIcon()}
+                        <span className="max-[359px]:sr-only">Resume</span>
+                        <FiDownload aria-hidden size={16} />
+                    </a>
+                    <button
+                        ref={menuButtonRef}
+                        type="button"
+                        aria-label="Open menu"
+                        aria-expanded={openMenu}
+                        aria-controls="site-menu"
+                        className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-background transition-transform duration-300 hover:scale-110"
+                        onClick={() => setOpenMenu(true)}
+                    >
+                        <RxHamburgerMenu aria-hidden size={18} />
                     </button>
-                </div>
+                </nav>
             </div>
-            {openMenu ? (
-                <NavMenu
-                    handleClose={() => setOpenMenu(false)}
-                    openMenu={openMenu}
-                />
-            ) : null}
-        </div>
+            <NavMenu open={openMenu} handleClose={closeMenu} />
+        </header>
     );
 };
 

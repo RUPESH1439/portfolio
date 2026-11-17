@@ -1,11 +1,10 @@
 import { ContactMe } from '@/components/ContactMe';
+import { PageShell } from '@/components/PageShell';
 
-export default function About() {
+export default function Contact() {
     return (
-        <div className="flex py-12 md:py-20 px-5 md:px-12">
-            <div id="contentMeSection" className="mt-16">
-                <ContactMe />
-            </div>
-        </div>
+        <PageShell>
+            <ContactMe />
+        </PageShell>
     );
 }

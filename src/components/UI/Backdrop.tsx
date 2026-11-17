@@ -1,8 +1,22 @@
 import { FunctionComponent } from 'react';
 
-const BackDrop: FunctionComponent = () => {
+interface BackDropProps {
+    open?: boolean;
+    onClick?: () => void;
+}
+
+const BackDrop: FunctionComponent<BackDropProps> = ({
+    open = true,
+    onClick,
+}) => {
     return (
-        <div className="absolute left-0 w-screen h-screen backdrop-blur-xs z-20" />
+        <div
+            aria-hidden
+            onClick={onClick}
+            className={`fixed inset-0 z-40 bg-background/60 backdrop-blur-sm transition-opacity duration-500 ease-out-soft ${
+                open ? 'opacity-100' : 'pointer-events-none opacity-0'
+            }`}
+        />
     );
 };
 

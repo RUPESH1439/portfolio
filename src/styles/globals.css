@@ -3,9 +3,18 @@
 /* Design tokens. The default palette and font stacks are replaced, not extended. */
 @theme {
     --color-*: initial;
+
+    /* Brand */
     --color-primary: #ff8427;
     --color-secondary: #42485d;
     --color-background: #080010;
+    --color-surface: #100a1e;
+    --color-surface-raised: #181029;
+
+    /* Brand glow (from the original blue gradient) */
+    --color-indigo: #5533cf;
+    --color-periwinkle: #7d84eb;
+
     --color-blue: #1fb6ff;
     --color-purple: #7e5bef;
     --color-purple-light: #3a3253;
@@ -18,14 +27,24 @@
     --color-blue-light: #2a2550;
     --color-blue-dark: #251d3a;
     --color-green: #13ce66;
+    --color-red: #ff6b7d;
     --color-yellow: #ffc82c;
     --color-gray-dark: #273444;
     --color-gray: #ccd6f6;
     --color-gray-light: #d3dce6;
 
+    --ease-out-soft: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/*
+ * The site uses one family, Courier Prime (loaded by next/font in _app.tsx,
+ * which sets --font-courier on the app wrapper). `inline` makes utilities
+ * reference the variable directly.
+ */
+@theme inline {
     --font-*: initial;
-    --font-sans: Graphik, sans-serif;
-    --font-serif: Merriweather, serif;
+    --font-mono:
+        var(--font-courier), 'Courier New', Courier, ui-monospace, monospace;
 }
 
 @utility scrollbar-hide {
@@ -39,8 +58,134 @@
     }
 }
 
-/* Tailwind v4 defaults borders to currentcolor; keep that explicit. */
+/*
+ * Type scale. Every piece of text uses exactly one of these roles. Color is
+ * applied separately with text-* utilities.
+ *
+ * One family (Courier Prime, 400 and 700) carries everything, so hierarchy
+ * comes from size and weight alone: headings and labels are bold, reading
+ * text is regular. Monospace has no tracking adjustments, and 1ch is exactly
+ * one character, so `max-w-[NNch]` is a true character count.
+ */
+
+/*
+ * Hero name only. Typing animation lives on .hero-name. Sized against its
+ * container (the hero is an @container) so the one-line name always fits:
+ * 15 characters + cursor ≈ 9.2em.
+ */
+@utility type-display {
+    font-family: --theme(--font-mono);
+    font-weight: 700;
+    font-size: clamp(1.875rem, 10.6cqi, 6.5rem);
+    line-height: 1.15;
+}
+
+/* The hero's role line, between the name and the lede. 20 → 28px. */
+@utility type-subtitle {
+    font-family: --theme(--font-mono);
+    font-weight: 400;
+    font-size: clamp(1.25rem, 1.05rem + 0.8vw, 1.75rem);
+    line-height: 1.3;
+}
+
+/* h2: section titles, and the menu's page links. 32 → 44px. */
+@utility type-title {
+    font-family: --theme(--font-mono);
+    font-weight: 700;
+    font-size: clamp(2rem, 1.55rem + 1.4vw, 2.75rem);
+    line-height: 1.05;
+}
+
+/* h3: sub-sections and project names. 20 → 24px. */
+@utility type-heading {
+    font-family: --theme(--font-mono);
+    font-weight: 700;
+    font-size: clamp(1.25rem, 1.1rem + 0.45vw, 1.5rem);
+    line-height: 1.2;
+}
+
+/* The header wordmark. 16 → 20px. */
+@utility type-wordmark {
+    font-family: --theme(--font-mono);
+    font-weight: 700;
+    font-size: clamp(1rem, 0.85rem + 0.6vw, 1.25rem);
+    line-height: 1;
+}
+
+/* Page links in the menu drawer. Regular weight; 24 → 28px. */
+@utility type-menu {
+    font-family: --theme(--font-mono);
+    font-weight: 400;
+    font-size: clamp(1.5rem, 1.35rem + 0.5vw, 1.75rem);
+    line-height: 1.2;
+}
+
+/* Header navigation links. 16px. */
+@utility type-nav {
+    font-family: --theme(--font-mono);
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+/* Button and button-like link text. 16px bold. */
+@utility type-button {
+    font-family: --theme(--font-mono);
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1;
+}
+
+/* Opening paragraph of a section. 18 → 21px. */
+@utility type-lede {
+    font-family: --theme(--font-mono);
+    font-weight: 400;
+    font-size: clamp(1.125rem, 1rem + 0.4vw, 1.3125rem);
+    line-height: 1.5;
+}
+
+/* Running text. 16px. */
+@utility type-body {
+    font-family: --theme(--font-mono);
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.65;
+}
+
+/* Secondary text: lists, short notes, status messages. 14px. */
+@utility type-small {
+    font-family: --theme(--font-mono);
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+
+/* Interactive text: nav links, tabs, rail and list items. 14px. */
+@utility type-ui {
+    font-family: --theme(--font-mono);
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.4;
+}
+
+/* h4, form labels and the project platform line. 14px bold. */
+@utility type-label {
+    font-family: --theme(--font-mono);
+    font-weight: 700;
+    font-size: 0.875rem;
+    line-height: 1.4;
+}
+
+/* Tags, counters, field errors. 13px. */
+@utility type-caption {
+    font-family: --theme(--font-mono);
+    font-weight: 400;
+    font-size: 0.8125rem;
+    line-height: 1.4;
+}
+
 @layer base {
+    /* Tailwind v4 defaults borders to currentcolor; keep that explicit. */
     *,
     ::after,
     ::before,
@@ -48,16 +193,37 @@
     ::file-selector-button {
         border-color: currentcolor;
     }
+
+    html {
+        font-family: --theme(--font-mono);
+        color-scheme: dark;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        scrollbar-width: none;
+    }
+
+    body {
+        background-color: var(--color-background);
+        color: var(--color-gray);
+    }
+
+    body::-webkit-scrollbar {
+        display: none;
+    }
+
+    :focus-visible {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 3px;
+        border-radius: 4px;
+    }
+
+    ::selection {
+        background: rgb(255 132 39 / 0.35);
+        color: var(--color-white);
+    }
 }
 
-body::-webkit-scrollbar {
-    display: none;
-}
-
-body {
-    background-color: var(--color-background);
-}
-
+/* The original brand glow, kept as an ambient light behind the page. */
 .bg-blue-gradient {
     background: linear-gradient(
         157.81deg,
@@ -68,4 +234,101 @@ body {
         #5c63e6 51.94%,
         #5533cf 90.29%
     );
+}
+
+/*
+ * The one orchestrated moment: the name types itself out once, like a
+ * typewriter, with the brand-orange cursor. Monospace makes this exact:
+ * every character is 1ch wide, so each step reveals one letter.
+ * Set --chars to the name's length.
+ */
+@keyframes type-in {
+    from {
+        width: 0;
+    }
+}
+
+@keyframes caret-blink {
+    50% {
+        border-color: transparent;
+    }
+}
+
+.hero-name {
+    box-sizing: content-box;
+    width: calc(var(--chars) * 1ch);
+    overflow: hidden;
+    white-space: nowrap;
+    padding-right: 0.06em;
+    border-right: 0.08em solid var(--color-primary);
+    animation:
+        type-in 1100ms steps(var(--chars), end) 250ms both,
+        caret-blink 1s step-end 1400ms 4;
+}
+
+/* Section paging: content enters from the direction you travelled. */
+@keyframes slide-from-below {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+}
+
+@keyframes slide-from-above {
+    from {
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+}
+
+.slide[data-direction='next'] {
+    animation: slide-from-below 560ms var(--ease-out-soft) backwards;
+}
+
+.slide[data-direction='prev'] {
+    animation: slide-from-above 560ms var(--ease-out-soft) backwards;
+}
+
+/*
+ * On the first slide the hero already shows the name in large type, so the
+ * header wordmark steps back until you move on. Pure CSS, so SSR is correct.
+ */
+.site-wordmark {
+    transition:
+        opacity 400ms var(--ease-out-soft),
+        visibility 400ms,
+        color 200ms;
+}
+
+body:has(.slide[data-slide='intro']) .site-wordmark {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* While a modal (the menu drawer) is open, the page behind can't scroll. */
+html[data-modal-open] {
+    overflow: hidden;
+}
+
+/* Project detail swaps in place when you pick another project. */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+}
+
+.fade-in {
+    animation: fade-in 320ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+        animation-duration: 0.01ms !important;
+        animation-delay: 0ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }

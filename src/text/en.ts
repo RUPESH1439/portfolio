@@ -1,11 +1,9 @@
 const text = {
     hero: {
-        greeting: 'Hey there!',
-        name: `I'm Rupesh Shrestha.`,
-        title: 'Crafting for the web and mobile is my forte.',
-    },
-    about: {
-        intro: ``,
+        name: 'Rupesh Shrestha',
+        role: 'AI-enabled full-stack engineer for web and mobile',
+        summary:
+            'I build web and mobile apps end to end, from the database and APIs to the screens people use every day.',
     },
 };
 

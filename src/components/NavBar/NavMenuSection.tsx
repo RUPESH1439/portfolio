@@ -1,67 +1,48 @@
 import Link from 'next/link';
-import { FunctionComponent, useState, useEffect } from 'react';
-import { useSpring, animated } from '@react-spring/web';
-import { usePathname } from 'next/navigation';
+import { FunctionComponent } from 'react';
+
+/** Every menu row has the same height, so the indicator can slide by index. */
+export const MENU_ITEM_HEIGHT = 60;
 
 interface NavMenuSectionProps {
     section: string;
     link: string;
+    isActive: boolean;
+    isHighlighted: boolean;
+    onHighlight: () => void;
+    onBlur: () => void;
     handleClose: () => void;
 }
 
 const NavMenuSection: FunctionComponent<NavMenuSectionProps> = ({
     section,
     link,
+    isActive,
+    isHighlighted,
+    onHighlight,
+    onBlur,
     handleClose,
 }) => {
-    const pathName = usePathname();
-
-    const [styleDot, animateDot] = useSpring(
-        () => ({ height: '6', width: '6' }),
-        [],
-    );
-    const [showLeftBar, setShowLeftBar] = useState(false);
-
-    useEffect(() => {
-        if (showLeftBar) {
-            animateDot({
-                height: '38px',
-                from: {
-                    height: '0px',
-                    width: '0px',
-                },
-                config: {
-                    duration: 300,
-                    mass: 5,
-                    friction: 120,
-                    tension: 120,
-                },
-            });
-        }
-    }, [animateDot, showLeftBar]);
+    const color = isActive
+        ? 'text-primary'
+        : isHighlighted
+          ? 'text-white'
+          : 'text-gray/65';
 
     return (
-        <Link
-            href={link}
-            onMouseEnter={() => setShowLeftBar(true)}
-            onMouseLeave={() => setShowLeftBar(false)}
-            className={`flex flex-row`}
-            onClick={handleClose}
-        >
-            {showLeftBar ? (
-                <animated.div
-                    className="border border-2 rounded-sm border-orange-light"
-                    style={styleDot}
-                ></animated.div>
-            ) : null}
-            <div
-                className={`text-lg md:text-4xl font-light tracking-wide transition-all duration-300 ease-in-out ${
-                    showLeftBar ? 'md-2 md:ml-8' : ''
-                } ${pathName === link ? 'text-primary' : 'text-white'}`}
+        <li style={{ height: MENU_ITEM_HEIGHT }}>
+            <Link
+                href={link}
+                onClick={handleClose}
+                onMouseEnter={onHighlight}
+                onFocus={onHighlight}
+                onBlur={onBlur}
+                aria-current={isActive ? 'page' : undefined}
+                className={`relative flex h-full items-center rounded-xl px-5 type-menu transition-colors duration-200 focus-visible:outline-offset-0 ${color}`}
             >
                 {section}
-            </div>
-        </Link>
+            </Link>
+        </li>
     );
 };
 

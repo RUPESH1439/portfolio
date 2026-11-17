@@ -1,18 +1,36 @@
-import { FunctionComponent, RefObject } from 'react';
+import { FunctionComponent, TextareaHTMLAttributes } from 'react';
+import { fieldClasses } from './fieldClasses';
 
-interface TextAreaProps {
-    label?: string;
-    _ref?: RefObject<HTMLTextAreaElement | null>;
+interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
+    id: string;
+    label: string;
+    error?: string;
 }
 
-const TextArea: FunctionComponent<TextAreaProps> = ({ label, _ref }) => {
+const TextArea: FunctionComponent<TextAreaProps> = ({
+    id,
+    label,
+    error,
+    ...rest
+}) => {
+    const errorId = `${id}-error`;
     return (
-        <div className="flex flex-1 flex-col gap-2 text-gray">
-            {label ? <label>{label}</label> : null}
+        <div className="flex flex-col gap-2">
+            <label htmlFor={id} className="type-label text-gray">
+                {label}
+            </label>
             <textarea
-                ref={_ref}
-                className="outline-0 bg-primary-medium max-w-sm text-gray py-2 h-32 max-h-32 rounded-lg px-2 hover:border hover:border-primary/50 focus:border-primary/50"
-            ></textarea>
+                id={id}
+                aria-invalid={error ? true : undefined}
+                aria-describedby={error ? errorId : undefined}
+                className={`h-36 resize-none py-3 ${fieldClasses}`}
+                {...rest}
+            />
+            {error ? (
+                <p id={errorId} className="type-caption text-red">
+                    {error}
+                </p>
+            ) : null}
         </div>
     );
 };
