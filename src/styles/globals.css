@@ -222,18 +222,60 @@
 }
 
 /*
- * Ambient light behind the top of the page: lilac fading into cobalt. Heavily
- * blurred and kept faint (see Layout.tsx) so it reads as light, not a shape.
+ * Ambient light behind the top of the page: a faint periwinkle-to-cobalt haze
+ * (the lilac → cobalt mix, about rgb(109 121 231)). Sized and placed in
+ * Layout.tsx.
+ *
+ * This is drawn as a radial gradient with a Gaussian falloff, never as a
+ * shape under `filter: blur()`. Safari paints a CSS blur on the CPU, at 3x on
+ * an iPhone, again every time anything above it repaints. The hero name is
+ * above it and repaints on every typed letter, so a blurred glow made the
+ * page slow to show and the typing stall on phones. A gradient costs nothing
+ * to repaint. The stops below match the old 140px (mobile) and 220px
+ * (desktop) blurs.
  */
-.bg-ambient-glow {
-    background: linear-gradient(
-        157.81deg,
-        #f3f0ff -43.27%,
-        var(--color-lilac) -21.24%,
-        #c4c3ff 12.19%,
-        var(--color-periwinkle) 29.82%,
-        #5f6fe0 51.94%,
-        var(--color-primary) 90.29%
+.ambient-glow {
+    background: radial-gradient(
+        closest-side,
+        rgb(109 121 231 / 0.165),
+        rgb(109 121 231 / 0.149) 15%,
+        rgb(109 121 231 / 0.112) 30%,
+        rgb(109 121 231 / 0.073) 45%,
+        rgb(109 121 231 / 0.04) 60%,
+        rgb(109 121 231 / 0.017) 75%,
+        rgb(109 121 231 / 0.005) 88%,
+        rgb(109 121 231 / 0)
+    );
+
+    @media (width >= 48rem) {
+        background: radial-gradient(
+            closest-side,
+            rgb(112 128 232 / 0.133),
+            rgb(112 128 232 / 0.12) 15%,
+            rgb(112 128 232 / 0.09) 30%,
+            rgb(112 128 232 / 0.059) 45%,
+            rgb(112 128 232 / 0.032) 60%,
+            rgb(112 128 232 / 0.013) 75%,
+            rgb(112 128 232 / 0.004) 88%,
+            rgb(112 128 232 / 0)
+        );
+    }
+}
+
+/*
+ * Soft periwinkle light under a project screenshot. A gradient for the same
+ * reason as .ambient-glow: no filter for Safari to repaint as images load.
+ */
+.project-glow {
+    background: radial-gradient(
+        96% 81% at 50% 75%,
+        rgb(167 166 255 / 0.36),
+        rgb(167 166 255 / 0.317) 16.7%,
+        rgb(167 166 255 / 0.22) 33.3%,
+        rgb(167 166 255 / 0.115) 50%,
+        rgb(167 166 255 / 0.049) 66.7%,
+        rgb(167 166 255 / 0.016) 83.3%,
+        rgb(167 166 255 / 0)
     );
 }
 

@@ -8,7 +8,7 @@ import RootLayout from '@/components/Layout';
 const courier = Courier_Prime({
     subsets: ['latin'],
     weight: ['400', '700'],
-    style: ['normal', 'italic'],
+    style: 'normal',
     variable: '--font-courier',
     display: 'swap',
 });

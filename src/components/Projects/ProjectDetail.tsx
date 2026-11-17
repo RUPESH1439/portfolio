@@ -96,10 +96,7 @@ const ProjectDetail: FunctionComponent<ProjectDetailProps> = ({
                         : 'h-72 md:h-[min(62svh,540px)]'
                 }`}
             >
-                <div
-                    aria-hidden
-                    className="absolute inset-x-8 bottom-0 h-1/2 rounded-full bg-periwinkle/50 blur-3xl"
-                />
+                <div aria-hidden className="project-glow absolute inset-0" />
                 {img ? (
                     <div className="relative flex h-full items-center justify-center p-5 md:p-7">
                         <Image
