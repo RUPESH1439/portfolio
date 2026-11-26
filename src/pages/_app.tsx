@@ -3,6 +3,7 @@ import '../styles/globals.css';
 import Head from 'next/head';
 import { AppProps } from 'next/app';
 import { Courier_Prime } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
 import RootLayout from '@/components/Layout';
 
 const courier = Courier_Prime({
@@ -36,6 +37,7 @@ export default function MyApp(props: AppProps) {
                     <Component {...pageProps} />
                 </RootLayout>
             </div>
+            <Analytics />
         </>
     );
 }
